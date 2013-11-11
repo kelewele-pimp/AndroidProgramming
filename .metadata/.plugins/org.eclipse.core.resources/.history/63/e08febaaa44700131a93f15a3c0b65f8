@@ -1,0 +1,5 @@
+package com.example.anothertodolistactivity;
+
+public interface OnItemAddedListener {
+	public void onNewItemAdded(String newItem); 
+}
