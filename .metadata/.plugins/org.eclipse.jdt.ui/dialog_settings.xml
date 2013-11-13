@@ -19,11 +19,28 @@
 	<section name="OverrideMethodDialog">
 		<item value="true" key="showtypes"/>
 	</section>
+	<section name="DialogBounds_GenerateToStringDialog">
+		<item value="563" key="DIALOG_WIDTH"/>
+		<item value="32" key="DIALOG_Y_ORIGIN"/>
+		<item value="765" key="DIALOG_HEIGHT"/>
+		<item value="655" key="DIALOG_X_ORIGIN"/>
+		<item value="1|Ubuntu|11.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
+	</section>
+	<section name="GenerateConstructorUsingFieldsSelectionDialog">
+		<item value="false" key="OmitCallToSuper"/>
+	</section>
 	<section name="quick_assist_proposal_size">
 	</section>
 	<section name="SourceActionDialog.methods">
+		<item value="false" key="SkipNull"/>
+		<item value="10" key="LimitValue"/>
+		<item value="0" key="ToStringTemplateSelected"/>
+		<item value="0" key="StringStyle"/>
+		<item value="1" key="VisibilityModifier"/>
 		<item value="false" key="Comments"/>
+		<item value="false" key="LimitElements"/>
 		<item value="false" key="SynchronizedModifier"/>
+		<item value="true" key="IgnoreDefault"/>
 		<item value="false" key="FinalModifier"/>
 	</section>
 	<section name="NewPackageWizardPage">
@@ -50,6 +67,13 @@
 	<section name="AddUnimplementedConstructorsDialog">
 		<item value="false" key="OmitCallToSuper"/>
 	</section>
+	<section name="DialogBounds_GetterSetterTreeSelectionDialog">
+		<item value="648" key="DIALOG_WIDTH"/>
+		<item value="25" key="DIALOG_Y_ORIGIN"/>
+		<item value="776" key="DIALOG_HEIGHT"/>
+		<item value="612" key="DIALOG_X_ORIGIN"/>
+		<item value="1|Ubuntu|11.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
+	</section>
 	<section name="org.eclipse.ltk.ui.refactoring.settings">
 	</section>
 	<section name="RenameInformationPopup">
@@ -57,5 +81,16 @@
 	<section name="NewClassWizardPage">
 		<item value="false" key="create_constructor"/>
 		<item value="false" key="create_unimplemented"/>
+	</section>
+	<section name="AddGetterSetterDialog">
+		<item value="false" key="RemoveFinal"/>
+		<item value="false" key="SortOrdering"/>
+	</section>
+	<section name="DialogBounds_GenerateConstructorUsingFieldsSelectionDialog">
+		<item value="631" key="DIALOG_WIDTH"/>
+		<item value="42" key="DIALOG_Y_ORIGIN"/>
+		<item value="751" key="DIALOG_HEIGHT"/>
+		<item value="621" key="DIALOG_X_ORIGIN"/>
+		<item value="1|Ubuntu|11.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
 	</section>
 </section>

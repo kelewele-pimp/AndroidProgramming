@@ -1,0 +1,24 @@
+package Fragments;
+
+import java.util.ArrayList;
+
+import Model.Quake;
+import android.app.ListFragment;
+import android.os.Bundle;
+import android.widget.ArrayAdapter;
+
+public class EarthquakeListFragment extends ListFragment {
+
+	ArrayAdapter<Quake> adapter; 
+	ArrayList<Quake> earthQuakes = new ArrayList<Quake>();
+	
+	@Override
+	public void onActivityCreated(Bundle savedInstanceState) {
+		super.onActivityCreated(savedInstanceState);
+		int layoutID = android.R.layout.simple_list_item_1; 
+		adapter = new ArrayAdapter<Quake>(getActivity(), layoutID, earthQuakes); 
+		setListAdapter(adapter);
+	}
+	
+	
+}
