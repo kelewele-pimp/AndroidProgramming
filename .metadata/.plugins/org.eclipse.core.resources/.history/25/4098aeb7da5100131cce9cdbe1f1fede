@@ -1,0 +1,115 @@
+package com.example.earthquake;
+
+import java.sql.Savepoint;
+
+import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.Spinner;
+
+public class PreferenceActivity extends android.preference.PreferenceActivity{
+	
+	public static final String USER_PREFERENCE = "USER_PREFERENCE"; 
+	public static final String PREF_AUTO_UPDATE = "PREF_AUTO_UPDATE"; 
+	public static final String PREF_MIN_MAG = "PREF_MIN_MAG"; 
+	public static final String PREF_UPDATE_FREQ = "PREF_UPDATE_FREQ"; 
+	
+	SharedPreferences prefs; 
+	CheckBox autoUpdate; 
+	Spinner updateFrequencySpinner; 
+	Spinner magnitudeSpinner; 
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		/*without the preference activity
+		setContentView(R.layout.preferences);
+		*/
+		addPreferencesFromResource(R.layout.userpreferences);
+		
+		
+		autoUpdate = (CheckBox) findViewById(R.id.checkbox_autoupdate); 
+		updateFrequencySpinner = (Spinner) findViewById(R.id.spinner_update_freq); 
+		magnitudeSpinner = (Spinner) findViewById(R.id.spinner_quake_mag); 
+		
+		populateSpinners();
+		
+		Context context = getApplicationContext(); 
+		prefs = PreferenceManager.getDefaultSharedPreferences(context); 
+		updateUIFromPreferences(); 
+		
+		Button okBUtton = (Button) findViewById(R.id.okButton); 
+		okBUtton.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				savePreferences(); 
+				PreferenceActivity.this.setResult(RESULT_OK);
+				finish(); 
+			}
+		});
+		
+		Button cancelButton = (Button) findViewById(R.id.cancelButton); 
+		cancelButton.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				PreferenceActivity.this.setResult(RESULT_OK);
+				finish();
+				
+			}
+		});
+	}
+	
+	private void savePreferences() {
+		//RECORD THE CURRENT PREFERENCES, BASED ON THE UI SELECTIONS
+		int updateIndex = updateFrequencySpinner.getSelectedItemPosition(); 
+		int minMagIndex = magnitudeSpinner.getSelectedItemPosition(); 
+		boolean autoUpdatedChecked = autoUpdate.isChecked(); 
+		
+		//MODIFY THE SHAREDPREFERENCE FILE TO ADD THE NEW SETTINGS
+		Editor editor = prefs.edit(); 
+		editor.putBoolean(PREF_AUTO_UPDATE, autoUpdatedChecked); 
+		editor.putInt(PREF_UPDATE_FREQ, updateIndex);
+		editor.putInt(PREF_MIN_MAG, minMagIndex);
+		editor.commit(); //APPLY THE CHANGES, editor.apply() is a more reliable solution
+	}
+
+	private void updateUIFromPreferences() {
+		boolean autoUpChecked = prefs.getBoolean(PREF_AUTO_UPDATE, false); 
+		int updateFreqIndex = prefs.getInt(PREF_UPDATE_FREQ, 2); 
+		int minMagIndex = prefs.getInt(PREF_MIN_MAG, 0); 
+		
+		updateFrequencySpinner.setSelection(updateFreqIndex);
+		magnitudeSpinner.setSelection(minMagIndex);
+		autoUpdate.setChecked(autoUpChecked);
+		
+	}
+
+	private void populateSpinners() {
+		// POPULATE AND UPDATE FREQUENCY SPINNERS
+		ArrayAdapter<CharSequence> frequency_adapter = 
+				ArrayAdapter.createFromResource(this, R.array.update_freq_options, android.R.layout.simple_list_item_1); 
+		
+		int spinner_dd_item = android.R.layout.simple_spinner_dropdown_item; 
+		frequency_adapter.setDropDownViewResource(spinner_dd_item);
+		updateFrequencySpinner.setAdapter(frequency_adapter);
+		
+		//Populate the minimum magnitude spinner
+		ArrayAdapter<CharSequence> magnitude_adapter = 
+				ArrayAdapter.createFromResource(this, R.array.magnitude_options, android.R.layout.simple_list_item_1); 
+		magnitude_adapter.setDropDownViewResource(spinner_dd_item);
+		magnitudeSpinner.setAdapter(magnitude_adapter);
+		
+	}
+
+	
+}

@@ -1,7 +1,0 @@
-package Fragments;
-
-import android.app.ListFragment;
-
-public class EarthquakeListFragment extends ListFragment {
-
-}

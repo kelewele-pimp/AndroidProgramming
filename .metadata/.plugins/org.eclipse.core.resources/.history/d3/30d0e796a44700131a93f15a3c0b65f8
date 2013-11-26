@@ -1,7 +1,0 @@
-package com.example.anothertodolistactivity;
-
-import android.app.ListFragment;
-
-public class ToDoListFragment extends ListFragment {
-
-}

@@ -22,6 +22,8 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
+import com.example.earthquake.Earthquake;
+
 import Model.Quake;
 import android.app.ListFragment;
 import android.location.Location;
@@ -151,7 +153,11 @@ public class EarthquakeListFragment extends ListFragment {
 
 	private void addNewQuake(Quake quake) {
 		//Add new earthquake to our list of earthquakes
-		earthQuakes.add(quake); 
+		Earthquake earthquakeActivity = (Earthquake) getActivity(); 
+		if(quake.getMagnitude() > earthquakeActivity.minimumMagnitude){
+			//Add the new quake to the list of earthquakes
+			earthQuakes.add(quake); 
+		}
 		//Notify the array adapter of change 
 		adapter.notifyDataSetChanged();
 	} 
