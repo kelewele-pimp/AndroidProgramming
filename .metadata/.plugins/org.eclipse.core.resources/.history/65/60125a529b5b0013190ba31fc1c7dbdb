@@ -1,0 +1,14 @@
+/**
+ * 
+ */
+package fragments;
+
+import android.app.Activity;
+
+/**
+ * @author desmond
+ *
+ */
+public class StudyPlanFragment extends Activity {
+
+}

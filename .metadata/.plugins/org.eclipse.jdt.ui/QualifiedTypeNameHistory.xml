@@ -1,20 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="com.example.compass.R"/>
-<fullyQualifiedTypeName name="android.graphics.Paint.Style"/>
-<fullyQualifiedTypeName name="com.example.compass.R.string"/>
-<fullyQualifiedTypeName name="android.graphics.Paint"/>
-<fullyQualifiedTypeName name="com.example.compass.R.color"/>
-<fullyQualifiedTypeName name="android.text.style.EasyEditSpan"/>
-<fullyQualifiedTypeName name="android.view.accessibility.AccessibilityEvent"/>
-<fullyQualifiedTypeName name="CustomView.CompassView"/>
-<fullyQualifiedTypeName name="com.example.compass.R.id"/>
-<fullyQualifiedTypeName name="android.widget.SimpleCursorAdapter"/>
-<fullyQualifiedTypeName name="com.example.contactpicker.R.layout"/>
-<fullyQualifiedTypeName name="com.example.contactpicker.R.id"/>
-<fullyQualifiedTypeName name="android.view.View.OnClickListener"/>
-<fullyQualifiedTypeName name="android.widget.ListView"/>
-<fullyQualifiedTypeName name="android.widget.AdapterView.OnItemClickListener"/>
 <fullyQualifiedTypeName name="android.content.ContentUris"/>
 <fullyQualifiedTypeName name="android.provider.ContactsContract"/>
 <fullyQualifiedTypeName name="android.provider.ContactsContract.Contacts"/>
@@ -60,4 +45,19 @@
 <fullyQualifiedTypeName name="com.example.earthquake.R.array"/>
 <fullyQualifiedTypeName name="android.R"/>
 <fullyQualifiedTypeName name="android.R.layout"/>
+<fullyQualifiedTypeName name="android.view.View"/>
+<fullyQualifiedTypeName name="android.app.Fragment"/>
+<fullyQualifiedTypeName name="com.example.uniutilproject.R"/>
+<fullyQualifiedTypeName name="com.example.uniutilproject.R.layout"/>
+<fullyQualifiedTypeName name="model.NavDrawerItem"/>
+<fullyQualifiedTypeName name="fragments.HomeFragment"/>
+<fullyQualifiedTypeName name="fragments.StudyPlanFragment"/>
+<fullyQualifiedTypeName name="fragments.MatesFragment"/>
+<fullyQualifiedTypeName name="fragments.ProfessorsFragment"/>
+<fullyQualifiedTypeName name="fragments.CoursesFragment"/>
+<fullyQualifiedTypeName name="fragments.ExamsFragment"/>
+<fullyQualifiedTypeName name="com.example.uniutilproject.R.drawable"/>
+<fullyQualifiedTypeName name="android.app.ActionBar"/>
+<fullyQualifiedTypeName name="android.graphics.Color"/>
+<fullyQualifiedTypeName name="android.graphics.drawable.ColorDrawable"/>
 </qualifiedTypeNameHistroy>

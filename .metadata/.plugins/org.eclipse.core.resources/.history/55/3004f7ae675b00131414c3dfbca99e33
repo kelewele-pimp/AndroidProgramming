@@ -1,0 +1,14 @@
+/**
+ * 
+ */
+package fragment_classes;
+
+import android.app.Activity;
+
+/**
+ * @author desmond
+ *
+ */
+public class PagesFragment extends Activity {
+
+}

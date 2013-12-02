@@ -1,0 +1,16 @@
+/**
+ * 
+ */
+package fragment_classes;
+
+import android.app.Activity;
+
+/**
+ * @author desmond
+ *
+ */
+public class FindPeopleFragment extends Activity {
+	
+	
+
+}
