@@ -1,0 +1,14 @@
+/**
+ * 
+ */
+package fragments;
+
+import android.app.DialogFragment;
+
+/**
+ * @author desmond
+ *
+ */
+public class DatePickerFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener {
+
+}

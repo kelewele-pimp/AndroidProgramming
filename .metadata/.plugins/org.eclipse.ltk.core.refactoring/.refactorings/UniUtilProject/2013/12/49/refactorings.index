@@ -1,3 +1,21 @@
 1386018209862	Delete element
 1386018269391	Rename package 'fragmenst'
 1386020988657	Rename resource 'exams.xml'
+1386083794069	Move file
+1386083812009	Rename resource 'Science-University-icon.png'
+1386083826735	Rename resource 'launcher_icon'
+1386090160408	Delete element
+1386107300740	Rename field 'studyplan_course'
+1386107323932	Rename field 'studyplan_location'
+1386107484565	Rename field 'plan_name'
+1386107498180	Rename field 'course_name'
+1386107513818	Rename field 'location'
+1386107904989	Rename resource 'clock-icon.png'
+1386167945791	Rename resource 'home-icon.png'
+1386167973068	Rename resource 'home-small-icon.png'
+1386178311051	Rename field 'activity_textvTextView'
+1386180456036	Move compilation unit
+1386181970165	Rename local variable 'textview'
+1386182496035	Rename field 'date_textView'
+1386182509191	Rename field 'picktime_textView'
+1386182518936	Rename field 'time_textView'

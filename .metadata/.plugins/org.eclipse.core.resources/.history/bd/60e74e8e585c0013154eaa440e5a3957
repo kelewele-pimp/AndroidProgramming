@@ -1,0 +1,73 @@
+/**
+ * 
+ */
+package fragments;
+
+import android.app.Fragment;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.TextView;
+
+import com.example.uniutilproject.R;
+
+/**
+ * @author desmond
+ * 
+ */
+public class StudyPlanFragment extends Fragment {
+
+	private TextView studyplan_name;
+	private TextView studyplan_course;
+	private TextView studyplan_location;
+	private TextView studyplan_date_view;
+	private Button studyplan_btnChangeDate; 
+	private EditText studyplan_dateview_et; 
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
+
+		View view = inflater.inflate(R.layout.studyplan_fragment, container,
+				false);
+
+		studyplan_name = (TextView) view.findViewById(R.id.studyplan_name_et);
+		studyplan_course = (TextView) view
+				.findViewById(R.id.studyplan_course_et);
+		studyplan_location = (TextView) view
+				.findViewById(R.id.studyplan_location_et);
+//		studyplan_date_view = (TextView) view
+//				.findViewById(R.id.studyplan_dateview);
+		studyplan_dateview_et = (EditText) view.findViewById(R.id.studyplan_dateview_et);
+		//studyplan_btnChangeDate = (Button) view.findViewById(R.id.studyplay_btnChangeDate); 
+		studyplan_dateview_et.setHint("");
+		
+		studyplan_dateview_et.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				showDatePickerFragment(v);				
+			}
+		});
+		
+		/*
+		studyplan_btnChangeDate.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				showDatePickerFragment(v);
+			}
+		}); */
+
+		return view;
+	}
+	
+	public void showDatePickerFragment(View v) {
+		DatePickerDialogFragment datepicker = new DatePickerDialogFragment(studyplan_dateview_et);
+		datepicker.show(getFragmentManager(), "datePicker");
+	}
+}

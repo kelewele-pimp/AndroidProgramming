@@ -1,0 +1,74 @@
+/**
+ * 
+ */
+package fragments;
+
+import java.util.Calendar;
+
+import android.app.DatePickerDialog;
+import android.app.DatePickerDialog.OnDateSetListener;
+import android.app.Dialog;
+import android.app.DialogFragment;
+import android.app.FragmentManager;
+import android.content.Context;
+import android.os.Bundle;
+import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.TextView;
+
+/**
+ * @author desmond
+ * 
+ */
+public class DatePickerDialogFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener {
+
+	private int year;
+	private int month;
+	private int day;
+	private TextView activity_textvTextView; 
+
+	private OnDateSetListener mDateSetListener;
+
+	public DatePickerDialogFragment() {
+		// nothing to see here, move along
+	}
+
+	public DatePickerDialogFragment(TextView textView) {
+		activity_textvTextView = textView; 
+	} 
+
+	@Override
+	public Dialog onCreateDialog(Bundle savedInstanceState) {
+		super.onCreateDialog(savedInstanceState);
+		
+		int calendar_year, calendar_month, calendar_day; 
+		
+		// use the current date as the default date in picker
+		final Calendar c = Calendar.getInstance();
+		calendar_year = c.get(Calendar.YEAR);
+		calendar_month = c.get(Calendar.MONTH);
+		calendar_day = c.get(Calendar.DAY_OF_MONTH);
+
+		// Create a new instance of DatePickerDialog and return it
+		return new DatePickerDialog(getActivity(), this, calendar_year, calendar_month, calendar_day);
+	}
+
+	// when the dialog box is closed, this method will be called
+	@Override
+	public void onDateSet(DatePicker view, int year, int month, int day) {
+		this.year = year;
+		this.month = month;
+		this.day = day;
+
+		// Set selected date into texview
+		// set selected date into textview
+        activity_textvTextView.setText(new StringBuilder().append(month + 1)
+                        .append("-").append(day).append("-").append(year)
+                        .append(" "));
+
+        // set selected date into datepicker also
+       //view.init(year, month, day, null);
+
+	}
+
+}

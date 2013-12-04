@@ -1,0 +1,43 @@
+/**
+ * 
+ */
+package fragments;
+
+import android.app.Activity;
+import android.app.Dialog;
+import android.app.DialogFragment;
+import android.app.DatePickerDialog;
+import android.os.Bundle;
+import android.widget.DatePicker;
+
+/**
+ * @author desmond
+ *
+ */
+public class DatePickerDialogFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener {
+	
+	private int year; 
+	private int month; 
+	private int day; 
+	
+	public DatePickerDialogFragment() {} //No arg construcotor
+ 
+	public DatePickerDialogFragment(OnDateSetListener callback) {
+		mDateSetListener = (OnDateSetListener) callback;
+	}
+ 
+	@override
+	public Dialog onCreateDialog(int id) {
+		
+		
+		// Create a new instance of DatePickerDialog and return it
+        return new DatePickerDialog(getActivity(), this, year, month, day);
+	}
+
+	//when the dialog box is closed, this method will be called
+	@Override
+	public void onDateSet(DatePicker view, int year, int month, int day) {
+		
+	}
+
+}

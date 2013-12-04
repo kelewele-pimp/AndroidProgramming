@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest android:versionCode="1" android:versionName="1.0"
+    package="com.example.uniutilproject" xmlns:android="http://schemas.android.com/apk/res/android">
+    <uses-sdk android:minSdkVersion="14" android:targetSdkVersion="19"/>
+    <application android:allowBackup="true"
+        android:icon="@drawable/launcher_icon"
+        android:label="@string/app_name" android:theme="@style/AppTheme">
+        <activity android:label="@string/app_name" android:name="com.example.uniutilproject.UniUtil_MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <!--created by desmond at 2013-12-02 22:42:46-->
+        <activity android:name="fragments.HomeFragment"/>
+        <!--created by desmond at 2013-12-02 22:46:12-->
+        <activity android:name="fragments.StudyPlanFragment"/>
+        <!--created by desmond at 2013-12-02 22:48:13-->
+        <activity android:name="fragments.MatesFragment"/>
+        <!--created by desmond at 2013-12-02 22:53:15-->
+        <activity android:name="fragments.ProfessorsFragment"/>
+        <!--created by desmond at 2013-12-02 22:56:10-->
+        <activity android:name="fragments.CoursesFragment"/>
+        <!--created by desmond at 2013-12-02 22:58:31-->
+        <activity android:name="fragments.ExamsFragment"/>
+        <!--created by desmond at 2013-12-03 17:36:49-->
+        <activity android:name="fragments.DatePickerFragment"/>
+        <!--created by desmond at 2013-12-03 18:23:09-->
+        <activity android:name="fragments.DatePickerDialogFragment"/>
+    </application>
+</manifest>

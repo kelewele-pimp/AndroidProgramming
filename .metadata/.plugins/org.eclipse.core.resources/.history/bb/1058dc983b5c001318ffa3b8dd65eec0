@@ -1,0 +1,56 @@
+/**
+ * 
+ */
+package fragments;
+
+
+import java.util.Calendar;
+
+import android.app.Dialog;
+import android.app.DialogFragment;
+import android.os.Bundle;
+import android.app.DatePickerDialog;
+import android.widget.DatePicker;
+
+/**
+ * @author desmond
+ * 
+ */
+public class DatePickerFragment extends DialogFragment
+implements DatePickerDialog.OnDateSetListener {
+	
+	private TextView actualDate;
+    private DatePicker datePicker;
+    private Button changeDate;
+
+	@Override
+	public Dialog onCreateDialog(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		return super.onCreateDialog(savedInstanceState);
+	}
+	
+	public void onDateSet(DatePicker view, int year, int month, int day) {
+        // Do something with the date chosen by the user
+    }
+	
+	 // Set current date on datePicker
+    public void setCurrentDate() {
+
+            actualDate = (TextView) findViewById(R.id.actual_date);
+
+            datePicker = (DatePicker) findViewById(R.id.date_picker);
+
+            final Calendar c = Calendar.getInstance();
+
+            year = c.get(Calendar.YEAR);
+            month = c.get(Calendar.MONTH);
+            date = c.get(Calendar.DATE);
+
+            actualDate.setText(new StringBuilder().append(month + 1).append("-")
+                            .append(date).append("-").append(year));
+
+            datePicker.init(year, month, date, null);
+
+    }
+
+}

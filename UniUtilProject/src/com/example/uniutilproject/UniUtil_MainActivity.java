@@ -15,6 +15,7 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.graphics.Color;
@@ -22,11 +23,13 @@ import android.graphics.drawable.ColorDrawable;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 public class UniUtil_MainActivity extends Activity {
 
@@ -50,12 +53,8 @@ public class UniUtil_MainActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
 		setContentView(R.layout.activity_uni_util__main);
-
-		// set the color of the action bar
-		ActionBar actionBar = getActionBar();
-		actionBar.setBackgroundDrawable(new ColorDrawable(Color
-				.parseColor("#7496c8")));
 
 		mTitle = mDrawerTitle = getTitle();
 
@@ -66,11 +65,17 @@ public class UniUtil_MainActivity extends Activity {
 
 		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 		mDrawerList = (ListView) findViewById(R.id.list_slider_menu);
+		
+		// add a footer to the listview
+		/*
+		View footerView = ((LayoutInflater) this
+				.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(
+				R.layout.drawerlist_footer_view, null, false);
+		mDrawerList.addFooterView(footerView); */
 
 		navDrawerItems = new ArrayList<NavDrawerItem>();
 
-		// adding nav drawer items to array
-		// Home
+		// adding nav drawer items to to drawer
 		for (int i = 0; i <= 5; i++) {
 			navDrawerItems.add(new NavDrawerItem(navMenuTitles[i], navMenuIcons
 					.getResourceId(i, -1)));
@@ -141,6 +146,7 @@ public class UniUtil_MainActivity extends Activity {
 			return super.onOptionsItemSelected(item);
 		}
 	}
+	
 
 	/**
 	 * Called when invalidateOptionsMenu is triggered
