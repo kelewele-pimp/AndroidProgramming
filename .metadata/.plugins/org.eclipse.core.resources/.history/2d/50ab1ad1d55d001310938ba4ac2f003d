@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+       
+
+        <TextView
+            android:id="@android:id/text1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+             android:background="@drawable/card" >
+            android:minHeight="?android:attr/listPreferredItemHeight"
+            android:textAppearance="?android:attr/textAppearanceListItemSmall" />

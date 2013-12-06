@@ -1,0 +1,88 @@
+/**
+ * 
+ */
+package fragments;
+
+import it.gmariotti.cardslib.demo.cards.ColorCard;
+import it.gmariotti.cardslib.demo.fragment.BaseFragment;
+import it.gmariotti.cardslib.library.internal.Card;
+import it.gmariotti.cardslib.library.internal.CardArrayAdapter;
+import it.gmariotti.cardslib.library.internal.CardHeader;
+import it.gmariotti.cardslib.library.view.CardListView;
+
+import java.util.ArrayList;
+
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ScrollView;
+
+import com.example.uniutilproject.R;
+
+/**
+ * @author desmond
+ * 
+ */
+public class HomeFragment extends BaseFragment {
+
+	
+	protected ScrollView mScrollView;
+
+
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
+
+		View view = inflater.inflate(
+				it.gmariotti.cardslib.demo.R.layout.demo_fragment_colors,
+				container, false);
+		
+		return view;
+		
+	}
+
+	@Override
+	public void onActivityCreated(Bundle savedInstanceState) {
+		super.onActivityCreated(savedInstanceState);
+
+		initCards();
+	}
+
+	private void initCards() {
+
+		// Init an array of Cards
+		ArrayList<Card> cards = new ArrayList<Card>();
+		for (int i = 0; i < 20; i++) {
+			
+			ColorCard card = new ColorCard(this.getActivity());
+			
+			CardHeader header = new CardHeader(this.getActivity()); 
+			
+			header.setTitle("This is a simple title" + i);
+			
+			header.setButtonExpandVisible(true);
+			
+			card.addCardHeader(header);
+			// card.setBackgroundResourceId(R.drawable.demo_card_selector_color5);
+			
+			cards.add(card);
+		}
+
+		CardArrayAdapter mCardArrayAdapter = new CardArrayAdapter(
+				getActivity(), cards);
+
+		CardListView listView = (CardListView) getActivity().findViewById(
+				R.layout.cardview_listitem);
+		if (listView != null) {
+			listView.setAdapter(mCardArrayAdapter);
+		}
+	}
+
+	@Override
+	public int getTitleResourceId() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+}

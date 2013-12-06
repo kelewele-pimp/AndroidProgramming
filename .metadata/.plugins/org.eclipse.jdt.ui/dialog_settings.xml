@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
+	<item value="560,578" key="UserLibraryLoadSaveDialog.size"/>
 	<section name="DialogBounds_OverrideMethodDialog">
 		<item value="638" key="DIALOG_WIDTH"/>
 		<item value="196" key="DIALOG_Y_ORIGIN"/>
@@ -19,6 +20,9 @@
 	<section name="OverrideMethodDialog">
 		<item value="true" key="showtypes"/>
 	</section>
+	<section name="BuildPathsPropertyPage">
+		<item value="0" key="pageIndex"/>
+	</section>
 	<section name="DialogBounds_GenerateToStringDialog">
 		<item value="563" key="DIALOG_WIDTH"/>
 		<item value="32" key="DIALOG_Y_ORIGIN"/>
@@ -34,6 +38,9 @@
 		<item value="600" key="width"/>
 	</section>
 	<section name="quick_assist_proposal_size">
+	</section>
+	<section name="ClasspathContainerSelectionPage">
+		<item value="9" key="index"/>
 	</section>
 	<section name="SourceActionDialog.methods">
 		<item value="false" key="SkipNull"/>

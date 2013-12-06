@@ -164,13 +164,13 @@ public class CompassView extends View {
 
 				}
 				canvas.drawText(dirString, cardinalX, cardinalY, textPaint);
-			} else if(i % 3 == 0) {
-				//Draw the text every alternate 45deg
-				String angle = String.valueOf(i*15); 
-				float angleTextWidth = textPaint.measureText(angle); 
-				
-				int angleTextX = (int) (px-angleTextWidth/2); 
-				int angleTextY = py-radius+textHeight; 
+			} else if (i % 3 == 0) {
+				// Draw the text every alternate 45deg
+				String angle = String.valueOf(i * 15);
+				float angleTextWidth = textPaint.measureText(angle);
+
+				int angleTextX = (int) (px - angleTextWidth / 2);
+				int angleTextY = py - radius + textHeight;
 				canvas.drawText(angle, angleTextX, angleTextY, textPaint);
 			}
 			canvas.restore();
@@ -183,17 +183,16 @@ public class CompassView extends View {
 	@Override
 	public boolean dispatchPopulateAccessibilityEvent(AccessibilityEvent event) {
 		super.dispatchPopulateAccessibilityEvent(event);
-		if(isShown()){
-			String bearingString = String.valueOf(bearing); 
-			if(bearingString.length() > AccessibilityEvent.MAX_TEXT_LENGTH)
-				bearingString = bearingString.substring(0, AccessibilityEvent.MAX_TEXT_LENGTH); 
-			event.getText().add(bearingString); 
-			return true; 
+		if (isShown()) {
+			String bearingString = String.valueOf(bearing);
+			if (bearingString.length() > AccessibilityEvent.MAX_TEXT_LENGTH)
+				bearingString = bearingString.substring(0,
+						AccessibilityEvent.MAX_TEXT_LENGTH);
+			event.getText().add(bearingString);
+			return true;
 		} else {
-			return false; 
+			return false;
 		}
 	}
-	
-	
 
 }
