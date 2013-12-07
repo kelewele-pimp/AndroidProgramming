@@ -3,31 +3,42 @@
              android:layout_width="match_parent"
              android:layout_height="wrap_content">
 
-<LinearLayout
+<RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="6dp"
         android:layout_marginRight="6dp"
         android:layout_marginTop="4dp"
         android:layout_marginBottom="4dp"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:background="@drawable/card">
 
     <!-- Card Contents go here -->
+    
+    <ImageView 
+        android:id="@+id/homecard_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/carddemo_ic_gmaps"
+        />
 
     <TextView
-            android:id="@+id/beerNameList"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="Large Text"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:id="@+id/homecard_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/homecard_img"
+        android:text="card_text"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <TextView
-            android:id="@+id/beerBreweryNameList"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
+        android:id="@+id/homecard_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/homecard_img"
+        android:text="date" />
 
-</LinearLayout>
+</RelativeLayout>>
 
 </FrameLayout>

@@ -54,8 +54,8 @@ public class Card_Adapter extends BaseAdapter {
 			convertView = mInflater.inflate(R.layout.home_listitem, null);
 		}
 
-		TextView imgIcon = (TextView) convertView.findViewById(R.id.beerNameList);
-		TextView txtTitle = (TextView) convertView.findViewById(R.id.beerBreweryNameList);
+		TextView imgIcon = (TextView) convertView.findViewById(R.id.homecard_content);
+		TextView txtTitle = (TextView) convertView.findViewById(R.id.homecard_date);
 
 		imgIcon.setText(getItem(position).toString());
 		txtTitle.setText(getItem(position).toString());
