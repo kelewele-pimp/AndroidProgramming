@@ -1,0 +1,53 @@
+package adapters;
+
+import com.example.uniutilproject.R;
+
+import android.app.Activity;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+
+public class MatesCardAdapter extends BaseAdapter {
+	
+	private Context context; 
+	private String[] values; 
+	
+	public MatesCardAdapter(Context contect, String[] values){
+		this.context = contect; 
+		this.values = values; 
+	}
+
+	@Override
+	public int getCount() {
+		return values.length; 
+	}
+
+	@Override
+	public Object getItem(int position) {
+		return values[position];
+	}
+
+	@Override
+	public long getItemId(int position) {
+		return position;
+	}
+
+	@Override
+	public View getView(int position, View convertView, ViewGroup parent) {
+		if (convertView == null) {
+			LayoutInflater mInflater = (LayoutInflater) context
+					.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
+			convertView = mInflater.inflate(R.layout.home_listitem, null);
+		}
+		
+		TextView mate_info = (TextView) convertView.findViewById(R.id.mates_content); 
+		
+		mate_info.setText(getItem(position).toString());
+		
+		return convertView; 
+	}
+
+}

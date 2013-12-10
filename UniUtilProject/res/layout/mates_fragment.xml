@@ -2,14 +2,12 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
-    
-    <TextView 
-        android:id="@+id/matesfragment_textview"
+
+    <ListView
+        android:id="@+id/mates_listview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_centerInParent="true"
-        android:textSize="16dp"
-        android:text="Mates View"/>
-    
+        android:divider="#E6E6E6"
+        android:dividerHeight="@null" />
 
 </RelativeLayout>
