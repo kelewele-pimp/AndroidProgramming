@@ -4,16 +4,16 @@
 	<section name="DialogBounds_OverrideMethodDialog">
 		<item value="638" key="DIALOG_WIDTH"/>
 		<item value="196" key="DIALOG_Y_ORIGIN"/>
-		<item value="520" key="DIALOG_HEIGHT"/>
 		<item value="617" key="DIALOG_X_ORIGIN"/>
+		<item value="520" key="DIALOG_HEIGHT"/>
 		<item value="1|Ubuntu|11.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
 	</section>
 	<section name="OptionalMessageDialog.hide.">
 		<item value="true" key="org.eclipse.jdt.ui.typecomment.deprecated"/>
 	</section>
 	<section name="SourceActionDialog.constructors">
-		<item value="false" key="Comments"/>
 		<item value="1" key="VisibilityModifier"/>
+		<item value="false" key="Comments"/>
 		<item value="false" key="SynchronizedModifier"/>
 		<item value="false" key="FinalModifier"/>
 	</section>
@@ -26,8 +26,8 @@
 	<section name="DialogBounds_GenerateToStringDialog">
 		<item value="563" key="DIALOG_WIDTH"/>
 		<item value="32" key="DIALOG_Y_ORIGIN"/>
-		<item value="765" key="DIALOG_HEIGHT"/>
 		<item value="655" key="DIALOG_X_ORIGIN"/>
+		<item value="765" key="DIALOG_HEIGHT"/>
 		<item value="1|Ubuntu|11.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
 	</section>
 	<section name="GenerateConstructorUsingFieldsSelectionDialog">
@@ -45,14 +45,14 @@
 	<section name="SourceActionDialog.methods">
 		<item value="false" key="SkipNull"/>
 		<item value="10" key="LimitValue"/>
-		<item value="0" key="ToStringTemplateSelected"/>
-		<item value="0" key="StringStyle"/>
-		<item value="1" key="VisibilityModifier"/>
 		<item value="false" key="Comments"/>
+		<item value="1" key="VisibilityModifier"/>
+		<item value="0" key="StringStyle"/>
+		<item value="0" key="ToStringTemplateSelected"/>
 		<item value="false" key="LimitElements"/>
 		<item value="false" key="SynchronizedModifier"/>
-		<item value="true" key="IgnoreDefault"/>
 		<item value="false" key="FinalModifier"/>
+		<item value="true" key="IgnoreDefault"/>
 	</section>
 	<section name="NewPackageWizardPage">
 		<item value="true" key="create_package_info_java"/>
@@ -60,8 +60,8 @@
 	<section name="DialogBounds_AddUnimplementedConstructorsDialog">
 		<item value="631" key="DIALOG_WIDTH"/>
 		<item value="80" key="DIALOG_Y_ORIGIN"/>
-		<item value="693" key="DIALOG_HEIGHT"/>
 		<item value="621" key="DIALOG_X_ORIGIN"/>
+		<item value="693" key="DIALOG_HEIGHT"/>
 		<item value="1|Ubuntu|11.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
 	</section>
 	<section name="org.eclipse.jdt.internal.ui.packageview.PackageExplorerPart">
@@ -81,21 +81,21 @@
 	<section name="DialogBounds_GetterSetterTreeSelectionDialog">
 		<item value="648" key="DIALOG_WIDTH"/>
 		<item value="25" key="DIALOG_Y_ORIGIN"/>
-		<item value="776" key="DIALOG_HEIGHT"/>
 		<item value="612" key="DIALOG_X_ORIGIN"/>
+		<item value="776" key="DIALOG_HEIGHT"/>
 		<item value="1|Ubuntu|11.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
-	</section>
-	<section name="org.eclipse.ltk.ui.refactoring.settings">
-		<item value="false" key="renameSubpackages"/>
-		<item value="false" key="updateQualifiedNames"/>
-		<item value="*" key="patterns"/>
-		<item value="false" key="updateTextualMatches"/>
-	</section>
-	<section name="RenameInformationPopup">
 	</section>
 	<section name="NewClassWizardPage">
 		<item value="false" key="create_constructor"/>
 		<item value="false" key="create_unimplemented"/>
+	</section>
+	<section name="RenameInformationPopup">
+	</section>
+	<section name="org.eclipse.ltk.ui.refactoring.settings">
+		<item value="*" key="patterns"/>
+		<item value="false" key="updateQualifiedNames"/>
+		<item value="false" key="renameSubpackages"/>
+		<item value="false" key="updateTextualMatches"/>
 	</section>
 	<section name="org.eclipse.jdt.internal.ui.text.QuickOutline">
 		<item value="false" key="GoIntoTopLevelTypeAction.isChecked"/>
@@ -111,8 +111,8 @@
 	<section name="DialogBounds_GenerateConstructorUsingFieldsSelectionDialog">
 		<item value="631" key="DIALOG_WIDTH"/>
 		<item value="42" key="DIALOG_Y_ORIGIN"/>
-		<item value="751" key="DIALOG_HEIGHT"/>
 		<item value="621" key="DIALOG_X_ORIGIN"/>
+		<item value="751" key="DIALOG_HEIGHT"/>
 		<item value="1|Ubuntu|11.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
 	</section>
 </section>

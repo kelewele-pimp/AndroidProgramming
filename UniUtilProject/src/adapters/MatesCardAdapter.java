@@ -15,8 +15,8 @@ public class MatesCardAdapter extends BaseAdapter {
 	private Context context; 
 	private String[] values; 
 	
-	public MatesCardAdapter(Context contect, String[] values){
-		this.context = contect; 
+	public MatesCardAdapter(Context context, String[] values){
+		this.context = context; 
 		this.values = values; 
 	}
 

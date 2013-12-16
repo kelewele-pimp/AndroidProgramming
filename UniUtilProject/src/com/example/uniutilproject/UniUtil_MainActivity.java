@@ -2,36 +2,33 @@ package com.example.uniutilproject;
 
 import java.util.ArrayList;
 
+import model.NavDrawerItem;
+import adapters.NavDrawerListAdapter;
+import android.app.Activity;
+import android.content.res.Configuration;
+import android.content.res.TypedArray;
+import android.os.Bundle;
+import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.widget.DrawerLayout;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
 import fragments.CoursesFragment;
 import fragments.ExamsFragment;
 import fragments.HomeFragment;
 import fragments.MatesFragment;
 import fragments.ProfessorsFragment;
 import fragments.StudyPlanFragment;
-import model.NavDrawerItem;
-import adapters.NavDrawerListAdapter;
-import android.os.Bundle;
-import android.app.ActionBar;
-import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.content.Context;
-import android.content.res.Configuration;
-import android.content.res.TypedArray;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.support.v4.app.ActionBarDrawerToggle;
-import android.support.v4.widget.DrawerLayout;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListView;
-import android.widget.TextView;
 
-public class UniUtil_MainActivity extends Activity {
+
+
+public class UniUtil_MainActivity extends FragmentActivity {
 
 	private DrawerLayout mDrawerLayout;
 	private ListView mDrawerList;
@@ -230,7 +227,7 @@ public class UniUtil_MainActivity extends Activity {
 			break;
 		}
 		if (fragment != null) {
-			FragmentManager fm = getFragmentManager();
+			FragmentManager fm = getSupportFragmentManager(); 
 			fm.beginTransaction().replace(R.id.frame_container, fragment)
 					.commit();
 			// update the selected item and title, then close the drawer

@@ -2,20 +2,25 @@ package dialog_fragments;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.View;
+import android.view.WindowManager;
+import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.uniutilproject.R;
 
-import fragments.MatesFragment;
-
 
 public class MatesDialogFragment extends DialogFragment {
-
-	MatesFragment matesFragment = (MatesFragment) getTargetFragment().getFragmentManager().findFragmentByTag("title");
+	
+	private EditText searchfield; 
+	private CheckBox search_by_name = null; 
+	private CheckBox search_by_email = null; 
 
 	public static MatesDialogFragment newInstance(String title) {
 		MatesDialogFragment frag = new MatesDialogFragment();
@@ -38,20 +43,25 @@ public class MatesDialogFragment extends DialogFragment {
 		ad.setTitle(title);
 
 		// Get the Layout inflater
+		// pass null as the parent view because its going in the dialog layout
 		LayoutInflater inflater = getActivity().getLayoutInflater();
+		View view = inflater.inflate(R.layout.mates_dialogview, null);
 
 		// Inflate and set the layout for the dialog
-		// pass null as the parent view because its going in the dialog layout
-		ad.setView(inflater.inflate(R.layout.mates_dialogview, null));
+		ad.setView(view);
+		
+		//get views
+		searchfield = (EditText) view.findViewById(R.id.mates_dialog_et);
+		search_by_name = (CheckBox) view.findViewById(R.id.mates_searchbyname); 
+		search_by_email = (CheckBox) view.findViewById(R.id.mates_searchbyemail); 
 
 		// add action buttons
 		ad.setPositiveButton(btnOk, new DialogInterface.OnClickListener() {
 
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
-				// Send the positive button event back to the host activity 
-				matesFragment.doPositiveClick();
-				//Toast.makeText(getActivity(), "OK button pressed", Toast.LENGTH_LONG).show();
+				// Send the positive button event back to the host activity
+				 doPositiveClick();
 			}
 		});
 
@@ -60,12 +70,32 @@ public class MatesDialogFragment extends DialogFragment {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
 				// Send the negative button event back to the host activity
-				//Toast.makeText(getActivity(), "Negative button pressed", Toast.LENGTH_LONG).show();
-				matesFragment.doNegativeClick();
+				doNegativeClick();
+				
 			}
 		});
+		
+		//Create the dialog box and perform other operations on it
+		final AlertDialog dialog = ad.create(); 
+		
+		//Call the keyboard to show automatically
+		dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+		
+		
+		return dialog; 
+	}
 
-		return ad.create();
+	// Methods for custom dialog fragment
+	public void doPositiveClick() {
+		Toast.makeText(getActivity(), "OK button pressed", Toast.LENGTH_LONG)
+				.show();
+		Log.i("FragmentAlertDialog", "Positive click!");
+	}
+
+	public void doNegativeClick() {
+		Toast.makeText(getActivity(), "Negative button pressed",
+				Toast.LENGTH_LONG).show();
+		Log.i("FragmentAlertDialog", "Negative click!");
 	}
 
 }

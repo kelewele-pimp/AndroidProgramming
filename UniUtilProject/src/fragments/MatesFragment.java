@@ -3,12 +3,11 @@
  */
 package fragments;
 
-import com.example.uniutilproject.R;
-import dialog_fragments.MatesDialogFragment;
+import interfaces.NoticeDialogListener;
 import adapters.MatesCardAdapter;
-import android.app.DialogFragment;
-import android.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
+import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -19,6 +18,12 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.uniutilproject.R;
+
+import dialog_fragments.MatesDialogFragment;
+
+
+
 /**
  * @author desmond
  * 
@@ -27,6 +32,7 @@ public class MatesFragment extends Fragment {
 
 	private ListView mates_listview;
 
+	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -63,7 +69,7 @@ public class MatesFragment extends Fragment {
 	@Override
 	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 		super.onCreateOptionsMenu(menu, inflater);
-		// custom menu layout
+		// custom menu(action bar) layout
 		inflater.inflate(R.menu.mates_menu_fragment, menu);
 	}
 
@@ -85,19 +91,8 @@ public class MatesFragment extends Fragment {
 	}
 
 	// Display the custom dialog
-	void showDialog() {
+	private void showDialog() {
 		DialogFragment newFragment = MatesDialogFragment.newInstance("Search");
 		newFragment.show(getFragmentManager(), "dialog");
-	}
-
-	// Methods for custom dialog fragment
-	public void doPositiveClick() {
-		Toast.makeText(getActivity(), "OK button pressed", Toast.LENGTH_LONG).show();
-	    Log.i("FragmentAlertDialog", "Positive click!");
-	}
-
-	public void doNegativeClick() {
-		Toast.makeText(getActivity(), "Negative button pressed", Toast.LENGTH_LONG).show();
-	    Log.i("FragmentAlertDialog", "Negative click!");
 	}
 }

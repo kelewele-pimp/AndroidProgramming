@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="fragments.StudyPlanFragment"/>
-<fullyQualifiedTypeName name="fragments.ProfessorsFragment"/>
-<fullyQualifiedTypeName name="fragments.CoursesFragment"/>
 <fullyQualifiedTypeName name="fragments.ExamsFragment"/>
 <fullyQualifiedTypeName name="android.app.ActionBar"/>
 <fullyQualifiedTypeName name="android.content.Context"/>
@@ -12,9 +9,7 @@
 <fullyQualifiedTypeName name="fragments.StudyPlanFragment.DatePickerListener"/>
 <fullyQualifiedTypeName name="android.app.DatePickerDialog"/>
 <fullyQualifiedTypeName name="android.app.TimePickerDialog"/>
-<fullyQualifiedTypeName name="android.text.format.DateFormat"/>
 <fullyQualifiedTypeName name="java.lang.StringBuilder"/>
-<fullyQualifiedTypeName name="android.view.View.OnClickListener"/>
 <fullyQualifiedTypeName name="dialog_fragments.TimePickerDialogFragment"/>
 <fullyQualifiedTypeName name="fragments.StudyPlanFragment.TimePickerListener"/>
 <fullyQualifiedTypeName name="android.app.ListFragment"/>
@@ -43,21 +38,26 @@
 <fullyQualifiedTypeName name="java.lang.String"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="adapters.Card_Adapter"/>
-<fullyQualifiedTypeName name="com.example.uniutilproject.R"/>
 <fullyQualifiedTypeName name="com.example.uniutilproject.R.id"/>
 <fullyQualifiedTypeName name="com.example.uniutilproject.R.menu"/>
 <fullyQualifiedTypeName name="android.view.Menu"/>
 <fullyQualifiedTypeName name="android.view.MenuItem"/>
-<fullyQualifiedTypeName name="android.app.DialogFragment"/>
 <fullyQualifiedTypeName name="android.view.LayoutInflater"/>
 <fullyQualifiedTypeName name="com.example.uniutilproject.R.layout"/>
 <fullyQualifiedTypeName name="dialog_fragments.MatesDialogFragment.NoticeDialogListener"/>
-<fullyQualifiedTypeName name="interfaces.NoticeDialogListener"/>
-<fullyQualifiedTypeName name="android.support.v4.app.FragmentActivity"/>
-<fullyQualifiedTypeName name="dialog_fragments.MatesDialogFragment"/>
 <fullyQualifiedTypeName name="android.webkit.WebView.FindListener"/>
 <fullyQualifiedTypeName name="android.app.FragmentManager"/>
-<fullyQualifiedTypeName name="android.support.v4.app.FragmentManager"/>
 <fullyQualifiedTypeName name="android.widget.Toast"/>
 <fullyQualifiedTypeName name="fragments.MatesFragment"/>
+<fullyQualifiedTypeName name="android.app.DialogFragment"/>
+<fullyQualifiedTypeName name="com.example.uniutilproject.R"/>
+<fullyQualifiedTypeName name="android.view.View.OnClickListener"/>
+<fullyQualifiedTypeName name="android.text.format.DateFormat"/>
+<fullyQualifiedTypeName name="android.support.v4.app.FragmentManager"/>
+<fullyQualifiedTypeName name="android.util.Log"/>
+<fullyQualifiedTypeName name="android.support.v4.app.Fragment"/>
+<fullyQualifiedTypeName name="android.support.v4.app.FragmentActivity"/>
+<fullyQualifiedTypeName name="interfaces.NoticeDialogListener"/>
+<fullyQualifiedTypeName name="android.support.v4.app.DialogFragment"/>
+<fullyQualifiedTypeName name="dialog_fragments.MatesDialogFragment"/>
 </qualifiedTypeNameHistroy>

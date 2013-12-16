@@ -1,0 +1,113 @@
+package dialog_fragments;
+
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import com.example.uniutilproject.R;
+
+
+public class MatesDialogFragment extends DialogFragment {
+	
+	private EditText searchfield; 
+	private CheckBox search_by_name; 
+	private CheckBox search_by_email; 
+
+	public static MatesDialogFragment newInstance(String title) {
+		MatesDialogFragment frag = new MatesDialogFragment();
+		Bundle args = new Bundle();
+		args.putString("title", title);
+		frag.setArguments(args);
+
+		return frag;
+	}
+
+	@Override
+	public Dialog onCreateDialog(Bundle savedInstanceState) {
+
+		String btnOk = "Submit";
+		String btnCancel = "Cancel";
+
+		// create the new fragment using the alert builder
+		String title = getArguments().getString("title");
+		AlertDialog.Builder ad = new AlertDialog.Builder(getActivity());
+		ad.setTitle(title);
+
+		// Get the Layout inflater
+		// pass null as the parent view because its going in the dialog layout
+		LayoutInflater inflater = getActivity().getLayoutInflater();
+		View view = inflater.inflate(R.layout.mates_dialogview, null);
+
+		// Inflate and set the layout for the dialog
+		ad.setView(view);
+		
+		//get views
+		searchfield = (EditText) view.findViewById(R.id.mates_dialog_et);
+		search_by_name = (CheckBox) view.findViewById(R.id.mates_searchbyname); 
+		search_by_email = (CheckBox) view.findViewById(R.id.mates_searchbyemail); 
+		
+		final boolean by_name_isChecked = search_by_name.isChecked() == true;
+		
+		final boolean by_email_isCHecked = search_by_email.isChecked() == true;
+
+		// add action buttons
+		ad.setPositiveButton(btnOk, new DialogInterface.OnClickListener() {
+
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				// Send the positive button event back to the host activity
+				if(by_email_isCHecked && by_name_isChecked){
+					//GIVE AN ERROR MESSAGE HERE OR SIGNAL AN ERROR
+					doPositiveClick();
+				} else 
+				Toast.makeText(getActivity(), "submit button pressed",
+				 Toast.LENGTH_LONG).show();
+			}
+		});
+
+		ad.setNegativeButton(btnCancel, new DialogInterface.OnClickListener() {
+
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				// Send the negative button event back to the host activity
+				doNegativeClick();
+				// Toast.makeText(getActivity(), "Negative button pressed",
+				// Toast.LENGTH_LONG).show();
+
+			}
+		});
+		
+		//Create the dialog box and perform other operations on it
+		final AlertDialog dialog = ad.create(); 
+		
+		//Call the keyboard to show automatically
+		dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+		
+		
+		return dialog; 
+	}
+
+	// Methods for custom dialog fragment
+	public void doPositiveClick() {
+		Toast.makeText(getActivity(), "OK button pressed", Toast.LENGTH_LONG)
+				.show();
+		Log.i("FragmentAlertDialog", "Positive click!");
+	}
+
+	public void doNegativeClick() {
+		Toast.makeText(getActivity(), "Negative button pressed",
+				Toast.LENGTH_LONG).show();
+		Log.i("FragmentAlertDialog", "Negative click!");
+	}
+
+}
