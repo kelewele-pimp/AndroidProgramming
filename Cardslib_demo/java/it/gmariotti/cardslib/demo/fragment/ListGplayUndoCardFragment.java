@@ -47,8 +47,8 @@ public class ListGplayUndoCardFragment extends BaseFragment {
     private UndoBarController mUndoBarController;
     private CardListView mListView;
     private String[] mCardIds;
-    private static final String BUNDLE_IDS="BUNDLE_IDS";
-    private static final String BUNDLE_IDS_UNDO="BUNDLE_IDS_UNDO";
+    private static final String BUNDLE_IDS = "BUNDLE_IDS";
+    private static final String BUNDLE_IDS_UNDO = "BUNDLE_IDS_UNDO";
 
     @Override
     public int getTitleResourceId() {
@@ -74,7 +74,7 @@ public class ListGplayUndoCardFragment extends BaseFragment {
         //Init an array of Cards
         ArrayList<Card> cards = new ArrayList<Card>();
 
-        for (int i=0;i<100;i++){
+        for (int i = 0; i < 100; i++) {
             GooglePlaySmallCard card = new GooglePlaySmallCard(this.getActivity());
             card.setTitle("Application example " + i);
             card.setSecondaryTitle("A company inc..." + i);
@@ -90,13 +90,13 @@ public class ListGplayUndoCardFragment extends BaseFragment {
             cards.add(card);
         }
 
-        mCardArrayAdapter = new CardArrayAdapter(getActivity(),cards);
+        mCardArrayAdapter = new CardArrayAdapter(getActivity(), cards);
 
         //Enable undo controller!
         mCardArrayAdapter.setEnableUndo(true);
 
         //CardListView listView = (CardListView) getActivity().findViewById(R.id.carddemo_list_gplaycard);
-        if (mListView!=null){
+        if (mListView != null) {
             mListView.setAdapter(mCardArrayAdapter);
         }
     }
@@ -134,9 +134,9 @@ public class ListGplayUndoCardFragment extends BaseFragment {
             //Add thumbnail
             CardThumbnail cardThumbnail = new CardThumbnail(mContext);
 
-            if (resourceIdThumbnail==0)
+            if (resourceIdThumbnail == 0)
                 cardThumbnail.setDrawableResource(R.drawable.ic_std_launcher);
-            else{
+            else {
                 cardThumbnail.setDrawableResource(resourceIdThumbnail);
             }
 
@@ -145,10 +145,10 @@ public class ListGplayUndoCardFragment extends BaseFragment {
             setSwipeable(true);
 
             setOnSwipeListener(new OnSwipeListener() {
-                    @Override
-                    public void onSwipe(Card card) {
-                        Toast.makeText(getContext(), "Removed card=" + title, Toast.LENGTH_SHORT).show();
-                    }
+                @Override
+                public void onSwipe(Card card) {
+                    Toast.makeText(getContext(), "Removed card=" + title, Toast.LENGTH_SHORT).show();
+                }
             });
 
 

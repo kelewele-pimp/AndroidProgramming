@@ -36,26 +36,25 @@ import java.io.IOException;
  */
 public class BitmapUtils {
 
-    private static final String TAG="BitmapUtils";
+    private static final String TAG = "BitmapUtils";
 
 
     /**
      * Creates a File from a Bitmap
      *
      * @param bitmap to convert in a file
-     *
      * @return File
      */
     public static File createFileFromBitmap(Bitmap bitmap) {
 
         if (bitmap == null) return null;
 
-        File photoFile=null;
+        File photoFile = null;
 
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.PNG, 100, bytes);
         File photoStorage = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
-        if (photoStorage!=null){
+        if (photoStorage != null) {
             photoFile = new File(photoStorage, (System.currentTimeMillis()) + ".png");
             try {
                 //f.createNewFile();

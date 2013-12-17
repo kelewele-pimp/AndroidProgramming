@@ -4,4 +4,4 @@
     android:id="@+id/myEditText"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:hint="New text here"/>    
+    android:hint="New text here" />

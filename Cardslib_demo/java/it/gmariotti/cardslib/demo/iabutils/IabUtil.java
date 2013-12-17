@@ -53,14 +53,14 @@ public class IabUtil {
     public static String MEDIUM_BEER_SKU = "medium_beer";
     public static String LARGE_BEER_SKU = "large_beer";
 
-    private static String TAG="IabUtil";
+    private static String TAG = "IabUtil";
 
     private HashMap<String, DonationEntry> items;
     private static IabUtil sInstance;
 
-    String p1="1.00€";
-    String p2="2.00€";
-    String p3="5.00€";
+    String p1 = "1.00€";
+    String p2 = "2.00€";
+    String p3 = "5.00€";
 
     private IabUtil() {
         items = new HashMap<String, DonationEntry>();
@@ -114,34 +114,34 @@ public class IabUtil {
                 // Have we been disposed of in the meantime? If so, quit.
                 if (mHelper == null) return;
 
-                if (result==null || result.isFailure()) {
+                if (result == null || result.isFailure()) {
                     //Log.e(TAG,"Error refreshing items " +result);
                     // handle error
                     return;
                 }
 
 
-                boolean b1=false;
-                boolean b2=false;
-                boolean b3=false;
+                boolean b1 = false;
+                boolean b2 = false;
+                boolean b3 = false;
 
-                if (inventory!=null){
+                if (inventory != null) {
                     SkuDetails d1 = inventory.getSkuDetails(SMALL_BEER_SKU);
-                    if (d1!=null)
+                    if (d1 != null)
                         p1 = d1.getPrice();
                     b1 = inventory.hasPurchase(SMALL_BEER_SKU);
                 }
 
-                if (inventory!=null){
+                if (inventory != null) {
                     SkuDetails d2 = inventory.getSkuDetails(MEDIUM_BEER_SKU);
-                    if (d2!=null)
+                    if (d2 != null)
                         p2 = d2.getPrice();
                     b2 = inventory.hasPurchase(MEDIUM_BEER_SKU);
                 }
 
-                if (inventory!=null){
+                if (inventory != null) {
                     SkuDetails d3 = inventory.getSkuDetails(LARGE_BEER_SKU);
-                    if (d3!=null)
+                    if (d3 != null)
                         p3 = d3.getPrice();
                     b3 = inventory.hasPurchase(LARGE_BEER_SKU);
                 }
@@ -156,8 +156,8 @@ public class IabUtil {
                         items.put(SMALL_BEER_SKU, itemSmall);
                         //Log.i(TAG,"Price = "+p1);
                         if (b1) {
-                            if (mHelper!=null && inventory!=null)
-                                consumeItem(mHelper,SMALL_BEER_SKU,inventory.getPurchase(SMALL_BEER_SKU));
+                            if (mHelper != null && inventory != null)
+                                consumeItem(mHelper, SMALL_BEER_SKU, inventory.getPurchase(SMALL_BEER_SKU));
                         }
                     }
 
@@ -168,8 +168,8 @@ public class IabUtil {
                         items.put(MEDIUM_BEER_SKU, itemMedium);
 
                         if (b2) {
-                            if (mHelper!=null && inventory!=null)
-                                consumeItem(mHelper,MEDIUM_BEER_SKU,inventory.getPurchase(MEDIUM_BEER_SKU));
+                            if (mHelper != null && inventory != null)
+                                consumeItem(mHelper, MEDIUM_BEER_SKU, inventory.getPurchase(MEDIUM_BEER_SKU));
                         }
                     }
 
@@ -180,8 +180,8 @@ public class IabUtil {
                         items.put(LARGE_BEER_SKU, itemLarge);
 
                         if (b3) {
-                            if (mHelper!=null && inventory!=null)
-                                  consumeItem(mHelper,LARGE_BEER_SKU,inventory.getPurchase(LARGE_BEER_SKU));
+                            if (mHelper != null && inventory != null)
+                                consumeItem(mHelper, LARGE_BEER_SKU, inventory.getPurchase(LARGE_BEER_SKU));
                         }
 
 
@@ -190,14 +190,14 @@ public class IabUtil {
             }
         };
 
-        try{
+        try {
             mHelper.queryInventoryAsync(true, additionalSkuList,
                     mQueryFinishedListener);
-        } catch(IllegalStateException il){
-            Log.e("Purchase","Error ",il);
-        } catch(NullPointerException ne){
+        } catch (IllegalStateException il) {
+            Log.e("Purchase", "Error ", il);
+        } catch (NullPointerException ne) {
             //it is bad, but it is due to a bug in Iab
-            Log.e("Purchase","Error ",ne);
+            Log.e("Purchase", "Error ", ne);
         }
     }
 
@@ -224,16 +224,18 @@ public class IabUtil {
 
         private IabHelper mHelper;
 
-        public PurchaseDialog(){
-            if (mHelper==null && getActivity()!=null)
-                mHelper= ((MainActivity)getActivity()).getHelper();
-        };
+        public PurchaseDialog() {
+            if (mHelper == null && getActivity() != null)
+                mHelper = ((MainActivity) getActivity()).getHelper();
+        }
+
+        ;
 
         public PurchaseDialog(IabHelper mHelper) {
             this.mHelper = mHelper;
         }
 
-        private void updateUI(){
+        private void updateUI() {
 
         }
 
@@ -243,8 +245,8 @@ public class IabUtil {
             LayoutInflater layoutInflater = getActivity().getLayoutInflater();
             View rootView = layoutInflater.inflate(R.layout.demo_purchase_about, null);
 
-            if (mHelper==null)
-                mHelper= ((MainActivity)getActivity()).getHelper();
+            if (mHelper == null)
+                mHelper = ((MainActivity) getActivity()).getHelper();
 
             IabUtil iabUtil = getInstance();
 
@@ -269,7 +271,7 @@ public class IabUtil {
                                     @Override
                                     public void onIabPurchaseFinished(IabResult result, Purchase info) {
                                         if (result.isFailure()) {
-                                            Log.i(TAG,"Failure = "+result);
+                                            Log.i(TAG, "Failure = " + result);
                                             //Toast.makeText(getActivity(), "Error purchasing: " + result, Toast.LENGTH_LONG).show();
                                             return;
                                         } else if (info.getSku().equals(SMALL_BEER_SKU)) {
@@ -357,7 +359,7 @@ public class IabUtil {
     }
 
 
-    private void setItemConsumed(String keyItem){
+    private void setItemConsumed(String keyItem) {
 
         IabUtil iabutil = getInstance();
         if (iabutil != null) {
@@ -369,17 +371,17 @@ public class IabUtil {
         }
     }
 
-    private void consumeItem(IabHelper helper,final String keyItem,Purchase purchase){
+    private void consumeItem(IabHelper helper, final String keyItem, Purchase purchase) {
 
-        if (helper==null) return;
+        if (helper == null) return;
 
         helper.consumeAsync(purchase,
                 new IabHelper.OnConsumeFinishedListener() {
-            @Override
-            public void onConsumeFinished(Purchase purchase, IabResult result) {
-                setItemConsumed(keyItem);
-            }
-        });
+                    @Override
+                    public void onConsumeFinished(Purchase purchase, IabResult result) {
+                        setItemConsumed(keyItem);
+                    }
+                });
     }
 
 }

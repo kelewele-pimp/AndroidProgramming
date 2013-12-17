@@ -1,6 +1,6 @@
 package com.example.todolist;
 
 public interface OnNewItemAddedListener {
-	public void onNewItemAdded(String string);
+    public void onNewItemAdded(String string);
 
 }

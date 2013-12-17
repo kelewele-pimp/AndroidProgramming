@@ -3,15 +3,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="10dp" >
+    android:padding="10dp">
 
     <EditText
         android:id="@+id/mates_dialog_et"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="name|email"
-    >
+        android:hint="name|email">
 
         <requestFocus />
     </EditText>

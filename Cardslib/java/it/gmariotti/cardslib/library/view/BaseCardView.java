@@ -80,12 +80,12 @@ public class BaseCardView extends LinearLayout implements CardViewInterface {
     /**
      * Used to recycle ui elements.
      */
-    protected boolean mIsRecycle=false;
+    protected boolean mIsRecycle = false;
 
     /**
      * Used to replace inner layout elements.
      */
-    protected boolean mForceReplaceInnerLayout =false;
+    protected boolean mForceReplaceInnerLayout = false;
 
     //--------------------------------------------------------------------------
     // Constructor
@@ -171,7 +171,6 @@ public class BaseCardView extends LinearLayout implements CardViewInterface {
 
     /**
      * Builds UI
-     *
      */
     protected void buildUI() {
 
@@ -221,7 +220,7 @@ public class BaseCardView extends LinearLayout implements CardViewInterface {
     /**
      * Returns {@link Card} model
      *
-     * @return  {@link Card} model
+     * @return {@link Card} model
      */
     public Card getCard() {
         return mCard;
@@ -266,7 +265,7 @@ public class BaseCardView extends LinearLayout implements CardViewInterface {
     /**
      * Sets if view can recycle ui elements
      *
-     * @param isRecycle  <code>true</code> to recycle
+     * @param isRecycle <code>true</code> to recycle
      */
     public void setRecycle(boolean isRecycle) {
         this.mIsRecycle = isRecycle;
@@ -284,7 +283,7 @@ public class BaseCardView extends LinearLayout implements CardViewInterface {
     /**
      * Sets if inner layout have to be replaced
      *
-     * @param forceReplaceInnerLayout  <code>true</code> to recycle
+     * @param forceReplaceInnerLayout <code>true</code> to recycle
      */
     public void setForceReplaceInnerLayout(boolean forceReplaceInnerLayout) {
         this.mForceReplaceInnerLayout = forceReplaceInnerLayout;

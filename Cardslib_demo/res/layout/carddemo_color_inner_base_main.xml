@@ -19,9 +19,9 @@
   -->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content">
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
 
 
     <!-- This is the base Inner View inside a CardHeader.
@@ -34,6 +34,6 @@
         android:paddingLeft="15dp"
         android:id="@+id/carddemo_card_color_inner_simple_title"
         style="@style/card.base_simple_title"
-        android:textColor="@android:color/white"/>
+        android:textColor="@android:color/white" />
 
 </LinearLayout>

@@ -65,14 +65,13 @@ public class MiscCardFragment extends BaseFragment {
     }
 
 
-
     /**
      * This method builds a simple card
      */
     private void initCardMayKnow() {
 
         //Create a Card
-        MayKnowCard card= new MayKnowCard(getActivity());
+        MayKnowCard card = new MayKnowCard(getActivity());
         card.setShadow(false);
 
         //Set card in the cardView

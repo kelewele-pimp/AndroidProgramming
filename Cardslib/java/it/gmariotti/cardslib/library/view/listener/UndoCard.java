@@ -24,17 +24,16 @@ import android.os.Parcelable;
 /**
  * FIXME
  *
- *
  * @author Gabriele Mariotti (gabri.mariotti@gmail.com)
  */
-public class UndoCard implements Parcelable{
+public class UndoCard implements Parcelable {
 
     public int[] itemPosition;
     public String[] itemId;
 
-    public UndoCard(int[] itemPosition,String[] itemId) {
+    public UndoCard(int[] itemPosition, String[] itemId) {
         this.itemPosition = itemPosition;
-        this.itemId= itemId;
+        this.itemId = itemId;
     }
 
     protected UndoCard(Parcel in) {

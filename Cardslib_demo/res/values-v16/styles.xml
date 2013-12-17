@@ -46,7 +46,6 @@
     </style>
 
 
-
     <style name="carddemo_myapps_main_inner_secondarytitle">
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">@android:color/darker_gray</item>
@@ -84,7 +83,7 @@
         <item name="android:textColor">@android:color/darker_gray</item>
     </style>
 
-     <!-- Suggested communities-->
+    <!-- Suggested communities-->
     <style name="carddemo_suggested_header_text">
         <item name="android:fontFamily">sans-serif</item>
     </style>

@@ -38,16 +38,15 @@ import it.gmariotti.cardslib.library.view.base.CardViewInterface;
  * </p>
  * Also you can use a custom layout for Shadow Component in your xml layout.
  * <pre><code>
- *
+ * <p/>
  *    <it.gmariotti.cardslib.library.view.component.CardShadowView
  *       style="@style/card.shadow_outer_layout"
  *       android:id="@+id/card_shadow_layout"
  *       android:layout_width="match_parent"
  *       card:card_shadow_layout_resourceID="@layout/my_shadow_layout"
  *       android:layout_height="wrap_content"/>
- *
+ * <p/>
  * </code></pre>
- *
  *
  * @author Gabriele Mariotti (gabri.mariotti@gmail.com)
  */
@@ -62,7 +61,9 @@ public class CardShadowView extends FrameLayout implements CardViewInterface {
      */
     protected int card_shadow_layout_resourceID = R.layout.base_shadow_layout;
 
-    /** Global View for this Component */
+    /**
+     * Global View for this Component
+     */
     protected View mInternalOuterView;
 
     //--------------------------------------------------------------------------
@@ -71,17 +72,17 @@ public class CardShadowView extends FrameLayout implements CardViewInterface {
 
     public CardShadowView(Context context) {
         super(context);
-        init(null,0);
+        init(null, 0);
     }
 
     public CardShadowView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        init(attrs,0);
+        init(attrs, 0);
     }
 
     public CardShadowView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        init(attrs,defStyle);
+        init(attrs, defStyle);
     }
 
     //--------------------------------------------------------------------------
@@ -94,14 +95,15 @@ public class CardShadowView extends FrameLayout implements CardViewInterface {
      * @param attrs
      * @param defStyle
      */
-    protected void init(AttributeSet attrs, int defStyle){
+    protected void init(AttributeSet attrs, int defStyle) {
         //Init attrs
-        initAttrs(attrs,defStyle);
+        initAttrs(attrs, defStyle);
 
         //Init View
-        if(!isInEditMode())
+        if (!isInEditMode())
             initView();
     }
+
     /**
      * Init custom attrs.
      *
@@ -114,7 +116,7 @@ public class CardShadowView extends FrameLayout implements CardViewInterface {
                 attrs, R.styleable.card_options, defStyle, defStyle);
 
         try {
-            card_shadow_layout_resourceID= a.getResourceId(R.styleable.card_options_card_shadow_layout_resourceID, card_shadow_layout_resourceID);
+            card_shadow_layout_resourceID = a.getResourceId(R.styleable.card_options_card_shadow_layout_resourceID, card_shadow_layout_resourceID);
         } finally {
             a.recycle();
         }
@@ -126,9 +128,9 @@ public class CardShadowView extends FrameLayout implements CardViewInterface {
     protected void initView() {
 
         LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        mInternalOuterView = inflater.inflate(card_shadow_layout_resourceID,this,true);
+        mInternalOuterView = inflater.inflate(card_shadow_layout_resourceID, this, true);
 
-     }
+    }
 
     //--------------------------------------------------------------------------
     // Getters and Setters
@@ -138,8 +140,6 @@ public class CardShadowView extends FrameLayout implements CardViewInterface {
     public View getInternalOuterView() {
         return mInternalOuterView;
     }
-
-
 
 
 }

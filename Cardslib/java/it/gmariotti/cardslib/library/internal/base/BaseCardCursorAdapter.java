@@ -45,7 +45,7 @@ public abstract class BaseCardCursorAdapter extends CursorAdapter {
     /**
      * Used to set the viewTypeCount
      */
-    protected int innerviewTypeCount=1;
+    protected int innerviewTypeCount = 1;
 
     // -------------------------------------------------------------
     // Constructors
@@ -79,14 +79,14 @@ public abstract class BaseCardCursorAdapter extends CursorAdapter {
 
     @Override
     public int getItemViewType(int position) {
-        Card card = (Card)  getItem(position);
+        Card card = (Card) getItem(position);
         return card.getType();
     }
 
     @Override
     public boolean isEnabled(int position) {
         //Disable card if it is not clickable or longClickable
-        Card card = (Card)  getItem(position);
+        Card card = (Card) getItem(position);
         if (card.isClickable() || card.isLongClickable())
             return true;
         else
@@ -104,6 +104,7 @@ public abstract class BaseCardCursorAdapter extends CursorAdapter {
 
     /**
      * You should implement this method to
+     *
      * @param cursor
      * @return
      */

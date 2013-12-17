@@ -64,15 +64,15 @@ public class ListGplayCardFragment extends BaseFragment {
 
         //Init an array of Cards
         ArrayList<Card> cards = new ArrayList<Card>();
-        for (int i=0;i<200;i++){
+        for (int i = 0; i < 200; i++) {
             GooglePlaySmallCard card = new GooglePlaySmallCard(this.getActivity());
-            card.setTitle("Application example "+i);
-            card.setSecondaryTitle("A company inc..."+i);
-            card.setRating((float)(Math.random()*(5.0)));
-            card.count=i;
+            card.setTitle("Application example " + i);
+            card.setSecondaryTitle("A company inc..." + i);
+            card.setRating((float) (Math.random() * (5.0)));
+            card.count = i;
 
             //Only for test, change some icons
-            if ((i>10 && i<15) || (i>35 && i<45)){
+            if ((i > 10 && i < 15) || (i > 35 && i < 45)) {
                 card.setResourceIdThumbnail(R.drawable.ic_launcher);
             }
 
@@ -82,10 +82,10 @@ public class ListGplayCardFragment extends BaseFragment {
             cards.add(card);
         }
 
-        CardArrayAdapter mCardArrayAdapter = new CardArrayAdapter(getActivity(),cards);
+        CardArrayAdapter mCardArrayAdapter = new CardArrayAdapter(getActivity(), cards);
 
         CardListView listView = (CardListView) getActivity().findViewById(R.id.carddemo_list_gplaycard);
-        if (listView!=null){
+        if (listView != null) {
             listView.setAdapter(mCardArrayAdapter);
         }
     }
@@ -123,31 +123,31 @@ public class ListGplayCardFragment extends BaseFragment {
             //Add thumbnail
             CardThumbnail cardThumbnail = new CardThumbnail(mContext);
 
-            if (resourceIdThumbnail==0)
+            if (resourceIdThumbnail == 0)
                 cardThumbnail.setDrawableResource(R.drawable.ic_std_launcher);
-            else{
+            else {
                 cardThumbnail.setDrawableResource(resourceIdThumbnail);
             }
 
             addCardThumbnail(cardThumbnail);
 
             //Only for test, some cards have different clickListeners
-            if (count==12){
+            if (count == 12) {
 
                 setTitle(title + " No Click");
                 setClickable(false);
 
-            }else if (count==20){
+            } else if (count == 20) {
 
                 setTitle(title + " Partial Click");
-                addPartialOnClickListener(Card.CLICK_LISTENER_CONTENT_VIEW,new OnCardClickListener() {
+                addPartialOnClickListener(Card.CLICK_LISTENER_CONTENT_VIEW, new OnCardClickListener() {
                     @Override
                     public void onClick(Card card, View view) {
                         Toast.makeText(getContext(), "Partial click Listener card=" + title, Toast.LENGTH_SHORT).show();
                     }
                 });
 
-            }else{
+            } else {
 
                 //Add ClickListener
                 setOnClickListener(new OnCardClickListener() {
@@ -161,7 +161,7 @@ public class ListGplayCardFragment extends BaseFragment {
 
 
             //Swipe
-            if (count>5 && count<13){
+            if (count > 5 && count < 13) {
 
                 setTitle(title + " Swipe enabled");
                 setSwipeable(true);

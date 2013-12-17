@@ -31,12 +31,13 @@ import it.gmariotti.cardslib.library.view.CardView;
 /**
  * It is based on Roman Nurik code.
  * See this link for original code https://github.com/romannurik/Android-SwipeToDismiss
- *
+ * <p/>
  * </p>
  * It provides a SwipeDismissViewTouchListener for a single Card.
  * </p>
  * If you are using a list, see {@link SwipeDismissListViewTouchListener}
  * </p>
+ *
  * @author Gabriele Mariotti (gabri.mariotti@gmail.com)
  */
 public class SwipeDismissViewTouchListener implements View.OnTouchListener {
@@ -73,10 +74,10 @@ public class SwipeDismissViewTouchListener implements View.OnTouchListener {
         /**
          * Called when the user has indicated they she would like to dismiss the view.
          *
-         * @param cardView               The originating {@link it.gmariotti.cardslib.library.view.CardView}.
+         * @param cardView The originating {@link it.gmariotti.cardslib.library.view.CardView}.
          * @parma card                   Card
          */
-        void onDismiss(CardView cardView,Card card);
+        void onDismiss(CardView cardView, Card card);
     }
 
     /**
@@ -95,7 +96,7 @@ public class SwipeDismissViewTouchListener implements View.OnTouchListener {
         mAnimationTime = cardView.getContext().getResources()
                 .getInteger(android.R.integer.config_shortAnimTime);
         mCardView = cardView;
-        mToken= card;
+        mToken = card;
         mCallbacks = callbacks;
     }
 
@@ -233,7 +234,7 @@ public class SwipeDismissViewTouchListener implements View.OnTouchListener {
             @Override
             public void onAnimationEnd(Animator animation) {
 
-                mCallbacks.onDismiss(mCardView,mToken);
+                mCallbacks.onDismiss(mCardView, mToken);
                 // Reset view presentation
                 mCardView.setAlpha(1f);
                 mCardView.setTranslationX(0);

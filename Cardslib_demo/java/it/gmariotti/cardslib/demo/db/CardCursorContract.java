@@ -34,9 +34,9 @@ public class CardCursorContract {
     public static final Uri BASE_CONTENT_URI = Uri.parse("content://" + CONTENT_AUTHORITY);
 
 
-    public static class BASE_PATH_NAME{
+    public static class BASE_PATH_NAME {
 
-        public static final String PATH_CardCursor="CardCursor";
+        public static final String PATH_CardCursor = "CardCursor";
 
     }
 
@@ -44,13 +44,13 @@ public class CardCursorContract {
 
 	/*-----------------------------------------------------------------------------------------------*/
 
-    public static class CardCursor{
+    public static class CardCursor {
 
         /* Table name and Columns name */
         public static final String TABLE_NAME = "CardCursorTable";
 
         public static final Uri CONTENT_URI = BASE_CONTENT_URI.buildUpon().appendPath(BASE_PATH_NAME.PATH_CardCursor).build();
-        public static final String CONTENT_TYPE =   ContentResolver.CURSOR_DIR_BASE_TYPE +"/vnd.it.gmariotti.cardslib.demo.CardCursor";
+        public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE + "/vnd.it.gmariotti.cardslib.demo.CardCursor";
         public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE + "/vnd.it.gmariotti.cardslib.demo.CardCursor";
 
 
@@ -114,18 +114,18 @@ public class CardCursorContract {
         }
 
         private static void populateForTest(SQLiteDatabase database) {
-            for (int i=0;i<500;i++){
-                String title= "My Title "+i;
-                String subtitle= "My subTitle "+i;
-                String header= "My Header "+i;
-                int thumb= i%5;
-                String sql="INSERT INTO " + TABLE_NAME + " ("+
-                        KeyColumns.KEY_TITLE +"," +
-                        KeyColumns.KEY_SUBTITLE +"," +
+            for (int i = 0; i < 500; i++) {
+                String title = "My Title " + i;
+                String subtitle = "My subTitle " + i;
+                String header = "My Header " + i;
+                int thumb = i % 5;
+                String sql = "INSERT INTO " + TABLE_NAME + " (" +
+                        KeyColumns.KEY_TITLE + "," +
+                        KeyColumns.KEY_SUBTITLE + "," +
                         KeyColumns.KEY_HEADER + "," +
                         KeyColumns.KEY_THUMBNAIL +
                         ") " +
-                        "VALUES ('"+ title +"','" + subtitle +"','" + header + "',"+ thumb + ")";
+                        "VALUES ('" + title + "','" + subtitle + "','" + header + "'," + thumb + ")";
                 database.execSQL(sql);
             }
         }

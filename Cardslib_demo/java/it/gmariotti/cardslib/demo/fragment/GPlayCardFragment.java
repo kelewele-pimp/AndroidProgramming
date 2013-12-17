@@ -87,15 +87,15 @@ public class GPlayCardFragment extends BaseFragment {
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        if (mReceiver==null)
+        if (mReceiver == null)
             mReceiver = new ImageBroadcastReceiver();
-        activity.registerReceiver(mReceiver,new IntentFilter(Constants.IntentManager.INTENT_ACTION_IMAGE_DOWNLOADED));
+        activity.registerReceiver(mReceiver, new IntentFilter(Constants.IntentManager.INTENT_ACTION_IMAGE_DOWNLOADED));
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
-        if (mReceiver!=null)
+        if (mReceiver != null)
             getActivity().unregisterReceiver(mReceiver);
     }
 
@@ -111,7 +111,7 @@ public class GPlayCardFragment extends BaseFragment {
         mShareActionProvider = (ShareActionProvider) item.getActionProvider();
         mShareActionProvider.setShareIntent(getShareIntent());
 
-        super.onCreateOptionsMenu(menu,inflater);
+        super.onCreateOptionsMenu(menu, inflater);
     }
 
     /**
@@ -120,7 +120,7 @@ public class GPlayCardFragment extends BaseFragment {
     private void initCardSmallCard() {
 
         //Create a Card
-        cardGmap= new GooglePlaySmallCard(getActivity());
+        cardGmap = new GooglePlaySmallCard(getActivity());
         cardGmap.setId("gplaysmall");
 
         //Set card in the cardView
@@ -135,31 +135,31 @@ public class GPlayCardFragment extends BaseFragment {
     private void initCardGooglePlay() {
 
         //Create a Card
-        GplayCard card= new GplayCard(getActivity());
+        GplayCard card = new GplayCard(getActivity());
 
         //Set card in the cardView
         CardView cardView = (CardView) getActivity().findViewById(R.id.carddemo_Gplay1);
         cardView.setCard(card);
 
         //Create a Card
-        GplayCard card2= new GplayCard(getActivity());
+        GplayCard card2 = new GplayCard(getActivity());
 
         //Set card in the cardView
         CardView cardView2 = (CardView) getActivity().findViewById(R.id.carddemo_Gplay2);
         cardView2.setCard(card2);
 
-        if (Utils.isTablet(getActivity())){
+        if (Utils.isTablet(getActivity())) {
             //Create a Card
-            GplayCard card3= new GplayCard(getActivity());
+            GplayCard card3 = new GplayCard(getActivity());
 
             //Set card in the cardView
             CardView cardView3 = (CardView) getActivity().findViewById(R.id.carddemo_Gplay3);
-            if (cardView3!=null)
+            if (cardView3 != null)
                 cardView3.setCard(card3);
         }
     }
 
-    private void updateIntentToShare(){
+    private void updateIntentToShare() {
         if (mShareActionProvider != null) {
 
             photofile = BitmapUtils.createFileFromBitmap(cardViewGmap.createBitmap());
@@ -167,15 +167,16 @@ public class GPlayCardFragment extends BaseFragment {
         }
     }
 
-    private Intent getShareIntent(){
-        if (photofile!=null){
+    private Intent getShareIntent() {
+        if (photofile != null) {
             return BitmapUtils.createIntentFromImage(photofile);
-        }else{
+        } else {
             return getDefaultIntent();
         }
     }
 
-    /** Defines a default (dummy) share intent to initialze the action provider.
+    /**
+     * Defines a default (dummy) share intent to initialze the action provider.
      * However, as soon as the actual content to be used in the intent
      * is known or changes, you must update the share intent by again calling
      * mShareActionProvider.setShareIntent()
@@ -195,11 +196,11 @@ public class GPlayCardFragment extends BaseFragment {
         @Override
         public void onReceive(Context context, Intent intent) {
             Bundle extras = intent.getExtras();
-            if (extras!=null){
+            if (extras != null) {
                 boolean result = extras.getBoolean(Constants.IntentManager.INTENT_ACTION_IMAGE_DOWNLOADED_EXTRA_RESULT);
                 String id = extras.getString(Constants.IntentManager.INTENT_ACTION_IMAGE_DOWNLOADED_EXTRA_CARD_ID);
-                if (result){
-                    if (id!=null && id.equalsIgnoreCase(cardGmap.getId())){
+                if (result) {
+                    if (id != null && id.equalsIgnoreCase(cardGmap.getId())) {
                         updateIntentToShare();
                     }
                 }

@@ -20,16 +20,16 @@
 
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:id="@+id/undobar"
-              style="@style/list_card_UndoBar"
-              android:orientation="horizontal">
+    android:id="@+id/undobar"
+    style="@style/list_card_UndoBar"
+    android:orientation="horizontal">
 
     <TextView
         android:id="@+id/undobar_message"
-        style="@style/list_card_UndoBarMessage"/>
+        style="@style/list_card_UndoBarMessage" />
 
     <Button
         android:id="@+id/undobar_button"
-        style="@style/list_card_UndoBarButton"/>
+        style="@style/list_card_UndoBarButton" />
 </LinearLayout>
 

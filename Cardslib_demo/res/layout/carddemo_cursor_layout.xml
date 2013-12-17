@@ -73,7 +73,6 @@
         android:id="@+id/card_content_expand_layout"
         style="@style/card.main_contentExpand"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        />
+        android:layout_height="wrap_content" />
 
 </LinearLayout>

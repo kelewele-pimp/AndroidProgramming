@@ -19,9 +19,9 @@
   -->
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:card="http://schemas.android.com/apk/res-auto"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+    xmlns:card="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <ScrollView
         android:id="@+id/card_scrollview"
@@ -40,7 +40,7 @@
                 android:layout_marginLeft="12dp"
                 android:layout_marginRight="12dp"
                 card:card_layout_resourceID="@layout/card_thumbnail_layout"
-                android:layout_marginTop="12dp"/>
+                android:layout_marginTop="12dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -56,7 +56,7 @@
                     android:layout_weight="1"
                     android:layout_marginRight="4dp"
                     card:card_layout_resourceID="@layout/carddemo_googleplay_layout"
-                    android:layout_marginTop="12dp"/>
+                    android:layout_marginTop="12dp" />
 
                 <it.gmariotti.cardslib.library.view.CardView
                     android:id="@+id/carddemo_Gplay2"
@@ -66,14 +66,14 @@
                     android:layout_weight="1"
                     android:layout_marginRight="4dp"
                     card:card_layout_resourceID="@layout/carddemo_googleplay_layout"
-                    android:layout_marginTop="12dp"/>
+                    android:layout_marginTop="12dp" />
 
             </LinearLayout>
 
             <!-- Empty view-->
             <View
                 android:layout_width="match_parent"
-                android:layout_height="15dp"/>
+                android:layout_height="15dp" />
 
         </LinearLayout>
 
@@ -84,7 +84,7 @@
         style="@style/AppTheme.TrademarkText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/demo_trademark"/>
+        android:text="@string/demo_trademark" />
 
 
 </RelativeLayout>

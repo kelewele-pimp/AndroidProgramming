@@ -84,15 +84,15 @@ public class BirthDayCardFragment extends BaseFragment {
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        if (mReceiver==null)
+        if (mReceiver == null)
             mReceiver = new ImageBroadcastReceiver();
-        activity.registerReceiver(mReceiver,new IntentFilter(Constants.IntentManager.INTENT_ACTION_IMAGE_DOWNLOADED));
+        activity.registerReceiver(mReceiver, new IntentFilter(Constants.IntentManager.INTENT_ACTION_IMAGE_DOWNLOADED));
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
-        if (mReceiver!=null)
+        if (mReceiver != null)
             getActivity().unregisterReceiver(mReceiver);
     }
 
@@ -108,7 +108,7 @@ public class BirthDayCardFragment extends BaseFragment {
         mShareActionProvider = (ShareActionProvider) item.getActionProvider();
         mShareActionProvider.setShareIntent(getShareIntent());
 
-        super.onCreateOptionsMenu(menu,inflater);
+        super.onCreateOptionsMenu(menu, inflater);
     }
 
     /**
@@ -117,7 +117,7 @@ public class BirthDayCardFragment extends BaseFragment {
     private void initCard() {
 
         //Create a Card
-        birthCard= new GoogleNowBirthCard(getActivity());
+        birthCard = new GoogleNowBirthCard(getActivity());
         birthCard.setId("myId");
 
         //Set card in the cardView
@@ -126,7 +126,7 @@ public class BirthDayCardFragment extends BaseFragment {
     }
 
 
-    private void updateIntentToShare(){
+    private void updateIntentToShare() {
         if (mShareActionProvider != null) {
 
             photofile = BitmapUtils.createFileFromBitmap(cardView.createBitmap());
@@ -134,15 +134,16 @@ public class BirthDayCardFragment extends BaseFragment {
         }
     }
 
-    private Intent getShareIntent(){
-        if (photofile!=null){
+    private Intent getShareIntent() {
+        if (photofile != null) {
             return BitmapUtils.createIntentFromImage(photofile);
-        }else{
+        } else {
             return getDefaultIntent();
         }
     }
 
-    /** Defines a default (dummy) share intent to initialze the action provider.
+    /**
+     * Defines a default (dummy) share intent to initialze the action provider.
      * However, as soon as the actual content to be used in the intent
      * is known or changes, you must update the share intent by again calling
      * mShareActionProvider.setShareIntent()
@@ -157,17 +158,17 @@ public class BirthDayCardFragment extends BaseFragment {
     /**
      * Broadcast for image downloaded by CardThumbnail
      */
-    private class ImageBroadcastReceiver extends BroadcastReceiver{
+    private class ImageBroadcastReceiver extends BroadcastReceiver {
 
         @Override
         public void onReceive(Context context, Intent intent) {
             Bundle extras = intent.getExtras();
-            if (extras!=null){
+            if (extras != null) {
                 boolean result = extras.getBoolean(Constants.IntentManager.INTENT_ACTION_IMAGE_DOWNLOADED_EXTRA_RESULT);
                 String id = extras.getString(Constants.IntentManager.INTENT_ACTION_IMAGE_DOWNLOADED_EXTRA_CARD_ID);
                 boolean processError = extras.getBoolean(Constants.IntentManager.INTENT_ACTION_IMAGE_DOWNLOADED_EXTRA_ERROR_LOADING);
-                if (result){
-                    if (id!=null && id.equalsIgnoreCase(birthCard.getId())){
+                if (result) {
+                    if (id != null && id.equalsIgnoreCase(birthCard.getId())) {
                         updateIntentToShare();
                     }
                 }

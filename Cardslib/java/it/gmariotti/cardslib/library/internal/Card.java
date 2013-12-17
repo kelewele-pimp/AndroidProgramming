@@ -33,23 +33,23 @@ import it.gmariotti.cardslib.library.internal.base.BaseCard;
 /**
  * Main Card Model
  * </p>
-  * You can customize this component. See https://github.com/gabrielemariotti/cardslib/tree/master/doc/CARD.md for more information.
+ * You can customize this component. See https://github.com/gabrielemariotti/cardslib/tree/master/doc/CARD.md for more information.
  * </p>
  * You can easily extend and customize this class providing your inner layout and
  * setting your values with {@link #setupInnerViewElements(android.view.ViewGroup, android.view.View)} method.
  * </p>
  * Usage:
  * <pre><code>
- *
+ * <p/>
  *     //Create a Card
  *     Card card = new Card(getContext());
- *
+ * <p/>
  *     //Create a CardHeader
  *     CardHeader header = new CardHeader(getContext());
- *
+ * <p/>
  *     //Add Header to card
  *     card.addCardHeader(header);
- *
+ * <p/>
  * </code></pre>
  *
  * @author Gabriele Mariotti (gabri.mariotti@gmail.com)
@@ -100,7 +100,7 @@ public class Card extends BaseCard {
     /**
      * Indicates if card is expanded or collapsed
      */
-    protected boolean mIsExpanded=false;
+    protected boolean mIsExpanded = false;
 
     // Listeners
 
@@ -130,14 +130,14 @@ public class Card extends BaseCard {
     protected HashMap<Integer, OnCardClickListener> mMultipleOnClickListener;
 
     /**
-     *  Global area
-     *  It is used by partial click listener
+     * Global area
+     * It is used by partial click listener
      */
     public static final int CLICK_LISTENER_ALL_VIEW = 0;
 
     /**
      * Thumbnail area
-     *  It is used by partial click listener
+     * It is used by partial click listener
      */
     public static final int CLICK_LISTENER_THUMBNAIL_VIEW = 1;
 
@@ -149,7 +149,7 @@ public class Card extends BaseCard {
 
     /**
      * Content Main area.
-       It is used by partial click listener
+     * It is used by partial click listener
      */
     public static final int CLICK_LISTENER_CONTENT_VIEW = 10;
 
@@ -164,7 +164,7 @@ public class Card extends BaseCard {
      * <p/>
      * In a standard card it identifies the main background.
      */
-    private int mBackgroundResourceId =0;
+    private int mBackgroundResourceId = 0;
 
     /**
      * It identifies the background resource of view with this id:
@@ -172,7 +172,7 @@ public class Card extends BaseCard {
      * <p/>
      * In a standard card it identifies the main background.
      */
-    private Drawable mBackgroundResource =null;
+    private Drawable mBackgroundResource = null;
 
     // -------------------------------------------------------------
     // Constructors
@@ -709,7 +709,6 @@ public class Card extends BaseCard {
      * {@link Card#CLICK_LISTENER_THUMBNAIL_VIEW}
      * {@link Card#CLICK_LISTENER_CONTENT_VIEW}
      *
-     *
      * @param area
      */
     public void removePartialOnClickListener(int area) {
@@ -724,7 +723,7 @@ public class Card extends BaseCard {
     /**
      * Map for all partial listeners
      *
-     * @return  a map with partial listeners
+     * @return a map with partial listeners
      */
     public HashMap<Integer, OnCardClickListener> getMultipleOnClickListener() {
         if (mMultipleOnClickListener != null)
@@ -759,45 +758,42 @@ public class Card extends BaseCard {
      * @param newCard
      * @return
      */
-    public static boolean equalsInnerLayout(Card oldCard,Card newCard){
-        if (oldCard==null || newCard==null) return false;
+    public static boolean equalsInnerLayout(Card oldCard, Card newCard) {
+        if (oldCard == null || newCard == null) return false;
 
         //Check inner Layout
-        if (oldCard.getInnerLayout()!=newCard.getInnerLayout()) return true;
+        if (oldCard.getInnerLayout() != newCard.getInnerLayout()) return true;
 
         //Check inner layout of CardHeader
-        if (oldCard.getCardHeader()!=null){
-            if (newCard.getCardHeader()==null)
+        if (oldCard.getCardHeader() != null) {
+            if (newCard.getCardHeader() == null)
                 return true;
-            else
-            if (oldCard.getCardHeader().getInnerLayout()!=newCard.getCardHeader().getInnerLayout())
+            else if (oldCard.getCardHeader().getInnerLayout() != newCard.getCardHeader().getInnerLayout())
                 return true;
-        }else{
-            if (newCard.getCardHeader()!=null)
+        } else {
+            if (newCard.getCardHeader() != null)
                 return true;
         }
 
         //Check inner layout of CardThumbnail
-        if (oldCard.getCardThumbnail()!=null){
-            if (newCard.getCardThumbnail()==null)
+        if (oldCard.getCardThumbnail() != null) {
+            if (newCard.getCardThumbnail() == null)
                 return true;
-            else
-            if (oldCard.getCardThumbnail().getInnerLayout()!=newCard.getCardThumbnail().getInnerLayout())
+            else if (oldCard.getCardThumbnail().getInnerLayout() != newCard.getCardThumbnail().getInnerLayout())
                 return true;
-        }else{
-            if (newCard.getCardThumbnail()!=null)
+        } else {
+            if (newCard.getCardThumbnail() != null)
                 return true;
         }
 
         //Check inner layout of CardExpand
-        if (oldCard.getCardExpand()!=null){
-            if (newCard.getCardExpand()==null)
+        if (oldCard.getCardExpand() != null) {
+            if (newCard.getCardExpand() == null)
                 return true;
-            else
-            if (oldCard.getCardExpand().getInnerLayout()!=newCard.getCardExpand().getInnerLayout())
+            else if (oldCard.getCardExpand().getInnerLayout() != newCard.getCardExpand().getInnerLayout())
                 return true;
-        }else{
-            if (newCard.getCardExpand()!=null)
+        } else {
+            if (newCard.getCardExpand() != null)
                 return true;
         }
 
@@ -843,10 +839,10 @@ public class Card extends BaseCard {
     /**
      * Changes dynamically the drawable resource to override the style of MainLayout.
      *
-     * @param drawableResourceId   drawable resource Id
+     * @param drawableResourceId drawable resource Id
      */
-    public void changeBackgroundResourceId(int drawableResourceId){
-        if (mCardView!=null){
+    public void changeBackgroundResourceId(int drawableResourceId) {
+        if (mCardView != null) {
             mCardView.changeBackgroundResourceId(drawableResourceId);
         }
     }
@@ -854,10 +850,10 @@ public class Card extends BaseCard {
     /**
      * Changes dynamically the drawable resource to override the style of MainLayout.
      *
-     * @param drawableResource   drawable resource
+     * @param drawableResource drawable resource
      */
-    public void changeBackgroundResource(Drawable drawableResource){
-        if (mCardView!=null){
+    public void changeBackgroundResource(Drawable drawableResource) {
+        if (mCardView != null) {
             mCardView.changeBackgroundResource(drawableResource);
         }
     }

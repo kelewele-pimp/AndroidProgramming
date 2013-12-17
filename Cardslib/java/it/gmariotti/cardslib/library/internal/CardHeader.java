@@ -37,28 +37,28 @@ import it.gmariotti.cardslib.library.internal.base.BaseCard;
  * <ul>
  * <li>using your innerLayout in constructor</li>
  * <li>setting your elements with {@link #setupInnerViewElements(android.view.ViewGroup, android.view.View)} method.</li>
- *</ul>
+ * </ul>
  * </p>
  * <b>Usage:</b>
  * <pre><code>
  *       //Create a Card
  *       Card card = new Card(getContext());
- *
+ * <p/>
  *       //Create a CardHeader
  *       CardHeader header = new CardHeader(getContext());
- *
+ * <p/>
  *       //Add header to card
  *       card.addCardHeader(header);
- *
+ * <p/>
  * </code></pre>
- *
+ * <p/>
  * </p>
  * You can customize buttons behaviour with {@link #setButtonOverflowVisible(boolean)} ,{@link #setButtonExpandVisible(boolean)}, {@link #setOtherButtonVisible(boolean)}
  * </p>
  * You can attach a Popup Menu to overflowMenu with {@link #setPopupMenu(int, CardHeader.OnClickCardHeaderPopupMenuListener)}
  * <pre><code>
  * header.setPopupMenu(R.menu.popupmain, new CardHeader.OnClickCardHeaderPopupMenuListener(){
- *
+ * <p/>
  *       public void onMenuItemClick(BaseCard card, MenuItem item) {
  *                 mPopupMenuListener.doSomething(...);
  *       }
@@ -69,7 +69,7 @@ import it.gmariotti.cardslib.library.internal.base.BaseCard;
  * other button is clicked.
  * <pre><code>
  *     header.setOtherButtonClickListener(new CardHeader.OnClickCardHeaderOtherButtonListener() {
- *
+ * <p/>
  *         public void onButtonItemClick(Card card, View view) {
  *                //do something...
  *         }
@@ -80,7 +80,7 @@ import it.gmariotti.cardslib.library.internal.base.BaseCard;
  * </p>
  * Also you can use a different header layout using a custom attr in main card layout.
  * <pre><code>
- *
+ * <p/>
  *  <it.gmariotti.cardslib.library.view.component.CardHeaderView
  *       android:id="@+id/card_header_layout"
  *       android:layout_width="match_parent"
@@ -88,6 +88,7 @@ import it.gmariotti.cardslib.library.internal.base.BaseCard;
  *       card:card_header_layout_resourceID="@layout/my_header_layout" />
  * </code></pre>
  * </p>
+ *
  * @author Gabriele Mariotti (gabri.mariotti@gmail.com)
  */
 public class CardHeader extends BaseCard {
@@ -95,22 +96,22 @@ public class CardHeader extends BaseCard {
     /**
      * Indicates to make visible the Button to expand/collapse
      */
-    protected boolean mIsButtonExpandVisible=false;
+    protected boolean mIsButtonExpandVisible = false;
 
     /**
      * Indicates to make visible the Overflow Button to open a popup menu
      */
-    protected boolean mIsButtonOverflowVisible=false;
+    protected boolean mIsButtonOverflowVisible = false;
 
     /**
      * Indicates to make visible another Button
      */
-    protected boolean mIsOtherButtonVisible=false;
+    protected boolean mIsOtherButtonVisible = false;
 
     /**
-     *  Resource ID for PopMenu
+     * Resource ID for PopMenu
      */
-    protected int mPopupMenu=-1;
+    protected int mPopupMenu = -1;
 
     /**
      * Listener invoked when a item in PopupMenu is clicked
@@ -136,7 +137,7 @@ public class CardHeader extends BaseCard {
      *  </code>
      *  </pre>
      */
-    protected int mOtherButtonDrawable=0;
+    protected int mOtherButtonDrawable = 0;
 
     // -------------------------------------------------------------
     // Constructors
@@ -145,21 +146,21 @@ public class CardHeader extends BaseCard {
     /**
      * Constructor with a base inner layout defined by R.layout.inner_base_header
      *
-     * @param context  context
+     * @param context context
      */
     public CardHeader(Context context) {
-        this(context,R.layout.inner_base_header);
+        this(context, R.layout.inner_base_header);
     }
 
     /**
      * Constructor with a custom inner layout.
      *
-     * @param context context
-     * @param innerLayout   layout resource ID
+     * @param context     context
+     * @param innerLayout layout resource ID
      */
-    public CardHeader(Context context,int innerLayout) {
+    public CardHeader(Context context, int innerLayout) {
         super(context);
-        mInnerLayout= innerLayout;
+        mInnerLayout = innerLayout;
     }
 
 
@@ -206,19 +207,15 @@ public class CardHeader extends BaseCard {
         mPopupMenu = menuRes;
         mPopupMenuListener = listener;
 
-        if (menuRes==-1)
-            mIsButtonOverflowVisible=false;
+        if (menuRes == -1)
+            mIsButtonOverflowVisible = false;
         else
-            mIsButtonOverflowVisible=true;
+            mIsButtonOverflowVisible = true;
     }
 
     // -------------------------------------------------------------
     // Other Button
     // -------------------------------------------------------------
-
-
-
-
 
 
     // -------------------------------------------------------------
@@ -233,7 +230,7 @@ public class CardHeader extends BaseCard {
      * You can provide your custom layout.
      * You can use a xml layout with {@link CardHeader#setInnerLayout(int)} or with constructor
      * {@link CardHeader#CardHeader(android.content.Context, int)}.
-     *
+     * <p/>
      * Then customize #setupInnerViewElements to set your values.
      *
      * @param context context
@@ -243,16 +240,16 @@ public class CardHeader extends BaseCard {
     @Override
     public View getInnerView(Context context, ViewGroup parent) {
 
-        View view= super.getInnerView(context, parent);
+        View view = super.getInnerView(context, parent);
 
         //This provide a simple implementation with a single title
-        if (view!=null){
+        if (view != null) {
             //Add inner view to parent
             parent.addView(view);
 
             //Setup value
-            if (mInnerLayout>-1 ){
-                setupInnerViewElements(parent,view);
+            if (mInnerLayout > -1) {
+                setupInnerViewElements(parent, view);
             }
         }
         return view;
@@ -264,19 +261,19 @@ public class CardHeader extends BaseCard {
 
     /**
      * This method sets values to header elements and customizes view.
-     *
+     * <p/>
      * Override this method to set your elements inside InnerView.
      *
-     * @param parent  parent view (Inner Frame)
+     * @param parent parent view (Inner Frame)
      * @param view   Inner View
      */
     @Override
-    public void setupInnerViewElements(ViewGroup parent,View view){
+    public void setupInnerViewElements(ViewGroup parent, View view) {
 
         //Add simple title to header
-        if (view!=null){
-            TextView mTitleView=(TextView) view.findViewById(R.id.card_header_inner_simple_title);
-            if (mTitleView!=null)
+        if (view != null) {
+            TextView mTitleView = (TextView) view.findViewById(R.id.card_header_inner_simple_title);
+            if (mTitleView != null)
                 mTitleView.setText(mTitle);
         }
 
@@ -289,7 +286,7 @@ public class CardHeader extends BaseCard {
     /**
      * Return the popup listener invoked when a item in PopupMenu is clicked
      *
-     * @return  popup listener
+     * @return popup listener
      */
     public OnClickCardHeaderPopupMenuListener getPopupMenuListener() {
         return mPopupMenuListener;
@@ -298,7 +295,7 @@ public class CardHeader extends BaseCard {
     /**
      * Sets the popup listener invoked when a item in PopupMenu is clicked
      *
-     * @param popupMenuListener  popup listener
+     * @param popupMenuListener popup listener
      */
     public void setPopupMenuListener(OnClickCardHeaderPopupMenuListener popupMenuListener) {
         mPopupMenuListener = popupMenuListener;
@@ -330,9 +327,9 @@ public class CardHeader extends BaseCard {
      */
     public boolean isButtonOverflowVisible() {
         //Without a PopupMenu, the button is not visible
-        if (mPopupMenu==-1){
+        if (mPopupMenu == -1) {
             if (mIsButtonOverflowVisible)
-                Log.w("CardHeader","You set visible=true to overflow menu, but you don't add any Popup Menu");
+                Log.w("CardHeader", "You set visible=true to overflow menu, but you don't add any Popup Menu");
             return false;
         }
         return mIsButtonOverflowVisible;

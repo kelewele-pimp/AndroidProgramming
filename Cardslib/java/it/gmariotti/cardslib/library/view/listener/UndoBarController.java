@@ -32,8 +32,6 @@ import it.gmariotti.cardslib.library.R;
  * It is based on Roman Nurik code.
  * See this link for original code:
  * https://code.google.com/p/romannurik-code/source/browse/#git%2Fmisc%2Fundobar
- *
- *
  */
 public class UndoBarController {
 
@@ -148,7 +146,7 @@ public class UndoBarController {
         }
     };
 
-    public Parcelable getUndoToken(){
+    public Parcelable getUndoToken() {
         return mUndoToken;
     }
 }

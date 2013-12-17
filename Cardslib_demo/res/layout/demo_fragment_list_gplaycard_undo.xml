@@ -19,9 +19,9 @@
   -->
 
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:card="http://schemas.android.com/apk/res-auto"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent">
+    xmlns:card="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -33,11 +33,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/carddemo_list_gplaycard"
-            card:list_card_layout_resourceID="@layout/list_card_thumbnail_layout"/>
+            card:list_card_layout_resourceID="@layout/list_card_thumbnail_layout" />
 
     </RelativeLayout>
 
     <!-- Include undo message layout -->
-    <include layout="@layout/list_card_undo_message"/>
+    <include layout="@layout/list_card_undo_message" />
 
 </FrameLayout>

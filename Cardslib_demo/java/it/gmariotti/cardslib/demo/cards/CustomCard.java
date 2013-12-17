@@ -88,7 +88,7 @@ public class CustomCard extends Card {
         if (mSecondaryTitle != null)
             mSecondaryTitle.setText(R.string.demo_custom_card_googleinc);
 
-        if (mRatingBar != null){
+        if (mRatingBar != null) {
             mRatingBar.setNumStars(5);
             mRatingBar.setMax(5);
             mRatingBar.setStepSize(0.5f);

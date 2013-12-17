@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ /*******************************************************************************
   ~   Copyright (c) 2013 Gabriele Mariotti.
   ~
@@ -29,12 +28,9 @@
     <item android:drawable="@drawable/ic_menu_expand_card_dark_normal"/>
     -->
 
-    <item android:drawable="@drawable/ic_menu_expand_card_dark_pressed"
-          android:state_pressed="true"/>
-    <item android:drawable="@drawable/ic_menu_expand_card_dark_pressed"
-          android:state_focused="true"/>
-    <item android:drawable="@drawable/ic_menu_expand_card_dark_pressed"
-          android:state_selected="true"/>
-    <item android:drawable="@drawable/ic_menu_expand_card_dark_normal"/>
+    <item android:drawable="@drawable/ic_menu_expand_card_dark_pressed" android:state_pressed="true" />
+    <item android:drawable="@drawable/ic_menu_expand_card_dark_pressed" android:state_focused="true" />
+    <item android:drawable="@drawable/ic_menu_expand_card_dark_pressed" android:state_selected="true" />
+    <item android:drawable="@drawable/ic_menu_expand_card_dark_normal" />
 
 </selector>

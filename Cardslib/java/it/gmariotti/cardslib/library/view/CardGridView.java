@@ -72,6 +72,7 @@ import it.gmariotti.cardslib.library.internal.CardGridCursorAdapter;
  * </p>
  * Currently you have to use the same inner layout for each card in gridView.
  * </p>
+ *
  * @author Gabriele Mariotti (gabri.mariotti@gmail.com)
  */
 public class CardGridView extends GridView implements CardView.OnExpandListAnimatorListener {
@@ -79,7 +80,7 @@ public class CardGridView extends GridView implements CardView.OnExpandListAnima
     protected static String TAG = "CardGridView";
 
     /**
-     *  Card Grid Array Adapter
+     * Card Grid Array Adapter
      */
     protected CardGridArrayAdapter mAdapter;
 
@@ -137,10 +138,10 @@ public class CardGridView extends GridView implements CardView.OnExpandListAnima
      * @param attrs
      * @param defStyle
      */
-    protected void init(AttributeSet attrs, int defStyle){
+    protected void init(AttributeSet attrs, int defStyle) {
 
         //Init attrs
-        initAttrs(attrs,defStyle);
+        initAttrs(attrs, defStyle);
 
     }
 
@@ -176,12 +177,12 @@ public class CardGridView extends GridView implements CardView.OnExpandListAnima
      */
     @Override
     public void setAdapter(ListAdapter adapter) {
-        if (adapter instanceof CardGridArrayAdapter){
-            setAdapter((CardGridArrayAdapter)adapter);
-        }else if (adapter instanceof CardGridCursorAdapter){
-            setAdapter((CardGridCursorAdapter)adapter);
-        }else{
-            Log.w(TAG,"You are using a generic adapter. Pay attention: your adapter has to call cardGridArrayAdapter#getView method." );
+        if (adapter instanceof CardGridArrayAdapter) {
+            setAdapter((CardGridArrayAdapter) adapter);
+        } else if (adapter instanceof CardGridCursorAdapter) {
+            setAdapter((CardGridCursorAdapter) adapter);
+        } else {
+            Log.w(TAG, "You are using a generic adapter. Pay attention: your adapter has to call cardGridArrayAdapter#getView method.");
             super.setAdapter(adapter);
         }
     }
@@ -198,7 +199,7 @@ public class CardGridView extends GridView implements CardView.OnExpandListAnima
         adapter.setRowLayoutId(list_card_layout_resourceID);
 
         adapter.setCardGridView(this);
-        mAdapter=adapter;
+        mAdapter = adapter;
     }
 
     /**
@@ -213,21 +214,21 @@ public class CardGridView extends GridView implements CardView.OnExpandListAnima
         adapter.setRowLayoutId(list_card_layout_resourceID);
 
         adapter.setCardGridView(this);
-        mCursorAdapter=adapter;
+        mCursorAdapter = adapter;
     }
 
     /**
      * You can use this method, if you are using external adapters.
      * Pay attention. The generic adapter#getView() method has to call the cardArrayAdapter#getView() method to work.
      *
-     * @param adapter {@link ListAdapter} generic adapter
-     * @param cardGridArrayAdapter    {@link it.gmariotti.cardslib.library.internal.CardGridArrayAdapter} cardGridArrayAdapter
+     * @param adapter              {@link ListAdapter} generic adapter
+     * @param cardGridArrayAdapter {@link it.gmariotti.cardslib.library.internal.CardGridArrayAdapter} cardGridArrayAdapter
      */
     public void setExternalAdapter(ListAdapter adapter, CardGridArrayAdapter cardGridArrayAdapter) {
 
         setAdapter(adapter);
 
-        mAdapter=cardGridArrayAdapter;
+        mAdapter = cardGridArrayAdapter;
         mAdapter.setCardGridView(this);
         mAdapter.setRowLayoutId(list_card_layout_resourceID);
     }
@@ -236,14 +237,14 @@ public class CardGridView extends GridView implements CardView.OnExpandListAnima
      * You can use this method, if you are using external adapters.
      * Pay attention. The generic adapter#getView() method has to call the cardCursorAdapter#getView() method to work.
      *
-     * @param adapter {@link ListAdapter} generic adapter
-     * @param cardCursorAdapter    {@link it.gmariotti.cardslib.library.internal.CardCursorAdapter} cardArrayAdapter
+     * @param adapter           {@link ListAdapter} generic adapter
+     * @param cardCursorAdapter {@link it.gmariotti.cardslib.library.internal.CardCursorAdapter} cardArrayAdapter
      */
     public void setExternalAdapter(ListAdapter adapter, CardGridCursorAdapter cardCursorAdapter) {
 
         setAdapter(adapter);
 
-        mCursorAdapter=cardCursorAdapter;
+        mCursorAdapter = cardCursorAdapter;
         mCursorAdapter.setCardGridView(this);
         mCursorAdapter.setRowLayoutId(list_card_layout_resourceID);
     }
@@ -255,19 +256,19 @@ public class CardGridView extends GridView implements CardView.OnExpandListAnima
     //--------------------------------------------------------------------------
 
     @Override
-    public void onExpandStart(CardView viewCard,View expandingLayout) {
+    public void onExpandStart(CardView viewCard, View expandingLayout) {
         //do nothing. Don't use this kind of animation in a grid
         //prepareExpandView(viewCard,expandingLayout);
     }
 
     @Override
-    public void onCollapseStart(CardView viewCard,View expandingLayout) {
+    public void onCollapseStart(CardView viewCard, View expandingLayout) {
         //do nothing. Don't use this kind of animation in a grid
         //prepareCollapseView(viewCard,expandingLayout);
     }
 
-    private void prepareExpandView(final CardView view,final View expandingLayout) {
-        final Card card = (Card)getItemAtPosition(getPositionForView
+    private void prepareExpandView(final CardView view, final View expandingLayout) {
+        final Card card = (Card) getItemAtPosition(getPositionForView
                 (view));
 
         /* Store the original top and bottom bounds of all the cells.*/
@@ -279,14 +280,14 @@ public class CardGridView extends GridView implements CardView.OnExpandListAnima
         int childCount = getChildCount();
         for (int i = 0; i < childCount; i++) {
             View v = getChildAt(i);
-            if (Build.VERSION.SDK_INT >= 16){
+            if (Build.VERSION.SDK_INT >= 16) {
                 v.setHasTransientState(true);
             }
-            oldCoordinates.put(v, new int[] {v.getTop(), v.getBottom()});
+            oldCoordinates.put(v, new int[]{v.getTop(), v.getBottom()});
         }
 
          /* Update the layout so the extra content becomes visible.*/
-        if (expandingLayout!=null)
+        if (expandingLayout != null)
             expandingLayout.setVisibility(View.VISIBLE);
 
         /* Add an onPreDraw Listener to the listview. onPreDraw will get invoked after onLayout
@@ -362,7 +363,7 @@ public class CardGridView extends GridView implements CardView.OnExpandListAnima
 
                 int index = indexOfChild(view);
                 int numOfColumns = getNumColumns();
-                int rowOfSelectedItem = (int) index/numOfColumns;
+                int rowOfSelectedItem = (int) index / numOfColumns;
 
                 /* Loop through all the views that were on the screen before the cell was
                 *  expanded. Some cells will still be children of the ListView while
@@ -370,7 +371,7 @@ public class CardGridView extends GridView implements CardView.OnExpandListAnima
                 *  simply have their bounds animated appropriately. The cells that are no
                 *  longer children of the ListView also have their bounds animated, but
                 *  must also be added to a list of views which will be drawn in dispatchDraw.*/
-                for (View v: oldCoordinates.keySet()) {
+                for (View v : oldCoordinates.keySet()) {
                     int[] old = oldCoordinates.get(v);
                     v.setTop(old[0]);
                     v.setBottom(old[1]);
@@ -381,8 +382,8 @@ public class CardGridView extends GridView implements CardView.OnExpandListAnima
                     } else {
                         int i = indexOfChild(v);
                         if (v != view) {
-                            int rowOfv= (int) i/numOfColumns;
-                            int delta = ( i > index && rowOfv > rowOfSelectedItem) ? yTranslateBottom : -yTranslateTop;
+                            int rowOfv = (int) i / numOfColumns;
+                            int delta = (i > index && rowOfv > rowOfSelectedItem) ? yTranslateBottom : -yTranslateTop;
                             animations.add(getAnimation(v, delta, delta));
                         }
                         v.setHasTransientState(false);
@@ -412,14 +413,14 @@ public class CardGridView extends GridView implements CardView.OnExpandListAnima
                         setClickable(true);
                         if (mViewsToDraw.size() > 0) {
                             for (View v : mViewsToDraw) {
-                                if (Build.VERSION.SDK_INT >= 16){
+                                if (Build.VERSION.SDK_INT >= 16) {
                                     v.setHasTransientState(false);
                                 }
                             }
                         }
                         mViewsToDraw.clear();
 
-                        if (card.getOnExpandAnimatorEndListener()!=null)
+                        if (card.getOnExpandAnimatorEndListener() != null)
                             card.getOnExpandAnimatorEndListener().onExpandEnd(card);
                     }
                 });
@@ -433,25 +434,25 @@ public class CardGridView extends GridView implements CardView.OnExpandListAnima
      * This method collapses the view that was clicked and animates all the views
      * around it to close around the collapsing view. There are several steps required
      * to do this which are outlined below.
-     *
+     * <p/>
      * 1. Update the layout parameters of the view clicked so as to minimize its height
-     *    to the original collapsed (default) state.
+     * to the original collapsed (default) state.
      * 2. After invoking a layout, the listview will shift all the cells so as to display
-     *    them most efficiently. Therefore, during the first predraw pass, the listview
-     *    must be offset by some amount such that given the custom bound change upon
-     *    collapse, all the cells that need to be on the screen after the layout
-     *    are rendered by the listview.
+     * them most efficiently. Therefore, during the first predraw pass, the listview
+     * must be offset by some amount such that given the custom bound change upon
+     * collapse, all the cells that need to be on the screen after the layout
+     * are rendered by the listview.
      * 3. On the second predraw pass, all the items are first returned to their original
-     *    location (before the first layout).
+     * location (before the first layout).
      * 4. The collapsing view's bounds are animated to what the final values should be.
      * 5. The bounds above the collapsing view are animated downwards while the bounds
-     *    below the collapsing view are animated upwards.
+     * below the collapsing view are animated upwards.
      * 6. The extra text is faded out as its contents become visible throughout the
-     *    animation process.
+     * animation process.
      */
 
-    private void prepareCollapseView(final CardView view,final View expandingLayout) {
-        final Card card = (Card)getItemAtPosition(getPositionForView
+    private void prepareCollapseView(final CardView view, final View expandingLayout) {
+        final Card card = (Card) getItemAtPosition(getPositionForView
                 (view));
 
         /* Store the original top and bottom bounds of all the cells.*/
@@ -463,10 +464,10 @@ public class CardGridView extends GridView implements CardView.OnExpandListAnima
         int childCount = getChildCount();
         for (int i = 0; i < childCount; i++) {
             View v = getChildAt(i);
-            if (Build.VERSION.SDK_INT >= 16){
+            if (Build.VERSION.SDK_INT >= 16) {
                 v.setHasTransientState(true);
             }
-            oldCoordinates.put(v, new int [] {v.getTop(), v.getBottom()});
+            oldCoordinates.put(v, new int[]{v.getTop(), v.getBottom()});
         }
 
         /* Update the layout so the extra content becomes invisible.*/
@@ -535,26 +536,26 @@ public class CardGridView extends GridView implements CardView.OnExpandListAnima
 
                 int index = indexOfChild(view);
                 int numOfColumns = getNumColumns();
-                int rowOfSelectedItem = (int) index/numOfColumns;
+                int rowOfSelectedItem = (int) index / numOfColumns;
 
                 int childCount = getChildCount();
                 for (int i = 0; i < childCount; i++) {
                     View v = getChildAt(i);
-                    int [] old = oldCoordinates.get(v);
+                    int[] old = oldCoordinates.get(v);
                     if (old != null) {
                         /* If the cell was present in the ListView before the collapse and
                         * after the collapse then the bounds are reset to their old values.*/
                         v.setTop(old[0]);
                         v.setBottom(old[1]);
-                        if (Build.VERSION.SDK_INT >= 16){
+                        if (Build.VERSION.SDK_INT >= 16) {
                             v.setHasTransientState(false);
                         }
                     } else {
                         /* If the cell is present in the ListView after the collapse but
                          * not before the collapse then the bounds are calculated using
                          * the bottom and top translation of the collapsing cell.*/
-                        int rowOfv= (int) i/numOfColumns;
-                        int delta = ( i > index && rowOfv>rowOfSelectedItem) ? yTranslateBottom : -yTranslateTop;
+                        int rowOfv = (int) i / numOfColumns;
+                        int delta = (i > index && rowOfv > rowOfSelectedItem) ? yTranslateBottom : -yTranslateTop;
                         v.setTop(v.getTop() + delta);
                         v.setBottom(v.getBottom() + delta);
                     }
@@ -563,7 +564,7 @@ public class CardGridView extends GridView implements CardView.OnExpandListAnima
 
 
                 /* Animates all the cells present on the screen after the collapse. */
-                ArrayList <Animator> animations = new ArrayList<Animator>();
+                ArrayList<Animator> animations = new ArrayList<Animator>();
                 for (int i = 0; i < childCount; i++) {
                     View v = getChildAt(i);
                     if (v != view) {
@@ -613,7 +614,7 @@ public class CardGridView extends GridView implements CardView.OnExpandListAnima
                         * should persist in an expanded state with the extra content visible.*/
                         expandingLayout.setAlpha(1);
 
-                        if (card.getOnCollapseAnimatorEndListener()!=null)
+                        if (card.getOnCollapseAnimatorEndListener() != null)
                             card.getOnCollapseAnimatorEndListener().onCollapseEnd(card);
                     }
                 });
@@ -625,12 +626,11 @@ public class CardGridView extends GridView implements CardView.OnExpandListAnima
     }
 
 
-
     /**
      * Calculates the top and bottom bound changes of the selected item. These values are
      * also used to move the bounds of the items around the one that is actually being
      * expanded or collapsed.
-     *
+     * <p/>
      * This method can be modified to achieve different user experiences depending
      * on how you want the cells to expand or collapse. In this specific demo, the cells
      * always try to expand downwards (leaving top bound untouched), and similarly,
@@ -656,7 +656,7 @@ public class CardGridView extends GridView implements CardView.OnExpandListAnima
             if (isOverTop) {
                 yTranslateTop = top;
                 yTranslateBottom = yDelta - yTranslateTop;
-            } else if (isBelowBottom){
+            } else if (isBelowBottom) {
                 int deltaBelow = top + height + yDelta - getHeight();
                 yTranslateTop = top - deltaBelow < 0 ? top : deltaBelow;
                 yTranslateBottom = yDelta - yTranslateTop;
@@ -665,7 +665,7 @@ public class CardGridView extends GridView implements CardView.OnExpandListAnima
             int offset = computeVerticalScrollOffset();
             int range = computeVerticalScrollRange();
             int extent = computeVerticalScrollExtent();
-            int leftoverExtent = range-offset - extent;
+            int leftoverExtent = range - offset - extent;
 
             boolean isCollapsingBelowBottom = (yTranslateBottom > leftoverExtent);
             boolean isCellCompletelyDisappearing = bottom - yTranslateBottom < 0;
@@ -679,7 +679,7 @@ public class CardGridView extends GridView implements CardView.OnExpandListAnima
             }
         }
 
-        return new int[] {yTranslateTop, yTranslateBottom};
+        return new int[]{yTranslateTop, yTranslateBottom};
     }
 
 
@@ -693,8 +693,8 @@ public class CardGridView extends GridView implements CardView.OnExpandListAnima
         int top = view.getTop();
         int bottom = view.getBottom();
 
-        int endTop = (int)(top + translateTop);
-        int endBottom = (int)(bottom + translateBottom);
+        int endTop = (int) (top + translateTop);
+        int endBottom = (int) (bottom + translateBottom);
 
         PropertyValuesHolder translationTop = PropertyValuesHolder.ofInt("top", top, endTop);
         PropertyValuesHolder translationBottom = PropertyValuesHolder.ofInt("bottom", bottom,
@@ -720,7 +720,7 @@ public class CardGridView extends GridView implements CardView.OnExpandListAnima
             return;
         }
 
-        for (View v: mViewsToDraw) {
+        for (View v : mViewsToDraw) {
             canvas.translate(0, v.getTop());
             v.draw(canvas);
             canvas.translate(0, -v.getTop());

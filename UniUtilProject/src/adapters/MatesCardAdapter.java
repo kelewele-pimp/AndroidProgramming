@@ -1,7 +1,5 @@
 package adapters;
 
-import com.example.uniutilproject.R;
-
 import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,44 +8,46 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.example.uniutilproject.R;
+
 public class MatesCardAdapter extends BaseAdapter {
-	
-	private Context context; 
-	private String[] values; 
-	
-	public MatesCardAdapter(Context context, String[] values){
-		this.context = context; 
-		this.values = values; 
-	}
 
-	@Override
-	public int getCount() {
-		return values.length; 
-	}
+    private Context context;
+    private String[] values;
 
-	@Override
-	public Object getItem(int position) {
-		return values[position];
-	}
+    public MatesCardAdapter(Context context, String[] values) {
+        this.context = context;
+        this.values = values;
+    }
 
-	@Override
-	public long getItemId(int position) {
-		return position;
-	}
+    @Override
+    public int getCount() {
+        return values.length;
+    }
 
-	@Override
-	public View getView(int position, View convertView, ViewGroup parent) {
-		if (convertView == null) {
-			LayoutInflater mInflater = (LayoutInflater) context
-					.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
-			convertView = mInflater.inflate(R.layout.mates_listitem, null);
-		}
-		
-		TextView mate_info = (TextView) convertView.findViewById(R.id.mates_content); 
-		
-		mate_info.setText(getItem(position).toString());
-		
-		return convertView; 
-	}
+    @Override
+    public Object getItem(int position) {
+        return values[position];
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        if (convertView == null) {
+            LayoutInflater mInflater = (LayoutInflater) context
+                    .getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
+            convertView = mInflater.inflate(R.layout.mates_listitem, null);
+        }
+
+        TextView mate_info = (TextView) convertView.findViewById(R.id.mates_content);
+
+        mate_info.setText(getItem(position).toString());
+
+        return convertView;
+    }
 
 }

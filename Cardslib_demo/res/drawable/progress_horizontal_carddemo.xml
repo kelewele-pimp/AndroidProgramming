@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ *******************************************************************************
   ~   Copyright (c) 2013 Gabriele Mariotti.
   ~
@@ -19,17 +18,20 @@
 
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:id="@android:id/background"
-          android:drawable="@drawable/progress_bg_carddemo" />
+    <item
+        android:id="@android:id/background"
+        android:drawable="@drawable/progress_bg_carddemo" />
 
     <item android:id="@android:id/secondaryProgress">
-        <scale android:scaleWidth="100%"
-               android:drawable="@drawable/progress_secondary_carddemo" />
+        <scale
+            android:scaleWidth="100%"
+            android:drawable="@drawable/progress_secondary_carddemo" />
     </item>
 
     <item android:id="@android:id/progress">
-        <scale android:scaleWidth="100%"
-               android:drawable="@drawable/progress_primary_carddemo" />
+        <scale
+            android:scaleWidth="100%"
+            android:drawable="@drawable/progress_primary_carddemo" />
     </item>
 
 </layer-list>

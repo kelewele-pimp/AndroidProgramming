@@ -7,13 +7,13 @@
     <style name="AppBaseTheme" parent="android:Theme.Holo.Light">
         <!-- API 11 theme customizations can go here. -->
     </style>
-    
+
     <!-- Set custom color for the action bar.. nb: this style has to be called in the android manifest -->
     <style name="ActionBarBackground" parent="android:Theme.Holo.Light">
         <item name="android:actionBarStyle">@style/ActionBar</item>
     </style>
- 
-    <style name="ActionBar" parent="android:style/Widget.Holo.ActionBar">     
+
+    <style name="ActionBar" parent="android:style/Widget.Holo.ActionBar">
         <item name="android:background">@color/actionbar_color</item>
     </style>
 

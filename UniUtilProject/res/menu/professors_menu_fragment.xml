@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
         android:id="@+id/professors_menu_addbtn"
         android:icon="@drawable/ic_new_gray"
         android:showAsAction="always"
-        android:title="professors_newprof">
-    </item>
+        android:title="professors_newprof"></item>
 
 </menu>

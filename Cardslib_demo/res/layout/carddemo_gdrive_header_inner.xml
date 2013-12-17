@@ -19,11 +19,11 @@
   -->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              style="@style/card"
-              android:layout_gravity="center_vertical"
-              android:layout_width="match_parent"
-              android:layout_height="48dp">
+    android:orientation="vertical"
+    style="@style/card"
+    android:layout_gravity="center_vertical"
+    android:layout_width="match_parent"
+    android:layout_height="48dp">
 
     <!-- This is the base Inner View inside a CardHeader.
          You can customize it with your layout xml file and your CardHeader.
@@ -36,8 +36,7 @@
         android:layout_marginLeft="8dp"
         android:layout_gravity="center_vertical"
         android:gravity="center_vertical"
-        android:textColor="#000"
-        />
+        android:textColor="#000" />
 
 </LinearLayout>
 

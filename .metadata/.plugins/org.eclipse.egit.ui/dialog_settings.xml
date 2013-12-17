@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
-	<item value="2" key="org.eclipse.egit.ui.internal.clone.GitSelectWizardPageWizardSel"/>
-	<list key="RepositorySelectionPage.UsedUris">
-		<item value="https://github.com/gabrielemariotti/cardslib.git"/>
-		<item value="https://github.com/gabrielemariotti/cardslib/tree/master/library"/>
-		<item value="https://github.com/https://github.com/gabrielemariotti/cardslib/tree/master/library"/>
-	</list>
-	<section name="GitImportWizard">
-	</section>
-	<section name="org.eclipse.egit.ui.internal.dialogs.RebaseTargetSelectionDialog.dialogBounds">
-		<item value="613" key="DIALOG_WIDTH"/>
-		<item value="216" key="DIALOG_Y_ORIGIN"/>
-		<item value="489" key="DIALOG_HEIGHT"/>
-		<item value="630" key="DIALOG_X_ORIGIN"/>
-		<item value="1|Ubuntu|11.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
-	</section>
-	<section name="org.eclipse.egit.ui.internal.pull.PullResultDialog.dialogBounds">
-		<item value="412" key="DIALOG_Y_ORIGIN"/>
-		<item value="757" key="DIALOG_X_ORIGIN"/>
-	</section>
-	<section name="org.eclipse.egit.ui.internal.fetch.FetchResultDialog.dialogBounds">
-		<item value="613" key="DIALOG_WIDTH"/>
-		<item value="236" key="DIALOG_Y_ORIGIN"/>
-		<item value="459" key="DIALOG_HEIGHT"/>
-		<item value="630" key="DIALOG_X_ORIGIN"/>
-		<item value="1|Ubuntu|11.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
-	</section>
+    <item value="2" key="org.eclipse.egit.ui.internal.clone.GitSelectWizardPageWizardSel" />
+    <list key="RepositorySelectionPage.UsedUris">
+        <item value="https://github.com/gabrielemariotti/cardslib.git" />
+        <item value="https://github.com/gabrielemariotti/cardslib/tree/master/library" />
+        <item
+            value="https://github.com/https://github.com/gabrielemariotti/cardslib/tree/master/library" />
+    </list>
+    <section name="GitImportWizard"></section>
+    <section name="org.eclipse.egit.ui.internal.dialogs.RebaseTargetSelectionDialog.dialogBounds">
+        <item value="613" key="DIALOG_WIDTH" />
+        <item value="216" key="DIALOG_Y_ORIGIN" />
+        <item value="489" key="DIALOG_HEIGHT" />
+        <item value="630" key="DIALOG_X_ORIGIN" />
+        <item value="1|Ubuntu|11.0|0|GTK|1|" key="DIALOG_FONT_NAME" />
+    </section>
+    <section name="org.eclipse.egit.ui.internal.pull.PullResultDialog.dialogBounds">
+        <item value="412" key="DIALOG_Y_ORIGIN" />
+        <item value="757" key="DIALOG_X_ORIGIN" />
+    </section>
+    <section name="org.eclipse.egit.ui.internal.fetch.FetchResultDialog.dialogBounds">
+        <item value="613" key="DIALOG_WIDTH" />
+        <item value="236" key="DIALOG_Y_ORIGIN" />
+        <item value="459" key="DIALOG_HEIGHT" />
+        <item value="630" key="DIALOG_X_ORIGIN" />
+        <item value="1|Ubuntu|11.0|0|GTK|1|" key="DIALOG_FONT_NAME" />
+    </section>
 </section>

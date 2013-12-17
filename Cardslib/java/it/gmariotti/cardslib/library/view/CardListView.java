@@ -40,9 +40,9 @@ import java.util.HashMap;
 import java.util.List;
 
 import it.gmariotti.cardslib.library.R;
-import it.gmariotti.cardslib.library.internal.CardCursorAdapter;
 import it.gmariotti.cardslib.library.internal.Card;
 import it.gmariotti.cardslib.library.internal.CardArrayAdapter;
+import it.gmariotti.cardslib.library.internal.CardCursorAdapter;
 
 /**
  * Card List View.
@@ -67,6 +67,7 @@ import it.gmariotti.cardslib.library.internal.CardArrayAdapter;
  * </p>
  * Currently you have to use the same inner layout for each card in listView.
  * </p>
+ *
  * @author Gabriele Mariotti (gabri.mariotti@gmail.com)
  */
 public class CardListView extends ListView implements CardView.OnExpandListAnimatorListener {
@@ -74,7 +75,7 @@ public class CardListView extends ListView implements CardView.OnExpandListAnima
     protected static String TAG = "CardListView";
 
     /**
-     *  Card Array Adapter
+     * Card Array Adapter
      */
     protected CardArrayAdapter mAdapter;
 
@@ -132,10 +133,10 @@ public class CardListView extends ListView implements CardView.OnExpandListAnima
      * @param attrs
      * @param defStyle
      */
-    protected void init(AttributeSet attrs, int defStyle){
+    protected void init(AttributeSet attrs, int defStyle) {
 
         //Init attrs
-        initAttrs(attrs,defStyle);
+        initAttrs(attrs, defStyle);
 
         //Set divider to 0dp
         setDividerHeight(0);
@@ -176,12 +177,12 @@ public class CardListView extends ListView implements CardView.OnExpandListAnima
      */
     @Override
     public void setAdapter(ListAdapter adapter) {
-        if (adapter instanceof CardArrayAdapter){
-            setAdapter((CardArrayAdapter)adapter);
-        }else if (adapter instanceof CardCursorAdapter){
-            setAdapter((CardCursorAdapter)adapter);
-        }else {
-            Log.e(TAG,"You are using a generic adapter. Pay attention: your adapter has to call cardArrayAdapter#getView method" );
+        if (adapter instanceof CardArrayAdapter) {
+            setAdapter((CardArrayAdapter) adapter);
+        } else if (adapter instanceof CardCursorAdapter) {
+            setAdapter((CardCursorAdapter) adapter);
+        } else {
+            Log.e(TAG, "You are using a generic adapter. Pay attention: your adapter has to call cardArrayAdapter#getView method");
             super.setAdapter(adapter);
         }
     }
@@ -198,7 +199,7 @@ public class CardListView extends ListView implements CardView.OnExpandListAnima
         adapter.setRowLayoutId(list_card_layout_resourceID);
 
         adapter.setCardListView(this);
-        mAdapter=adapter;
+        mAdapter = adapter;
     }
 
     /**
@@ -213,21 +214,21 @@ public class CardListView extends ListView implements CardView.OnExpandListAnima
         adapter.setRowLayoutId(list_card_layout_resourceID);
 
         adapter.setCardListView(this);
-        mCursorAdapter=adapter;
+        mCursorAdapter = adapter;
     }
 
     /**
      * You can use this method, if you are using external adapters.
      * Pay attention. The generic adapter#getView() method has to call the cardArrayAdapter#getView() method to work.
      *
-     * @param adapter {@link ListAdapter} generic adapter
-     * @param cardArrayAdapter    {@link CardArrayAdapter} cardArrayAdapter
+     * @param adapter          {@link ListAdapter} generic adapter
+     * @param cardArrayAdapter {@link CardArrayAdapter} cardArrayAdapter
      */
     public void setExternalAdapter(ListAdapter adapter, CardArrayAdapter cardArrayAdapter) {
 
         setAdapter(adapter);
 
-        mAdapter=cardArrayAdapter;
+        mAdapter = cardArrayAdapter;
         mAdapter.setCardListView(this);
         mAdapter.setRowLayoutId(list_card_layout_resourceID);
     }
@@ -236,14 +237,14 @@ public class CardListView extends ListView implements CardView.OnExpandListAnima
      * You can use this method, if you are using external adapters.
      * Pay attention. The generic adapter#getView() method has to call the cardCursorAdapter#getView() method to work.
      *
-     * @param adapter {@link ListAdapter} generic adapter
-     * @param cardCursorAdapter    {@link CardCursorAdapter} cardArrayAdapter
+     * @param adapter           {@link ListAdapter} generic adapter
+     * @param cardCursorAdapter {@link CardCursorAdapter} cardArrayAdapter
      */
     public void setExternalAdapter(ListAdapter adapter, CardCursorAdapter cardCursorAdapter) {
 
         setAdapter(adapter);
 
-        mCursorAdapter=cardCursorAdapter;
+        mCursorAdapter = cardCursorAdapter;
         mCursorAdapter.setCardListView(this);
         mCursorAdapter.setRowLayoutId(list_card_layout_resourceID);
     }
@@ -254,17 +255,17 @@ public class CardListView extends ListView implements CardView.OnExpandListAnima
     //--------------------------------------------------------------------------
 
     @Override
-    public void onExpandStart(CardView viewCard,View expandingLayout) {
-        prepareExpandView(viewCard,expandingLayout);
+    public void onExpandStart(CardView viewCard, View expandingLayout) {
+        prepareExpandView(viewCard, expandingLayout);
     }
 
     @Override
-    public void onCollapseStart(CardView viewCard,View expandingLayout) {
-        prepareCollapseView(viewCard,expandingLayout);
+    public void onCollapseStart(CardView viewCard, View expandingLayout) {
+        prepareCollapseView(viewCard, expandingLayout);
     }
 
-    private void prepareExpandView(final CardView view,final View expandingLayout) {
-        final Card card = (Card)getItemAtPosition(getPositionForView
+    private void prepareExpandView(final CardView view, final View expandingLayout) {
+        final Card card = (Card) getItemAtPosition(getPositionForView
                 (view));
 
         /* Store the original top and bottom bounds of all the cells.*/
@@ -276,14 +277,14 @@ public class CardListView extends ListView implements CardView.OnExpandListAnima
         int childCount = getChildCount();
         for (int i = 0; i < childCount; i++) {
             View v = getChildAt(i);
-            if (Build.VERSION.SDK_INT >= 16){
+            if (Build.VERSION.SDK_INT >= 16) {
                 v.setHasTransientState(true);
             }
-            oldCoordinates.put(v, new int[] {v.getTop(), v.getBottom()});
+            oldCoordinates.put(v, new int[]{v.getTop(), v.getBottom()});
         }
 
          /* Update the layout so the extra content becomes visible.*/
-        if (expandingLayout!=null)
+        if (expandingLayout != null)
             expandingLayout.setVisibility(View.VISIBLE);
 
         /* Add an onPreDraw Listener to the listview. onPreDraw will get invoked after onLayout
@@ -364,7 +365,7 @@ public class CardListView extends ListView implements CardView.OnExpandListAnima
                 *  simply have their bounds animated appropriately. The cells that are no
                 *  longer children of the ListView also have their bounds animated, but
                 *  must also be added to a list of views which will be drawn in dispatchDraw.*/
-                for (View v: oldCoordinates.keySet()) {
+                for (View v : oldCoordinates.keySet()) {
                     int[] old = oldCoordinates.get(v);
                     v.setTop(old[0]);
                     v.setBottom(old[1]);
@@ -378,7 +379,7 @@ public class CardListView extends ListView implements CardView.OnExpandListAnima
                             int delta = i > index ? yTranslateBottom : -yTranslateTop;
                             animations.add(getAnimation(v, delta, delta));
                         }
-                        if (Build.VERSION.SDK_INT >= 16){
+                        if (Build.VERSION.SDK_INT >= 16) {
                             //I should use ViewCompat.setHasTransientState(v,false);
                             v.setHasTransientState(false);
                         }
@@ -408,14 +409,14 @@ public class CardListView extends ListView implements CardView.OnExpandListAnima
                         setClickable(true);
                         if (mViewsToDraw.size() > 0) {
                             for (View v : mViewsToDraw) {
-                                if (Build.VERSION.SDK_INT >= 16){
+                                if (Build.VERSION.SDK_INT >= 16) {
                                     v.setHasTransientState(false);
                                 }
                             }
                         }
                         mViewsToDraw.clear();
 
-                        if (card.getOnExpandAnimatorEndListener()!=null)
+                        if (card.getOnExpandAnimatorEndListener() != null)
                             card.getOnExpandAnimatorEndListener().onExpandEnd(card);
                     }
                 });
@@ -429,25 +430,25 @@ public class CardListView extends ListView implements CardView.OnExpandListAnima
      * This method collapses the view that was clicked and animates all the views
      * around it to close around the collapsing view. There are several steps required
      * to do this which are outlined below.
-     *
+     * <p/>
      * 1. Update the layout parameters of the view clicked so as to minimize its height
-     *    to the original collapsed (default) state.
+     * to the original collapsed (default) state.
      * 2. After invoking a layout, the listview will shift all the cells so as to display
-     *    them most efficiently. Therefore, during the first predraw pass, the listview
-     *    must be offset by some amount such that given the custom bound change upon
-     *    collapse, all the cells that need to be on the screen after the layout
-     *    are rendered by the listview.
+     * them most efficiently. Therefore, during the first predraw pass, the listview
+     * must be offset by some amount such that given the custom bound change upon
+     * collapse, all the cells that need to be on the screen after the layout
+     * are rendered by the listview.
      * 3. On the second predraw pass, all the items are first returned to their original
-     *    location (before the first layout).
+     * location (before the first layout).
      * 4. The collapsing view's bounds are animated to what the final values should be.
      * 5. The bounds above the collapsing view are animated downwards while the bounds
-     *    below the collapsing view are animated upwards.
+     * below the collapsing view are animated upwards.
      * 6. The extra text is faded out as its contents become visible throughout the
-     *    animation process.
+     * animation process.
      */
 
-    private void prepareCollapseView(final CardView view,final View expandingLayout) {
-        final Card card = (Card)getItemAtPosition(getPositionForView
+    private void prepareCollapseView(final CardView view, final View expandingLayout) {
+        final Card card = (Card) getItemAtPosition(getPositionForView
                 (view));
 
         /* Store the original top and bottom bounds of all the cells.*/
@@ -459,10 +460,10 @@ public class CardListView extends ListView implements CardView.OnExpandListAnima
         int childCount = getChildCount();
         for (int i = 0; i < childCount; i++) {
             View v = getChildAt(i);
-            if (Build.VERSION.SDK_INT >= 16){
+            if (Build.VERSION.SDK_INT >= 16) {
                 v.setHasTransientState(true);
             }
-            oldCoordinates.put(v, new int [] {v.getTop(), v.getBottom()});
+            oldCoordinates.put(v, new int[]{v.getTop(), v.getBottom()});
         }
 
         /* Update the layout so the extra content becomes invisible.*/
@@ -532,13 +533,13 @@ public class CardListView extends ListView implements CardView.OnExpandListAnima
                 int childCount = getChildCount();
                 for (int i = 0; i < childCount; i++) {
                     View v = getChildAt(i);
-                    int [] old = oldCoordinates.get(v);
+                    int[] old = oldCoordinates.get(v);
                     if (old != null) {
                         /* If the cell was present in the ListView before the collapse and
                         * after the collapse then the bounds are reset to their old values.*/
                         v.setTop(old[0]);
                         v.setBottom(old[1]);
-                        if (Build.VERSION.SDK_INT >= 16){
+                        if (Build.VERSION.SDK_INT >= 16) {
                             v.setHasTransientState(false);
                         }
                     } else {
@@ -554,7 +555,7 @@ public class CardListView extends ListView implements CardView.OnExpandListAnima
 
 
                 /* Animates all the cells present on the screen after the collapse. */
-                ArrayList <Animator> animations = new ArrayList<Animator>();
+                ArrayList<Animator> animations = new ArrayList<Animator>();
                 for (int i = 0; i < childCount; i++) {
                     View v = getChildAt(i);
                     if (v != view) {
@@ -604,7 +605,7 @@ public class CardListView extends ListView implements CardView.OnExpandListAnima
                         * should persist in an expanded state with the extra content visible.*/
                         expandingLayout.setAlpha(1);
 
-                        if (card.getOnCollapseAnimatorEndListener()!=null)
+                        if (card.getOnCollapseAnimatorEndListener() != null)
                             card.getOnCollapseAnimatorEndListener().onCollapseEnd(card);
                     }
                 });
@@ -616,12 +617,11 @@ public class CardListView extends ListView implements CardView.OnExpandListAnima
     }
 
 
-
     /**
      * Calculates the top and bottom bound changes of the selected item. These values are
      * also used to move the bounds of the items around the one that is actually being
      * expanded or collapsed.
-     *
+     * <p/>
      * This method can be modified to achieve different user experiences depending
      * on how you want the cells to expand or collapse. In this specific demo, the cells
      * always try to expand downwards (leaving top bound untouched), and similarly,
@@ -633,9 +633,8 @@ public class CardListView extends ListView implements CardView.OnExpandListAnima
      * full contents are visible. Lastly, this behaviour varies slightly near the bottom
      * of the listview in order to account for the fact that the bottom bounds of the actual
      * listview cannot be modified.
-     *
+     * <p/>
      * Fixes found in https://gist.github.com/jgilfelt/7342135.
-     *
      */
     private int[] getTopAndBottomTranslations(int top, int bottom, int yDelta,
                                               boolean isExpanding) {
@@ -650,7 +649,7 @@ public class CardListView extends ListView implements CardView.OnExpandListAnima
             if (isOverTop) {
                 yTranslateTop = top;
                 yTranslateBottom = yDelta - yTranslateTop;
-            } else if (isBelowBottom){
+            } else if (isBelowBottom) {
                 int deltaBelow = top + height + yDelta - getHeight();
                 yTranslateTop = top - deltaBelow < 0 ? top : deltaBelow;
                 yTranslateBottom = yDelta - yTranslateTop;
@@ -659,7 +658,7 @@ public class CardListView extends ListView implements CardView.OnExpandListAnima
             int offset = computeVerticalScrollOffset();
             int range = computeVerticalScrollRange();
             int extent = computeVerticalScrollExtent();
-            int leftoverExtent = range-offset - extent;
+            int leftoverExtent = range - offset - extent;
 
             boolean isCollapsingBelowBottom = (yTranslateBottom > leftoverExtent);
             boolean isCellCompletelyDisappearing = bottom - yTranslateBottom < 0;
@@ -674,7 +673,7 @@ public class CardListView extends ListView implements CardView.OnExpandListAnima
             }
         }
 
-        return new int[] {yTranslateTop, yTranslateBottom};
+        return new int[]{yTranslateTop, yTranslateBottom};
     }
 
 
@@ -688,8 +687,8 @@ public class CardListView extends ListView implements CardView.OnExpandListAnima
         int top = view.getTop();
         int bottom = view.getBottom();
 
-        int endTop = (int)(top + translateTop);
-        int endBottom = (int)(bottom + translateBottom);
+        int endTop = (int) (top + translateTop);
+        int endBottom = (int) (bottom + translateBottom);
 
         PropertyValuesHolder translationTop = PropertyValuesHolder.ofInt("top", top, endTop);
         PropertyValuesHolder translationBottom = PropertyValuesHolder.ofInt("bottom", bottom,
@@ -715,7 +714,7 @@ public class CardListView extends ListView implements CardView.OnExpandListAnima
             return;
         }
 
-        for (View v: mViewsToDraw) {
+        for (View v : mViewsToDraw) {
             canvas.translate(0, v.getTop());
             v.draw(canvas);
             canvas.translate(0, -v.getTop());

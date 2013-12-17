@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package com.example.todolist;
 
@@ -14,50 +14,49 @@ import android.widget.EditText;
 
 /**
  * @author desmond
- * 
  */
 
 public class NewItemFragment extends Fragment {
 
-	private OnNewItemAddedListener onNewItemAddedListener;
+    private OnNewItemAddedListener onNewItemAddedListener;
 
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
-		View view = inflater.inflate(R.layout.new_item_fragment, container, false);
-		final EditText myEditText = (EditText) view
-				.findViewById(R.id.myEditText);
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.new_item_fragment, container, false);
+        final EditText myEditText = (EditText) view
+                .findViewById(R.id.myEditText);
 
-		myEditText.setOnKeyListener(new View.OnKeyListener() {
+        myEditText.setOnKeyListener(new View.OnKeyListener() {
 
-			@Override
-			public boolean onKey(View v, int keyCode, KeyEvent event) {
-				if (event.getAction() == KeyEvent.ACTION_DOWN) {
-					if ((keyCode == KeyEvent.KEYCODE_DPAD_CENTER)
-							|| (keyCode == KeyEvent.KEYCODE_ENTER)) {
-						String newItem = myEditText.getText().toString();
-						onNewItemAddedListener.onNewItemAdded(newItem);
-						myEditText.setText("");
-						return true;
-					}
-				}
-				return false;
-			}
-		});
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (event.getAction() == KeyEvent.ACTION_DOWN) {
+                    if ((keyCode == KeyEvent.KEYCODE_DPAD_CENTER)
+                            || (keyCode == KeyEvent.KEYCODE_ENTER)) {
+                        String newItem = myEditText.getText().toString();
+                        onNewItemAddedListener.onNewItemAdded(newItem);
+                        myEditText.setText("");
+                        return true;
+                    }
+                }
+                return false;
+            }
+        });
 
-		return view; 
-	}
+        return view;
+    }
 
-	@Override
-	public void onAttach(Activity activity) {
-		super.onAttach(activity);
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
 
-		try {
-			onNewItemAddedListener = (OnNewItemAddedListener) activity;
-		} catch (ClassCastException e) {
-			throw new ClassCastException(activity.toString()
-					+ " must implement onNewItemAddedListener");
-		}
-	}
+        try {
+            onNewItemAddedListener = (OnNewItemAddedListener) activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString()
+                    + " must implement onNewItemAddedListener");
+        }
+    }
 
 }

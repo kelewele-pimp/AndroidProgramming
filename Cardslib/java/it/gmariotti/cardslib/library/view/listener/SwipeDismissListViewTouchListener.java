@@ -41,21 +41,21 @@ import it.gmariotti.cardslib.library.internal.Card;
  * </p>
  * It provides a SwipeDismissViewTouchListener for a CardList.
  * </p>
- *
+ * <p/>
  * A {@link View.OnTouchListener} that makes the list items in a {@link ListView}
  * dismissable. {@link ListView} is given special treatment because by default it handles touches
  * for its list items... i.e. it's in charge of drawing the pressed state (the list selector),
  * handling list item clicks, etc.
- *
+ * <p/>
  * <p>After creating the listener, the caller should also call
  * {@link ListView#setOnScrollListener(AbsListView.OnScrollListener)}, passing
  * in the scroll listener returned by {@link #makeScrollListener()}. If a scroll listener is
  * already assigned, the caller should still pass scroll changes through to this listener. This will
  * ensure that this {@link SwipeDismissListViewTouchListener} is paused during list view
  * scrolling.</p>
- *
+ * <p/>
  * <p>Example usage:</p>
- *
+ * <p/>
  * <pre>
  * SwipeDismissListViewTouchListener touchListener =
  *         new SwipeDismissListViewTouchListener(
@@ -71,10 +71,9 @@ import it.gmariotti.cardslib.library.internal.Card;
  * listView.setOnTouchListener(touchListener);
  * listView.setOnScrollListener(touchListener.makeScrollListener());
  * </pre>
- *
+ * <p/>
  * <p>This class Requires API level 12 or later due to use of {@link
  * ViewPropertyAnimator}.</p>
- *
  */
 public class SwipeDismissListViewTouchListener implements View.OnTouchListener {
     // Cached ViewConfiguration and system-wide constant values
@@ -106,7 +105,7 @@ public class SwipeDismissListViewTouchListener implements View.OnTouchListener {
         /**
          * Called to determine whether the given position can be dismissed.
          */
-        boolean canDismiss(int position,Card card);
+        boolean canDismiss(int position, Card card);
 
         /**
          * Called when the user has indicated they she would like to dismiss one or more list item
@@ -189,7 +188,7 @@ public class SwipeDismissListViewTouchListener implements View.OnTouchListener {
                 mListView.getLocationOnScreen(listViewCoords);
                 int x = (int) motionEvent.getRawX() - listViewCoords[0];
                 int y = (int) motionEvent.getRawY() - listViewCoords[1];
-                View child=null;
+                View child = null;
                 for (int i = 0; i < childCount; i++) {
                     child = mListView.getChildAt(i);
                     child.getHitRect(rect);
@@ -203,7 +202,7 @@ public class SwipeDismissListViewTouchListener implements View.OnTouchListener {
 
                     mDownX = motionEvent.getRawX();
                     mDownPosition = mListView.getPositionForView(mDownView);
-                    if (mCallbacks.canDismiss(mDownPosition,(Card) mListView.getAdapter().getItem(mDownPosition))) {
+                    if (mCallbacks.canDismiss(mDownPosition, (Card) mListView.getAdapter().getItem(mDownPosition))) {
                         mVelocityTracker = VelocityTracker.obtain();
                         mVelocityTracker.addMovement(motionEvent);
                     } else {

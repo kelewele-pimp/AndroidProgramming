@@ -16,13 +16,13 @@
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
-    
+
     <!-- Set custom color for the action bar.. nb: this style has to be called in the android manifest -->
     <style name="ActionBarBackground" parent="android:Theme.Light">
         <item name="android:windowTitleBackgroundStyle">@style/WindowTitleBackground</item>
     </style>
-    
-    <style name="WindowTitleBackground">     
+
+    <style name="WindowTitleBackground">
         <item name="android:background">@color/actionbar_color</item>
     </style>
 

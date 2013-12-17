@@ -58,7 +58,7 @@ public class CardCursorProvider extends ContentProvider {
     private static final UriMatcher uriMatcher;
 
 		 /*
-		  * The calls to addURI() go here, for all of the content URI patterns that the provider
+          * The calls to addURI() go here, for all of the content URI patterns that the provider
 		  * should recognize. For this snippet, only the calls for messages are shown.
    	      */
 
@@ -79,7 +79,7 @@ public class CardCursorProvider extends ContentProvider {
 		     * used. "content://com.example.mesmessage.db/messages/3" matches, but
 		     * "content://com.example.mesmessage.db/messages doesn't.
 		     */
-        uriMatcher.addURI(CardCursorContract.CONTENT_AUTHORITY, CardCursorContract.BASE_PATH_NAME.PATH_CardCursor +"/#", CardCursor_SINGLE_ROW);
+        uriMatcher.addURI(CardCursorContract.CONTENT_AUTHORITY, CardCursorContract.BASE_PATH_NAME.PATH_CardCursor + "/#", CardCursor_SINGLE_ROW);
 
         //TODO
         uriMatcher.addURI(CardCursorContract.CONTENT_AUTHORITY,
@@ -109,11 +109,15 @@ public class CardCursorProvider extends ContentProvider {
             //and the <type> value should be unique to the corresponding URI pattern.
             //A good choice for <name> is your company's name or some part of your application's
             //Android package name. A good choice for the <type> is a string that identifies the table associated with the URI.
-            case CardCursor_ALLROWS: return CardCursorContract.CardCursor.CONTENT_TYPE;
-            case CardCursor_SINGLE_ROW: return CardCursorContract.CardCursor.CONTENT_ITEM_TYPE;
-            case CardCursor_SEARCH  : return SearchManager.SUGGEST_MIME_TYPE;
+            case CardCursor_ALLROWS:
+                return CardCursorContract.CardCursor.CONTENT_TYPE;
+            case CardCursor_SINGLE_ROW:
+                return CardCursorContract.CardCursor.CONTENT_ITEM_TYPE;
+            case CardCursor_SEARCH:
+                return SearchManager.SUGGEST_MIME_TYPE;
 
-            default: throw new IllegalArgumentException("Unsupported URI: " + uri);
+            default:
+                throw new IllegalArgumentException("Unsupported URI: " + uri);
         }
     }
 
@@ -147,15 +151,15 @@ public class CardCursorProvider extends ContentProvider {
 
         SQLiteQueryBuilder queryBuilder = new SQLiteQueryBuilder();
 
-        String rowID="";
+        String rowID = "";
         // If this is a row query, limit the result set to the passed in row.
         switch (uriMatcher.match(uri)) {
-            case CardCursor_SINGLE_ROW :
+            case CardCursor_SINGLE_ROW:
                 queryBuilder.setTables(CardCursorSQLiteOpenHelper.Tables.CardCursor);
                 rowID = uri.getPathSegments().get(1);
                 queryBuilder.appendWhere(CardCursorContract.CardCursor.KeyColumns.KEY_ID + "=" + rowID);
                 break;
-            case CardCursor_ALLROWS :
+            case CardCursor_ALLROWS:
                 queryBuilder.setTables(CardCursorSQLiteOpenHelper.Tables.CardCursor);
                 if (TextUtils.isEmpty(sortOrder)) {
                     sortOrder = CardCursorContract.CardCursor.DEFAULT_SORT;
@@ -177,8 +181,6 @@ public class CardCursorProvider extends ContentProvider {
     }
 
 
-
-
     @Override
     public Uri insert(Uri uri, ContentValues values) {
 
@@ -191,7 +193,7 @@ public class CardCursorProvider extends ContentProvider {
         // object, you must use the null column hack parameter to specify the name of
         // the column that can be set to null.
         String nullColumnHack = null;
-        long id=-1;
+        long id = -1;
 
         if (uriMatcher.match(uri) == CardCursor_ALLROWS) {
             // Insert the values into the table
@@ -207,8 +209,7 @@ public class CardCursorProvider extends ContentProvider {
             getContext().getContentResolver().notifyChange(insertedId, null);
 
             return insertedId;
-        }
-        else
+        } else
             throw new SQLException(
                     "Problem while inserting into uri: " + uri);
 
@@ -221,8 +222,8 @@ public class CardCursorProvider extends ContentProvider {
 
         // Open a read / write database to support the transaction.
         SQLiteDatabase db = myOpenHelper.getWritableDatabase();
-        String rowID="";
-        int deleteCount=0;
+        String rowID = "";
+        int deleteCount = 0;
 
         // If this is a row URI, limit the deletion to the specified row.
         switch (uriMatcher.match(uri)) {
@@ -232,7 +233,7 @@ public class CardCursorProvider extends ContentProvider {
                         selection,
                         selectionArgs);
                 break;
-            case CardCursor_SINGLE_ROW :
+            case CardCursor_SINGLE_ROW:
                 rowID = uri.getPathSegments().get(1);
                 selection = CardCursorContract.CardCursor.KeyColumns.KEY_ID + "=" + rowID
                         + (!TextUtils.isEmpty(selection) ?
@@ -264,15 +265,15 @@ public class CardCursorProvider extends ContentProvider {
 
         // Open a read / write database to support the transaction.
         SQLiteDatabase db = myOpenHelper.getWritableDatabase();
-        String rowID="";
-        int updateCount=0;
+        String rowID = "";
+        int updateCount = 0;
 
         // If this is a row URI, limit the deletion to the specified row.
         switch (uriMatcher.match(uri)) {
-            case CardCursor_SINGLE_ROW :
+            case CardCursor_SINGLE_ROW:
                 rowID = uri.getPathSegments().get(1);
                 selection = CardCursorContract.CardCursor.KeyColumns.KEY_ID + "=" + rowID
-                        + (!TextUtils.isEmpty(selection) ?  " AND (" + selection + ')' : "");
+                        + (!TextUtils.isEmpty(selection) ? " AND (" + selection + ')' : "");
                 updateCount = db.update(CardCursorSQLiteOpenHelper.Tables.CardCursor,
                         values, selection, selectionArgs);
                 break;
@@ -281,7 +282,7 @@ public class CardCursorProvider extends ContentProvider {
         }
 
 
-        if (updateCount>0){
+        if (updateCount > 0) {
             // Notify any observers of the change in the data set.
             getContext().getContentResolver().notifyChange(uri, null);
         }
@@ -305,7 +306,7 @@ public class CardCursorProvider extends ContentProvider {
         //private static final String DATABASE_TABLE = CardCursorContract.CardCursor.TABLE_NAME;
 
         public CardCursorSQLiteOpenHelper(Context context, String name,
-                                     SQLiteDatabase.CursorFactory factory, int version) {
+                                          SQLiteDatabase.CursorFactory factory, int version) {
             super(context, name, factory, version);
         }
 

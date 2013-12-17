@@ -24,7 +24,6 @@ import android.support.v4.app.NavUtils;
 import android.view.MenuItem;
 
 
-
 /**
  * Base Fragment
  *
@@ -38,7 +37,7 @@ public abstract class BaseFragment extends Fragment {
         setTitle();
     }
 
-    protected void setTitle(){
+    protected void setTitle() {
         getActivity().setTitle(getTitleResourceId());
     }
 

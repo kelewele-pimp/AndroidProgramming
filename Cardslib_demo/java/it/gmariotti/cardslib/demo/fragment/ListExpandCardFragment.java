@@ -61,15 +61,15 @@ public class ListExpandCardFragment extends BaseFragment {
 
         //Init an array of Cards
         ArrayList<Card> cards = new ArrayList<Card>();
-        for (int i=0;i<200;i++){
-            Card card = init_standard_header_with_expandcollapse_button_custom_area("Header "+i);
+        for (int i = 0; i < 200; i++) {
+            Card card = init_standard_header_with_expandcollapse_button_custom_area("Header " + i);
             cards.add(card);
         }
 
-        CardArrayAdapter mCardArrayAdapter = new CardArrayAdapter(getActivity(),cards);
+        CardArrayAdapter mCardArrayAdapter = new CardArrayAdapter(getActivity(), cards);
 
         CardListView listView = (CardListView) getActivity().findViewById(R.id.carddemo_list_expand);
-        if (listView!=null){
+        if (listView != null) {
             listView.setAdapter(mCardArrayAdapter);
         }
     }

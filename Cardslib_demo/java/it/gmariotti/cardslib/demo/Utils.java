@@ -55,7 +55,7 @@ public class Utils {
         }
         ft.addToBackStack(null);
 
-        new AboutDialog().show(ft,"dialog_about");
+        new AboutDialog().show(ft, "dialog_about");
     }
 
     /**
@@ -110,7 +110,6 @@ public class Utils {
                     .create();
         }
     }
-
 
 
     public static boolean isTablet(Context context) {

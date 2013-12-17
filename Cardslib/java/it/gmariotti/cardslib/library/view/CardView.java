@@ -61,29 +61,29 @@ import it.gmariotti.cardslib.library.view.listener.SwipeDismissViewTouchListener
  * </code></pre>
  * Then create a model:
  * <pre><code>
- *
+ * <p/>
  *     //Create a Card
  *     Card card = new Card(getContext());
- *
+ * <p/>
  *     //Create a CardHeader
  *     CardHeader header = new CardHeader(getContext());
- *
+ * <p/>
  *     //Add Header to card
  *     card.addCardHeader(header);
- *
+ * <p/>
  * </code></pre>
  * Last get a reference to the `CardView` from your code, and set your `Card.
  * <pre><code>
  *     //Set card in the cardView
  *     CardView cardView = (CardView) getActivity().findViewById(R.id.carddemo);
- *
+ * <p/>
  *     cardView.setCard(card);
  * </code></pre>
  * You can easily build your layout.
  * </p>
  * The quickest way to start with this would be to copy one of this files and create your layout.
  * Then you can inflate your layout in the `CardView` using the attr: `card:card_layout_resourceID="@layout/my_layout`
- *  Example:
+ * Example:
  * <pre><code>
  *      <it.gmariotti.cardslib.library.view.CardView
  *       android:id="@+id/carddemo_thumb_url"
@@ -95,6 +95,7 @@ import it.gmariotti.cardslib.library.view.listener.SwipeDismissViewTouchListener
  *        android:layout_marginTop="12dp"/>
  * </code></pre>
  * </p>
+ *
  * @author Gabriele Mariotti (gabri.mariotti@gmail.com)
  */
 public class CardView extends BaseCardView {
@@ -125,12 +126,12 @@ public class CardView extends BaseCardView {
 
 
     /**
-     *  Main Layout
+     * Main Layout
      */
     protected View mInternalMainCardLayout;
 
     /**
-     *  Content Layout
+     * Content Layout
      */
     protected View mInternalContentLayout;
 
@@ -140,7 +141,7 @@ public class CardView extends BaseCardView {
     protected View mInternalInnerView;
 
     /**
-     *  Hidden layout used by expand/collapse action
+     * Hidden layout used by expand/collapse action
      */
     protected View mInternalExpandLayout;
 
@@ -150,7 +151,9 @@ public class CardView extends BaseCardView {
     protected View mInternalExpandInnerView;
 
 
-    /** Animator to expand/collapse */
+    /**
+     * Animator to expand/collapse
+     */
     protected Animator mExpandAnimator;
 
     /**
@@ -211,17 +214,17 @@ public class CardView extends BaseCardView {
      * @param card {@link Card} model
      */
     @Override
-    public void setCard(Card card){
+    public void setCard(Card card) {
 
         super.setCard(card);
-        if (card!=null){
-            mCardHeader=card.getCardHeader();
-            mCardThumbnail=card.getCardThumbnail();
-            mCardExpand=card.getCardExpand();
+        if (card != null) {
+            mCardHeader = card.getCardHeader();
+            mCardThumbnail = card.getCardThumbnail();
+            mCardExpand = card.getCardExpand();
         }
 
         //Retrieve all IDs
-        if (!isRecycle()){
+        if (!isRecycle()) {
             retrieveLayoutIDs();
         }
 
@@ -235,9 +238,9 @@ public class CardView extends BaseCardView {
      * @param card
      */
     public void refreshCard(Card card) {
-        mIsRecycle=true;
+        mIsRecycle = true;
         setCard(card);
-        mIsRecycle=false;
+        mIsRecycle = false;
     }
 
     /**
@@ -246,9 +249,9 @@ public class CardView extends BaseCardView {
      * @param card
      */
     public void replaceCard(Card card) {
-        mForceReplaceInnerLayout=true;
+        mForceReplaceInnerLayout = true;
         refreshCard(card);
-        mForceReplaceInnerLayout=false;
+        mForceReplaceInnerLayout = false;
     }
 
     //--------------------------------------------------------------------------
@@ -286,7 +289,7 @@ public class CardView extends BaseCardView {
      * Retrieve all Layouts IDs
      */
     @Override
-    protected void retrieveLayoutIDs(){
+    protected void retrieveLayoutIDs() {
 
         super.retrieveLayoutIDs();
 
@@ -309,11 +312,11 @@ public class CardView extends BaseCardView {
     /**
      * Setup Header View
      */
-    protected void setupHeaderView(){
+    protected void setupHeaderView() {
 
-        if (mCardHeader!=null){
+        if (mCardHeader != null) {
 
-            if (mInternalHeaderLayout !=null){
+            if (mInternalHeaderLayout != null) {
                 mInternalHeaderLayout.setVisibility(VISIBLE);
 
                 //Set recycle value (very important in a ListView)
@@ -323,7 +326,7 @@ public class CardView extends BaseCardView {
                 mInternalHeaderLayout.addCardHeader(mCardHeader);
 
                 //Config ExpandLayout and its animation
-                if (mInternalExpandLayout !=null && mCardHeader.isButtonExpandVisible() ){
+                if (mInternalExpandLayout != null && mCardHeader.isButtonExpandVisible()) {
 
                     //Create the expand/collapse animator
                     mInternalExpandLayout.getViewTreeObserver().addOnPreDrawListener(
@@ -351,13 +354,13 @@ public class CardView extends BaseCardView {
                 //Setup action and callback
                 setupExpandCollapseAction();
             }
-        }else{
+        } else {
             //No header. Hide layouts
-            if (mInternalHeaderLayout !=null){
+            if (mInternalHeaderLayout != null) {
                 mInternalHeaderLayout.setVisibility(GONE);
                 mInternalExpandLayout.setVisibility(View.GONE);
 
-                if (isForceReplaceInnerLayout()){
+                if (isForceReplaceInnerLayout()) {
                     mInternalHeaderLayout.addCardHeader(null);
                     //mInternalHeaderLayout.removeAllViews();
                 }
@@ -368,29 +371,29 @@ public class CardView extends BaseCardView {
     /**
      * Setup the Main View
      */
-    protected void setupMainView(){
-        if (mInternalContentLayout !=null){
+    protected void setupMainView() {
+        if (mInternalContentLayout != null) {
 
-            ViewGroup mParentGroup=null;
-            try{
+            ViewGroup mParentGroup = null;
+            try {
                 mParentGroup = (ViewGroup) mInternalContentLayout;
-            }catch (Exception e){
+            } catch (Exception e) {
                 setRecycle(false);
             }
 
             //Check if view can be recycled
             //It can happen in a listView, and improves performances
-            if (!isRecycle() || isForceReplaceInnerLayout()){
+            if (!isRecycle() || isForceReplaceInnerLayout()) {
 
-                if (isForceReplaceInnerLayout() && mInternalContentLayout!=null && mInternalInnerView!=null)
-                    ((ViewGroup)mInternalContentLayout).removeView(mInternalInnerView);
+                if (isForceReplaceInnerLayout() && mInternalContentLayout != null && mInternalInnerView != null)
+                    ((ViewGroup) mInternalContentLayout).removeView(mInternalInnerView);
 
-                mInternalInnerView=mCard.getInnerView(getContext(), (ViewGroup) mInternalContentLayout);
-            }else{
+                mInternalInnerView = mCard.getInnerView(getContext(), (ViewGroup) mInternalContentLayout);
+            } else {
                 //View can be recycled.
                 //Only setup Inner Elements
-                if (mCard.getInnerLayout()>-1)
-                    mCard.setupInnerViewElements(mParentGroup,mInternalInnerView);
+                if (mCard.getInnerLayout() > -1)
+                    mCard.setupInnerViewElements(mParentGroup, mInternalInnerView);
             }
         }
     }
@@ -399,13 +402,13 @@ public class CardView extends BaseCardView {
      * Setup the Thumbnail View
      */
     protected void setupThumbnailView() {
-        if (mInternalThumbnailLayout!=null){
-            if (mCardThumbnail!=null){
+        if (mInternalThumbnailLayout != null) {
+            if (mCardThumbnail != null) {
                 mInternalThumbnailLayout.setVisibility(VISIBLE);
                 mInternalThumbnailLayout.setRecycle(isRecycle());
                 mInternalThumbnailLayout.setForceReplaceInnerLayout(isForceReplaceInnerLayout());
                 mInternalThumbnailLayout.addCardThumbnail(mCardThumbnail);
-            }else{
+            } else {
                 mInternalThumbnailLayout.setVisibility(GONE);
             }
         }
@@ -417,10 +420,10 @@ public class CardView extends BaseCardView {
     protected void setupDrawableResources() {
 
         //Card
-        if (mCard!=null){
-            if (mCard.getBackgroundResourceId()!=0){
+        if (mCard != null) {
+            if (mCard.getBackgroundResourceId() != 0) {
                 changeBackgroundResourceId(mCard.getBackgroundResourceId());
-            }else if (mCard.getBackgroundResource()!=null){
+            } else if (mCard.getBackgroundResource() != null) {
                 changeBackgroundResource(mCard.getBackgroundResource());
             }
         }
@@ -435,11 +438,11 @@ public class CardView extends BaseCardView {
      */
     @SuppressWarnings("deprecation")
     @SuppressLint("NewApi")
-    protected void setupListeners(){
+    protected void setupListeners() {
 
         //Swipe listener
-        if (mCard.isSwipeable()){
-            this.setOnTouchListener(new SwipeDismissViewTouchListener(this, mCard,new SwipeDismissViewTouchListener.DismissCallbacks() {
+        if (mCard.isSwipeable()) {
+            this.setOnTouchListener(new SwipeDismissViewTouchListener(this, mCard, new SwipeDismissViewTouchListener.DismissCallbacks() {
                 @Override
                 public boolean canDismiss(Card card) {
                     return card.isSwipeable();
@@ -447,14 +450,14 @@ public class CardView extends BaseCardView {
 
                 @Override
                 public void onDismiss(CardView cardView, Card card) {
-                    final ViewGroup vg = (ViewGroup)(cardView.getParent());
-                    if (vg!=null){
+                    final ViewGroup vg = (ViewGroup) (cardView.getParent());
+                    if (vg != null) {
                         vg.removeView(cardView);
                         card.onSwipeCard();
                     }
                 }
             }));
-        }else{
+        } else {
             this.setOnTouchListener(null);
         }
 
@@ -463,14 +466,14 @@ public class CardView extends BaseCardView {
         //Reset Partial Listeners
         resetPartialListeners();
 
-        if (mCard.isClickable()){
+        if (mCard.isClickable()) {
             //Set the onClickListener
             if (mCard.getOnClickListener() != null) {
                 this.setOnClickListener(new OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if (mCard.getOnClickListener()!=null)
-                            mCard.getOnClickListener().onClick(mCard,v);
+                        if (mCard.getOnClickListener() != null)
+                            mCard.getOnClickListener().onClick(mCard, v);
                     }
                 });
 
@@ -479,27 +482,27 @@ public class CardView extends BaseCardView {
                 //    this.setClickable(true);
                 //}
 
-            }else{
-                HashMap<Integer,Card.OnCardClickListener> mMultipleOnClickListner=mCard.getMultipleOnClickListener();
-                if (mMultipleOnClickListner!=null && !mMultipleOnClickListner.isEmpty()){
+            } else {
+                HashMap<Integer, Card.OnCardClickListener> mMultipleOnClickListner = mCard.getMultipleOnClickListener();
+                if (mMultipleOnClickListner != null && !mMultipleOnClickListner.isEmpty()) {
 
-                    for (int key:mMultipleOnClickListner.keySet()){
-                        View viewClickable= decodeAreaOnClickListener(key);
-                        final Card.OnCardClickListener mListener=mMultipleOnClickListner.get(key);
-                        if (viewClickable!=null){
+                    for (int key : mMultipleOnClickListner.keySet()) {
+                        View viewClickable = decodeAreaOnClickListener(key);
+                        final Card.OnCardClickListener mListener = mMultipleOnClickListner.get(key);
+                        if (viewClickable != null) {
                             //Add listener to this view
                             viewClickable.setOnClickListener(new OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
                                     //Callback to card listener
-                                    if (mListener!=null)
-                                        mListener.onClick(mCard,v);
+                                    if (mListener != null)
+                                        mListener.onClick(mCard, v);
                                 }
                             });
 
                             //Add Selector to this view
                             if (key > Card.CLICK_LISTENER_ALL_VIEW) {
-                                if (Build.VERSION.SDK_INT >= 16){
+                                if (Build.VERSION.SDK_INT >= 16) {
                                     viewClickable.setBackground(getResources().getDrawable(R.drawable.card_selector));
                                 } else {
                                     viewClickable.setBackgroundDrawable(getResources().getDrawable(R.drawable.card_selector));
@@ -507,26 +510,26 @@ public class CardView extends BaseCardView {
                             }
                         }
                     }
-                }else{
+                } else {
                     //There aren't listners
                     this.setClickable(false);
                 }
             }
-        }else{
+        } else {
             this.setClickable(false);
         }
 
         //LongClick listener
-        if(mCard.isLongClickable()){
+        if (mCard.isLongClickable()) {
             this.setOnLongClickListener(new OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
-                    if (mCard.getOnLongClickListener()!=null)
-                        return mCard.getOnLongClickListener().onLongClick(mCard,v);
+                    if (mCard.getOnLongClickListener() != null)
+                        return mCard.getOnLongClickListener().onLongClick(mCard, v);
                     return false;
                 }
             });
-        }else{
+        } else {
             this.setLongClickable(false);
         }
     }
@@ -535,43 +538,42 @@ public class CardView extends BaseCardView {
      * Reset all partial listeners
      */
     protected void resetPartialListeners() {
-        View viewClickable= decodeAreaOnClickListener(Card.CLICK_LISTENER_HEADER_VIEW);
-        if (viewClickable!=null)
+        View viewClickable = decodeAreaOnClickListener(Card.CLICK_LISTENER_HEADER_VIEW);
+        if (viewClickable != null)
             viewClickable.setClickable(false);
 
-        viewClickable= decodeAreaOnClickListener(Card.CLICK_LISTENER_THUMBNAIL_VIEW);
-        if (viewClickable!=null)
+        viewClickable = decodeAreaOnClickListener(Card.CLICK_LISTENER_THUMBNAIL_VIEW);
+        if (viewClickable != null)
             viewClickable.setClickable(false);
 
-        viewClickable= decodeAreaOnClickListener(Card.CLICK_LISTENER_CONTENT_VIEW);
-        if (viewClickable!=null)
+        viewClickable = decodeAreaOnClickListener(Card.CLICK_LISTENER_CONTENT_VIEW);
+        if (viewClickable != null)
             viewClickable.setClickable(false);
     }
 
     /**
-     *
      * @param area
      * @return
      */
-    protected View decodeAreaOnClickListener(int area){
+    protected View decodeAreaOnClickListener(int area) {
 
-        if (area<Card.CLICK_LISTENER_ALL_VIEW && area>Card.CLICK_LISTENER_CONTENT_VIEW)
+        if (area < Card.CLICK_LISTENER_ALL_VIEW && area > Card.CLICK_LISTENER_CONTENT_VIEW)
             return null;
 
         View view = null;
 
-        switch (area){
-            case Card.CLICK_LISTENER_ALL_VIEW :
-                view=this;
+        switch (area) {
+            case Card.CLICK_LISTENER_ALL_VIEW:
+                view = this;
                 break;
-            case Card.CLICK_LISTENER_HEADER_VIEW :
-                view=mInternalHeaderLayout;
+            case Card.CLICK_LISTENER_HEADER_VIEW:
+                view = mInternalHeaderLayout;
                 break;
             case Card.CLICK_LISTENER_THUMBNAIL_VIEW:
-                view=mInternalThumbnailLayout;
+                view = mInternalThumbnailLayout;
                 break;
             case Card.CLICK_LISTENER_CONTENT_VIEW:
-                view=mInternalContentLayout;
+                view = mInternalContentLayout;
                 break;
             default:
                 break;
@@ -584,28 +586,28 @@ public class CardView extends BaseCardView {
     //--------------------------------------------------------------------------
 
     protected int mCollapsedHeight;
-    protected int mExpandedHeight=-1;
+    protected int mExpandedHeight = -1;
 
     /**
      * Add ClickListener to expand and collapse hidden view
      */
     protected void setupExpandCollapseAction() {
-        if (mInternalExpandLayout!=null){
+        if (mInternalExpandLayout != null) {
             mInternalExpandLayout.setVisibility(View.GONE);
 
-            if (mCardHeader!=null){
-                if (mCardHeader.isButtonExpandVisible()){
-                    mInternalHeaderLayout.setOnClickExpandCollapseActionListener(new TitleViewOnClickListener(mInternalExpandLayout,mCard));
+            if (mCardHeader != null) {
+                if (mCardHeader.isButtonExpandVisible()) {
+                    mInternalHeaderLayout.setOnClickExpandCollapseActionListener(new TitleViewOnClickListener(mInternalExpandLayout, mCard));
 
-                    if (isExpanded()){
+                    if (isExpanded()) {
                         //Make layout visible and button selected
                         mInternalExpandLayout.setVisibility(View.VISIBLE);
-                        if(mInternalHeaderLayout.getImageButtonExpand()!=null)
+                        if (mInternalHeaderLayout.getImageButtonExpand() != null)
                             mInternalHeaderLayout.getImageButtonExpand().setSelected(true);
-                    }else{
+                    } else {
                         //Make layout hidden and button not selected
                         mInternalExpandLayout.setVisibility(View.GONE);
-                        if(mInternalHeaderLayout.getImageButtonExpand()!=null)
+                        if (mInternalHeaderLayout.getImageButtonExpand() != null)
                             mInternalHeaderLayout.getImageButtonExpand().setSelected(false);
                     }
 
@@ -617,22 +619,22 @@ public class CardView extends BaseCardView {
     /**
      * Setup Expand View
      */
-    protected void setupExpandView(){
-        if (mInternalExpandLayout!=null && mCardExpand!=null){
+    protected void setupExpandView() {
+        if (mInternalExpandLayout != null && mCardExpand != null) {
 
             //Check if view can be recycled
             //It can happen in a listView, and improves performances
-            if (!isRecycle() || isForceReplaceInnerLayout()){
+            if (!isRecycle() || isForceReplaceInnerLayout()) {
 
-                if (isForceReplaceInnerLayout() && mInternalExpandLayout!=null && mInternalExpandInnerView!=null)
-                    ((ViewGroup)mInternalExpandLayout).removeView(mInternalExpandInnerView);
+                if (isForceReplaceInnerLayout() && mInternalExpandLayout != null && mInternalExpandInnerView != null)
+                    ((ViewGroup) mInternalExpandLayout).removeView(mInternalExpandInnerView);
 
-                mInternalExpandInnerView=mCardExpand.getInnerView(getContext(),(ViewGroup) mInternalExpandLayout);
-            }else{
+                mInternalExpandInnerView = mCardExpand.getInnerView(getContext(), (ViewGroup) mInternalExpandLayout);
+            } else {
                 //View can be recycled.
                 //Only setup Inner Elements
-                if (mCardExpand.getInnerLayout()>-1)
-                    mCardExpand.setupInnerViewElements((ViewGroup)mInternalExpandLayout,mInternalExpandInnerView);
+                if (mCardExpand.getInnerLayout() > -1)
+                    mCardExpand.setupInnerViewElements((ViewGroup) mInternalExpandLayout, mInternalExpandInnerView);
             }
         }
     }
@@ -647,9 +649,9 @@ public class CardView extends BaseCardView {
         private View mContentParent;
         private Card mCard;
 
-        private TitleViewOnClickListener(View contentParent,Card card) {
+        private TitleViewOnClickListener(View contentParent, Card card) {
             this.mContentParent = contentParent;
-            this.mCard=card;
+            this.mCard = card;
         }
 
         @Override
@@ -669,10 +671,10 @@ public class CardView extends BaseCardView {
          */
         private void animateExpanding() {
 
-            if (getOnExpandListAnimatorListener()!=null){
+            if (getOnExpandListAnimatorListener() != null) {
                 //List Animator
                 getOnExpandListAnimatorListener().onExpandStart(mCard.getCardView(), mContentParent);
-            }else{
+            } else {
                 //Std animator
                 mContentParent.setVisibility(View.VISIBLE);
                 mExpandAnimator.addListener(new AnimatorListenerAdapter() {
@@ -680,7 +682,7 @@ public class CardView extends BaseCardView {
                     public void onAnimationEnd(Animator animation) {
                         mCard.setExpanded(true);
                         //Callback
-                        if (mCard.getOnExpandAnimatorEndListener()!=null)
+                        if (mCard.getOnExpandAnimatorEndListener() != null)
                             mCard.getOnExpandAnimatorEndListener().onExpandEnd(mCard);
                     }
                 });
@@ -693,10 +695,10 @@ public class CardView extends BaseCardView {
          */
         private void animateCollapsing() {
 
-            if (getOnExpandListAnimatorListener()!=null){
+            if (getOnExpandListAnimatorListener() != null) {
                 //There is a List Animator.
                 getOnExpandListAnimatorListener().onCollapseStart(mCard.getCardView(), mContentParent);
-            }else{
+            } else {
                 //Std animator
                 int origHeight = mContentParent.getHeight();
 
@@ -711,7 +713,7 @@ public class CardView extends BaseCardView {
                         mContentParent.setVisibility(View.GONE);
                         mCard.setExpanded(false);
                         //Callback
-                        if (mCard.getOnCollapseAnimatorEndListener()!=null)
+                        if (mCard.getOnCollapseAnimatorEndListener() != null)
                             mCard.getOnCollapseAnimatorEndListener().onCollapseEnd(mCard);
                     }
 
@@ -748,8 +750,7 @@ public class CardView extends BaseCardView {
     }
 
     @Override
-    protected void onSizeChanged(int xNew, int yNew, int xOld, int yOld)
-    {
+    protected void onSizeChanged(int xNew, int yNew, int xOld, int yOld) {
         super.onSizeChanged(xNew, yNew, xOld, yOld);
         mExpandedHeight = yNew;
     }
@@ -762,8 +763,9 @@ public class CardView extends BaseCardView {
      * Interface to listen any callbacks when expand/collapse animation starts
      */
     public interface OnExpandListAnimatorListener {
-        public void onExpandStart(CardView viewCard,View expandingLayout);
-        public void onCollapseStart(CardView viewCard,View expandingLayout);
+        public void onExpandStart(CardView viewCard, View expandingLayout);
+
+        public void onCollapseStart(CardView viewCard, View expandingLayout);
     }
 
     /**
@@ -792,13 +794,14 @@ public class CardView extends BaseCardView {
 
     /**
      * Create a {@link android.graphics.Bitmap} from CardView
+     *
      * @return
      */
-    public Bitmap createBitmap(){
+    public Bitmap createBitmap() {
 
-        if (getWidth()<=0 && getHeight()<=0){
-            int spec = MeasureSpec.makeMeasureSpec( 0,MeasureSpec.UNSPECIFIED);
-            measure(spec,spec);
+        if (getWidth() <= 0 && getHeight() <= 0) {
+            int spec = MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED);
+            measure(spec, spec);
             layout(0, 0, getMeasuredWidth(), getMeasuredHeight());
         }
 
@@ -843,19 +846,19 @@ public class CardView extends BaseCardView {
      * @return <code>true</code> if the card is expanded
      */
     public boolean isExpanded() {
-        if (mCard!=null){
-               return mCard.isExpanded();
-        }else
+        if (mCard != null) {
+            return mCard.isExpanded();
+        } else
             return false;
     }
 
     /**
      * Sets the card as expanded or collapsed
      *
-     * @param expanded  <code>true</code> if the card is expanded
+     * @param expanded <code>true</code> if the card is expanded
      */
     public void setExpanded(boolean expanded) {
-        if (mCard!=null){
+        if (mCard != null) {
             mCard.setExpanded(expanded);
         }
     }
@@ -876,8 +879,8 @@ public class CardView extends BaseCardView {
      * @param drawableResourceId drawable resource Id
      */
     public void changeBackgroundResourceId(int drawableResourceId) {
-        if (drawableResourceId!=0){
-            if (mInternalMainCardLayout!=null){
+        if (drawableResourceId != 0) {
+            if (mInternalMainCardLayout != null) {
                 mInternalMainCardLayout.setBackgroundResource(drawableResourceId);
             }
         }
@@ -889,17 +892,15 @@ public class CardView extends BaseCardView {
      * @param drawableResource drawable resource
      */
     public void changeBackgroundResource(Drawable drawableResource) {
-        if (drawableResource!=null){
-            if (mInternalMainCardLayout!=null){
-                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+        if (drawableResource != null) {
+            if (mInternalMainCardLayout != null) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
                     mInternalMainCardLayout.setBackground(drawableResource);
                 else
                     mInternalMainCardLayout.setBackgroundDrawable(drawableResource);
             }
         }
     }
-
-
 
 
 }

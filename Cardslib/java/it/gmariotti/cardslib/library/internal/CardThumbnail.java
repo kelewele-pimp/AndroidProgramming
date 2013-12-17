@@ -35,10 +35,10 @@ import it.gmariotti.cardslib.library.internal.base.BaseCard;
  * <pre><code>
  *        //Create thumbnail
  *        CardThumbnail thumb = new CardThumbnail(getActivity().getApplicationContext());
- *
+ * <p/>
  *        //Set resource
  *        thumb.setDrawableResource(R.drawable.carddemo_ic_gmaps_large);
- *
+ * <p/>
  *        //Add thumbnail to a card
  *        card.addCardThumbnail(thumb);
  * </code></pre>
@@ -47,17 +47,17 @@ import it.gmariotti.cardslib.library.internal.base.BaseCard;
  *        //Set resource
  *        thumb.setUrlResource("https://mydomain.com/photo.jpg");
  * </code></pre>
- *
+ * <p/>
  * You can easily extend and customize this class providing your inner layout and
  * setting your values with {@link #setupInnerViewElements(android.view.ViewGroup, android.view.View)} method.
  * <pre><code>
- *
+ * <p/>
  *     public class CustomThumbCard extends CardThumbnail {
- *
+ * <p/>
  *         public CustomThumbCard(Context context) {
  *           super(context);
  *         }
- *
+ * <p/>
  *         @Override
  *         public void setupInnerViewElements(ViewGroup parent, View viewImage) {
  *            if (viewImage!=null){
@@ -68,12 +68,13 @@ import it.gmariotti.cardslib.library.internal.base.BaseCard;
  *    }
  * </code></pre>
  * </p>
+ *
  * @author Gabriele Mariotti (gabri.mariotti@gmail.com)
  */
 public class CardThumbnail extends BaseCard {
 
     /**
-     *  Resource Drawable ID
+     * Resource Drawable ID
      */
     protected int drawableResource;
 
@@ -83,19 +84,19 @@ public class CardThumbnail extends BaseCard {
     protected String urlResource;
 
     /**
-     *  Uses an external library to load image
+     * Uses an external library to load image
      */
-    protected boolean mExternalUsage=false;
+    protected boolean mExternalUsage = false;
 
     /**
      * Placeholder
      */
-    protected int placeholderResourceId=0;
+    protected int placeholderResourceId = 0;
 
     /**
      * errorResourceId: image used if an error occurs while downloading file
      */
-    protected int errorResourceId=0;
+    protected int errorResourceId = 0;
 
     // -------------------------------------------------------------
     // Constructors
@@ -104,7 +105,7 @@ public class CardThumbnail extends BaseCard {
     /**
      * Constructor
      *
-     * @param context  context
+     * @param context context
      */
     public CardThumbnail(Context context) {
         super(context);
@@ -114,20 +115,20 @@ public class CardThumbnail extends BaseCard {
      * ThumbnailCard doesn't provide a Thumbnail Inner Layout.
      * Don't use it!
      *
-     * @param context   context
+     * @param context     context
      * @param innerLayout layout resource ID
      */
-    public CardThumbnail(Context context,int innerLayout) {
+    public CardThumbnail(Context context, int innerLayout) {
         super(context);
     }
 
     /**
      * This method sets values to header elements and customizes view.
-     *
+     * <p/>
      * Override this method to set your elements inside InnerView.
      *
-     * @param parent  parent view (Inner Frame)
-     * @param imageView   ImageView
+     * @param parent    parent view (Inner Frame)
+     * @param imageView ImageView
      */
     @Override
     public void setupInnerViewElements(ViewGroup parent, View imageView) {
@@ -136,6 +137,7 @@ public class CardThumbnail extends BaseCard {
 
     /**
      * Returns the resource ID for Thumbnail
+     *
      * @return resource ID
      */
     public int getDrawableResource() {

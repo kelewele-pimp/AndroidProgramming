@@ -66,32 +66,32 @@ public class ListBaseFragment extends BaseFragment {
     private void initCards() {
 
         ArrayList<Card> cards = new ArrayList<Card>();
-        for (int i=0;i<200;i++){
-            CardExample card = new CardExample(getActivity(),"My title "+i,"Inner text "+i);
+        for (int i = 0; i < 200; i++) {
+            CardExample card = new CardExample(getActivity(), "My title " + i, "Inner text " + i);
             cards.add(card);
         }
 
-        CardArrayAdapter mCardArrayAdapter = new CardArrayAdapter(getActivity(),cards);
+        CardArrayAdapter mCardArrayAdapter = new CardArrayAdapter(getActivity(), cards);
 
         CardListView listView = (CardListView) getActivity().findViewById(R.id.carddemo_list_base1);
-        if (listView!=null){
+        if (listView != null) {
             listView.setAdapter(mCardArrayAdapter);
         }
     }
 
-    public class CardExample extends Card{
+    public class CardExample extends Card {
 
         protected String mTitleHeader;
         protected String mTitleMain;
 
-        public CardExample(Context context,String titleHeader,String titleMain) {
+        public CardExample(Context context, String titleHeader, String titleMain) {
             super(context, R.layout.carddemo_example_inner_content);
-            this.mTitleHeader=titleHeader;
-            this.mTitleMain=titleMain;
+            this.mTitleHeader = titleHeader;
+            this.mTitleMain = titleMain;
             init();
         }
 
-        private void init(){
+        private void init() {
 
             //Create a CardHeader
             CardHeader header = new CardHeader(getActivity());
@@ -103,7 +103,7 @@ public class ListBaseFragment extends BaseFragment {
             header.setPopupMenu(R.menu.popupmain, new CardHeader.OnClickCardHeaderPopupMenuListener() {
                 @Override
                 public void onMenuItemClick(BaseCard card, MenuItem item) {
-                    Toast.makeText(getActivity(), "Click on card menu" + mTitleHeader +" item=" +  item.getTitle(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Click on card menu" + mTitleHeader + " item=" + item.getTitle(), Toast.LENGTH_SHORT).show();
                 }
             });
             addCardHeader(header);

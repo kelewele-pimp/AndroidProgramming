@@ -98,15 +98,15 @@ public class GplayCard extends Card {
             //viewImage.getLayoutParams().width = 196;
             //viewImage.getLayoutParams().height = 196;
             if (viewImage != null) {
-                if (parent!=null && parent.getResources()!=null){
-                    DisplayMetrics metrics=parent.getResources().getDisplayMetrics();
+                if (parent != null && parent.getResources() != null) {
+                    DisplayMetrics metrics = parent.getResources().getDisplayMetrics();
 
                     int base = 98;
 
-                    if (metrics!=null){
-                        viewImage.getLayoutParams().width = (int)(base*metrics.density);
-                        viewImage.getLayoutParams().height = (int)(base*metrics.density);
-                    }else{
+                    if (metrics != null) {
+                        viewImage.getLayoutParams().width = (int) (base * metrics.density);
+                        viewImage.getLayoutParams().height = (int) (base * metrics.density);
+                    } else {
                         viewImage.getLayoutParams().width = 196;
                         viewImage.getLayoutParams().height = 196;
                     }

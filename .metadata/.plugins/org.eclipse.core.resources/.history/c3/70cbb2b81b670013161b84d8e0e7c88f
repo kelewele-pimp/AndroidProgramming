@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <EditText
+        android:id="@+id/professor_dialog_pname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="name..." >
+
+        <requestFocus />
+    </EditText>
+
+    <EditText
+        android:id="@+id/professor_dialog_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="e-mail..."
+        android:inputType="textEmailAddress" />
+
+    <EditText
+        android:id="@+id/professor_dialog_course"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="course..." />
+    
+    <EditText 
+        android:id="@+id/professor_dialog_room"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="room.."/>
+    
+    <Button
+        android:id="professor_dialog_btnadd"
+        android:layout_width="164dp"
+        android:layout_height="wrap_content"
+      	android:gravity="center_vertical"
+        android:text="ADD" />
+
+</LinearLayout>

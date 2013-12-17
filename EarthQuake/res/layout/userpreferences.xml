@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
     <CheckBoxPreference
         android:defaultValue="true"
@@ -15,7 +15,7 @@
         android:key="PREF_UPDATE_FREQ"
         android:summary="Frequency at which to refresh earthquake list"
         android:title="Refresh Frequency" />
-    
+
     <ListPreference
         android:defaultValue="3"
         android:dialogTitle="Magnitude"

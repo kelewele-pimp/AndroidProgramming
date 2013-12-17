@@ -52,7 +52,7 @@ public class ColorCard extends Card {
         setOnClickListener(new OnCardClickListener() {
             @Override
             public void onClick(Card card, View view) {
-                Toast.makeText(getContext(), "Click Listener card="+count, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Click Listener card=" + count, Toast.LENGTH_SHORT).show();
             }
         });
     }

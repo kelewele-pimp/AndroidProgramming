@@ -58,7 +58,6 @@ public class ChangeValueCardFragment extends BaseFragment {
     private CardView cardView4;
 
 
-
     @Override
     public int getTitleResourceId() {
         return R.string.carddemo_title_card_changevalue;
@@ -87,20 +86,20 @@ public class ChangeValueCardFragment extends BaseFragment {
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.changevalue, menu);
-        super.onCreateOptionsMenu(menu,inflater);
+        super.onCreateOptionsMenu(menu, inflater);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int itemId = item.getItemId();
-		if (itemId == R.id.menu_refresh) {
-			changeCard1();
-			changeCard2();
-			changeCard3();
-			changeCard4();
-			return true;
-		} else {
-		}
+        if (itemId == R.id.menu_refresh) {
+            changeCard1();
+            changeCard2();
+            changeCard3();
+            changeCard4();
+            return true;
+        } else {
+        }
         return false;
     }
 
@@ -110,15 +109,15 @@ public class ChangeValueCardFragment extends BaseFragment {
      */
     private void initCards() {
 
-        card1 = new CardExample(getActivity(),"Header", "Title");
+        card1 = new CardExample(getActivity(), "Header", "Title");
         cardView1 = (CardView) getActivity().findViewById(R.id.carddemo_card_changevalue_id);
         cardView1.setCard(card1);
 
-        card2 = new CardExample2(getActivity(),"Header", "Title");
+        card2 = new CardExample2(getActivity(), "Header", "Title");
         cardView2 = (CardView) getActivity().findViewById(R.id.carddemo_card_changevalue_id2);
         cardView2.setCard(card2);
 
-        card3 = new CardExample3(getActivity(),"Header", "Title");
+        card3 = new CardExample3(getActivity(), "Header", "Title");
         cardView3 = (CardView) getActivity().findViewById(R.id.carddemo_card_changevalue_id3);
         cardView3.setCard(card3);
 
@@ -129,7 +128,7 @@ public class ChangeValueCardFragment extends BaseFragment {
         StateListDrawable initDrawable = new StateListDrawable();
         initDrawable.addState(new int[]{android.R.attr.state_pressed},
                 getResources().getDrawable(R.drawable.pressed_background_card));
-        initDrawable.addState(new int[] {}, getResources().getDrawable(R.drawable.demo_card_background_color1));
+        initDrawable.addState(new int[]{}, getResources().getDrawable(R.drawable.demo_card_background_color1));
         card4.setBackgroundResource(initDrawable);
 
         cardView4.setCard(card4);
@@ -180,7 +179,7 @@ public class ChangeValueCardFragment extends BaseFragment {
     private void changeCard3() {
 
         card3.setInnerLayout(R.layout.carddemo_suggested_inner_content);
-        card3.force=true;
+        card3.force = true;
         cardView3.replaceCard(card3);
     }
 
@@ -192,26 +191,26 @@ public class ChangeValueCardFragment extends BaseFragment {
         StateListDrawable newDrawable = new StateListDrawable();
         newDrawable.addState(new int[]{android.R.attr.state_pressed},
                 getResources().getDrawable(R.drawable.pressed_background_card));
-        newDrawable.addState(new int[] {}, getResources().getDrawable(R.drawable.demo_card_background_color2));
+        newDrawable.addState(new int[]{}, getResources().getDrawable(R.drawable.demo_card_background_color2));
 
         card4.setBackgroundResource(newDrawable);
         cardView4.refreshCard(card4);
 
     }
 
-    public class CardExample extends Card{
+    public class CardExample extends Card {
 
         protected String mTitleHeader;
         protected String mTitleMain;
 
-        public CardExample(Context context,String titleHeader,String titleMain) {
+        public CardExample(Context context, String titleHeader, String titleMain) {
             super(context, R.layout.carddemo_example_inner_content);
-            this.mTitleHeader=titleHeader;
-            this.mTitleMain=titleMain;
+            this.mTitleHeader = titleHeader;
+            this.mTitleMain = titleMain;
             init();
         }
 
-        private void init(){
+        private void init() {
 
             //Create a CardHeader
             CardHeader header = new CardHeader(getActivity());
@@ -223,7 +222,7 @@ public class ChangeValueCardFragment extends BaseFragment {
             header.setPopupMenu(R.menu.popupmain, new CardHeader.OnClickCardHeaderPopupMenuListener() {
                 @Override
                 public void onMenuItemClick(BaseCard card, MenuItem item) {
-                    Toast.makeText(getActivity(), "Click on card menu" + mTitleHeader +" item=" +  item.getTitle(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Click on card menu" + mTitleHeader + " item=" + item.getTitle(), Toast.LENGTH_SHORT).show();
                 }
             });
             addCardHeader(header);
@@ -243,19 +242,19 @@ public class ChangeValueCardFragment extends BaseFragment {
     }
 
 
-    public class CardExample2 extends Card{
+    public class CardExample2 extends Card {
 
         protected String mTitleHeader;
         protected String mTitleMain;
 
-        public CardExample2(Context context,String titleHeader,String titleMain) {
+        public CardExample2(Context context, String titleHeader, String titleMain) {
             super(context);
-            this.mTitleHeader=titleHeader;
-            this.mTitleMain=titleMain;
+            this.mTitleHeader = titleHeader;
+            this.mTitleMain = titleMain;
             init();
         }
 
-        private void init(){
+        private void init() {
 
             //Create a CardHeader
             CardHeader header = new CardHeader(getActivity());
@@ -282,20 +281,20 @@ public class ChangeValueCardFragment extends BaseFragment {
 
     }
 
-    public class CardExample3 extends Card{
+    public class CardExample3 extends Card {
 
         protected String mTitleHeader;
         protected String mTitleMain;
-        protected boolean force=false;
+        protected boolean force = false;
 
-        public CardExample3(Context context,String titleHeader,String titleMain) {
+        public CardExample3(Context context, String titleHeader, String titleMain) {
             super(context);
-            this.mTitleHeader=titleHeader;
-            this.mTitleMain=titleMain;
+            this.mTitleHeader = titleHeader;
+            this.mTitleMain = titleMain;
             init();
         }
 
-        private void init(){
+        private void init() {
 
             //Create a CardHeader
             CardHeader header = new CardHeader(getActivity());
@@ -315,12 +314,12 @@ public class ChangeValueCardFragment extends BaseFragment {
         @Override
         public void setupInnerViewElements(ViewGroup parent, View view) {
 
-            if (force){
+            if (force) {
                 TextView title = (TextView) view.findViewById(R.id.carddemo_suggested_title);
                 TextView member = (TextView) view.findViewById(R.id.carddemo_suggested_memeber);
                 TextView subtitle = (TextView) view.findViewById(R.id.carddemo_suggested_subtitle);
                 TextView community = (TextView) view.findViewById(R.id.carddemo_suggested_community);
-                if (title!=null && member!=null && subtitle!=null && community!=null){
+                if (title != null && member != null && subtitle != null && community != null) {
                     if (title != null)
                         title.setText(R.string.demo_suggested_title);
 
@@ -333,8 +332,8 @@ public class ChangeValueCardFragment extends BaseFragment {
                     if (community != null)
                         community.setText(R.string.demo_suggested_community);
                 }
-            }else{
-                super.setupInnerViewElements(parent,view);
+            } else {
+                super.setupInnerViewElements(parent, view);
             }
         }
 

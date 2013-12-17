@@ -46,7 +46,7 @@ public abstract class BaseCardArrayAdapter extends ArrayAdapter<Card> {
     /**
      * Used to set the viewTypeCount
      */
-    protected int innerviewTypeCount=1;
+    protected int innerviewTypeCount = 1;
 
     // -------------------------------------------------------------
     // Constructors

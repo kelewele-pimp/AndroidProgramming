@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ *******************************************************************************
   ~   Copyright (c) 2013 Gabriele Mariotti.
   ~
@@ -27,10 +26,12 @@
         <item name="android:actionDropDownStyle">@style/DropDownNav.Carddemo</item>
         <item name="android:actionBarStyle">@style/ActionBar.Solid.Carddemo</item>
         <item name="android:actionModeBackground">@drawable/cab_background_top_carddemo</item>
-        <item name="android:actionModeSplitBackground">@drawable/cab_background_bottom_carddemo</item>
-        <item name="android:actionModeCloseButtonStyle">@style/ActionButton.CloseMode.Carddemo</item>
-        
-        
+        <item name="android:actionModeSplitBackground">@drawable/cab_background_bottom_carddemo
+        </item>
+        <item name="android:actionModeCloseButtonStyle">@style/ActionButton.CloseMode.Carddemo
+        </item>
+
+
     </style>
 
     <style name="ActionBar.Solid.Carddemo" parent="@android:style/Widget.Holo.Light.ActionBar.Solid">
@@ -46,7 +47,7 @@
     </style>
 
     <style name="PopupMenu.Carddemo" parent="@android:style/Widget.Holo.Light.ListPopupWindow">
-        <item name="android:popupBackground">@drawable/menu_dropdown_panel_carddemo</item>	
+        <item name="android:popupBackground">@drawable/menu_dropdown_panel_carddemo</item>
     </style>
 
     <style name="DropDownListView.Carddemo" parent="@android:style/Widget.Holo.Light.ListView.DropDown">
@@ -62,11 +63,11 @@
         <item name="android:popupBackground">@drawable/menu_dropdown_panel_carddemo</item>
         <item name="android:dropDownSelector">@drawable/selectable_background_carddemo</item>
     </style>
-    
+
     <style name="ProgressBar.Carddemo" parent="@android:style/Widget.Holo.Light.ProgressBar.Horizontal">
         <item name="android:progressDrawable">@drawable/progress_horizontal_carddemo</item>
     </style>
-    
+
     <style name="ActionButton.CloseMode.Carddemo" parent="@android:style/Widget.Holo.Light.ActionButton.CloseMode">
         <item name="android:background">@drawable/btn_cab_done_carddemo</item>
     </style>

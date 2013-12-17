@@ -30,17 +30,17 @@ import java.util.HashMap;
 import it.gmariotti.cardslib.library.R;
 import it.gmariotti.cardslib.library.internal.base.BaseCardCursorAdapter;
 import it.gmariotti.cardslib.library.view.CardGridView;
-import it.gmariotti.cardslib.library.view.CardListView;
 import it.gmariotti.cardslib.library.view.CardView;
 
 /**
  * Cursor Adapter for {@link Card} model
- *
- *
+ * <p/>
+ * <p/>
  * </p>
+ *
  * @author Gabriele Mariotti (gabri.mariotti@gmail.com)
  */
-public abstract class CardGridCursorAdapter extends BaseCardCursorAdapter  {
+public abstract class CardGridCursorAdapter extends BaseCardCursorAdapter {
 
     protected static String TAG = "CardGridCursorAdapter";
 
@@ -68,7 +68,7 @@ public abstract class CardGridCursorAdapter extends BaseCardCursorAdapter  {
      * Internal Map with all Cards.
      * It uses the card id value as key.
      */
-    protected HashMap<String /* id */,Card>  mInternalObjects;
+    protected HashMap<String /* id */, Card> mInternalObjects;
 
     /**
      * Recycle
@@ -80,7 +80,7 @@ public abstract class CardGridCursorAdapter extends BaseCardCursorAdapter  {
 
     public CardGridCursorAdapter(Context context) {
         super(context, null, false);
-        mContext= context;
+        mContext = context;
     }
 
     // -------------------------------------------------------------
@@ -117,7 +117,7 @@ public abstract class CardGridCursorAdapter extends BaseCardCursorAdapter  {
             mCardView = (CardView) view.findViewById(R.id.list_cardId);
             if (mCardView != null) {
                 //It is important to set recycle value for inner layout elements
-                mCardView.setForceReplaceInnerLayout(Card.equalsInnerLayout(mCardView.getCard(),mCard));
+                mCardView.setForceReplaceInnerLayout(Card.equalsInnerLayout(mCardView.getCard(), mCard));
 
                 //It is important to set recycle value for performance issue
                 mCardView.setRecycle(recycle);
@@ -147,11 +147,10 @@ public abstract class CardGridCursorAdapter extends BaseCardCursorAdapter  {
     }
 
 
-
     /**
      * Sets SwipeAnimation on List
      *
-     * @param card {@link Card}
+     * @param card     {@link Card}
      * @param cardView {@link it.gmariotti.cardslib.library.view.CardView}
      */
     protected void setupSwipeableAnimation(final Card card, CardView cardView) {

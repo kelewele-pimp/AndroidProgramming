@@ -19,23 +19,22 @@
   -->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:card="http://schemas.android.com/apk/res-auto"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content">
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
     <!-- This is the base Inner View inside a CardHeader.
          You can customize it with your layout xml file and your CardHeader.
          You can popolate your element with CardHeader#setupInnerViewElements() method -->
-    <TextView android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:id="@+id/card_header_inner_simple_title"
-              android:textSize="24sp"
-              android:layout_marginTop="10dp"
-              android:layout_marginLeft="15dp"
-              android:textColor="#A0C1FC"
-              android:lines="1"
-        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/card_header_inner_simple_title"
+        android:textSize="24sp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp"
+        android:textColor="#A0C1FC"
+        android:lines="1" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -44,8 +43,7 @@
         android:layout_marginTop="5dp"
         android:layout_marginLeft="15dp"
         android:id="@+id/carddemo_mayknow_main_inner_subtitle"
-        android:textSize="14sp"
-        />
+        android:textSize="14sp" />
 
 </LinearLayout>
 

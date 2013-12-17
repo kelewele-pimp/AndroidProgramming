@@ -75,7 +75,7 @@ public class StockCardFragment extends BaseFragment {
         mShareActionProvider = (ShareActionProvider) item.getActionProvider();
         mShareActionProvider.setShareIntent(getShareIntent());
 
-        super.onCreateOptionsMenu(menu,inflater);
+        super.onCreateOptionsMenu(menu, inflater);
     }
 
     @Override
@@ -86,7 +86,7 @@ public class StockCardFragment extends BaseFragment {
 
         initCard();
 
-        if (photofile==null){
+        if (photofile == null) {
             if (mShareActionProvider != null) {
                 getActivity().invalidateOptionsMenu();
             }
@@ -100,27 +100,28 @@ public class StockCardFragment extends BaseFragment {
     private void initCard() {
 
         //Create a Card
-        GoogleNowStockCard card= new GoogleNowStockCard(getActivity());
+        GoogleNowStockCard card = new GoogleNowStockCard(getActivity());
 
         //Set card in the cardView
         cardView = (CardView) getActivity().findViewById(R.id.carddemo_GoogleNowStock);
         cardView.setCard(card);
     }
 
-    private Intent getShareIntent(){
-        if (cardView!=null){
+    private Intent getShareIntent() {
+        if (cardView != null) {
             photofile = BitmapUtils.createFileFromBitmap(cardView.createBitmap());
-            if (photofile!=null){
+            if (photofile != null) {
                 return BitmapUtils.createIntentFromImage(photofile);
-            }else{
+            } else {
                 return getDefaultIntent();
             }
-        }else{
+        } else {
             return getDefaultIntent();
         }
     }
 
-    /** Defines a default (dummy) share intent to initialze the action provider.
+    /**
+     * Defines a default (dummy) share intent to initialze the action provider.
      * However, as soon as the actual content to be used in the intent
      * is known or changes, you must update the share intent by again calling
      * mShareActionProvider.setShareIntent()

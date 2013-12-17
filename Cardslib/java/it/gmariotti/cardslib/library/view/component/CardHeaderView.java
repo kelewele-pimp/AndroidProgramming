@@ -128,7 +128,7 @@ public class CardHeaderView extends FrameLayout implements CardViewInterface {
     /**
      * Used to recycle ui elements.
      */
-    protected boolean mIsRecycle=false;
+    protected boolean mIsRecycle = false;
 
     /**
      * Used to replace inner layout elements.
@@ -291,12 +291,12 @@ public class CardHeaderView extends FrameLayout implements CardViewInterface {
                 mImageButtonOther.setOnClickListener(new OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if (mCardHeader.getOtherButtonClickListener()!=null)
+                        if (mCardHeader.getOtherButtonClickListener() != null)
                             mCardHeader.getOtherButtonClickListener().onButtonItemClick(mCardHeader.getParentCard(), v);
                     }
                 });
             }
-        }else{
+        } else {
             if (mImageButtonOther != null) {
                 mImageButtonOther.setClickable(false);
             }
@@ -310,18 +310,18 @@ public class CardHeaderView extends FrameLayout implements CardViewInterface {
         if (mFrameInner != null) {
             //Check if view can be recycled
             //It can happen in a listView to improve performances or while refreshing a card
-            if (!isRecycle() || isForceReplaceInnerLayout()){
+            if (!isRecycle() || isForceReplaceInnerLayout()) {
 
-                if (isForceReplaceInnerLayout() && mFrameInner != null && mInternalInnerView!=null)
+                if (isForceReplaceInnerLayout() && mFrameInner != null && mInternalInnerView != null)
                     mFrameInner.removeView(mInternalInnerView);
 
                 //Inflate inner view
                 mInternalInnerView = mCardHeader.getInnerView(getContext(), mFrameInner);
-            }else{
+            } else {
                 //View can be recycled.
                 //Only setup Inner Elements
-                if (mCardHeader.getInnerLayout()>-1)
-                    mCardHeader.setupInnerViewElements(mFrameInner,mInternalInnerView);
+                if (mCardHeader.getInnerLayout() > -1)
+                    mCardHeader.setupInnerViewElements(mFrameInner, mInternalInnerView);
             }
         }
     }
@@ -420,7 +420,7 @@ public class CardHeaderView extends FrameLayout implements CardViewInterface {
     /**
      * Sets if view can recycle ui elements
      *
-     * @param isRecycle  <code>true</code> to recycle
+     * @param isRecycle <code>true</code> to recycle
      */
     public void setRecycle(boolean isRecycle) {
         this.mIsRecycle = isRecycle;
@@ -438,7 +438,7 @@ public class CardHeaderView extends FrameLayout implements CardViewInterface {
     /**
      * Sets if inner layout have to be replaced
      *
-     * @param forceReplaceInnerLayout  <code>true</code> to recycle
+     * @param forceReplaceInnerLayout <code>true</code> to recycle
      */
     public void setForceReplaceInnerLayout(boolean forceReplaceInnerLayout) {
         this.mForceReplaceInnerLayout = forceReplaceInnerLayout;

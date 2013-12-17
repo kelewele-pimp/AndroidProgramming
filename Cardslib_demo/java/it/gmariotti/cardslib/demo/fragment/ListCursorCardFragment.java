@@ -86,7 +86,7 @@ public class ListCursorCardFragment extends BaseFragment implements LoaderManage
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
         Loader<Cursor> loader = null;
         loader = new CursorLoader(getActivity(), CardCursorContract.CardCursor.CONTENT_URI,
-                CardCursorContract.CardCursor.ALL_PROJECTION, null , null, CardCursorContract.CardCursor.DEFAULT_SORT);
+                CardCursorContract.CardCursor.ALL_PROJECTION, null, null, CardCursorContract.CardCursor.DEFAULT_SORT);
         return loader;
     }
 
@@ -113,7 +113,7 @@ public class ListCursorCardFragment extends BaseFragment implements LoaderManage
         @Override
         protected Card getCardFromCursor(Cursor cursor) {
             MyCursorCard card = new MyCursorCard(super.getContext());
-            setCardFromCursor(card,cursor);
+            setCardFromCursor(card, cursor);
 
             //Create a CardHeader
             CardHeader header = new CardHeader(getActivity());
@@ -123,13 +123,12 @@ public class ListCursorCardFragment extends BaseFragment implements LoaderManage
             header.setPopupMenu(R.menu.popupmain, new CardHeader.OnClickCardHeaderPopupMenuListener() {
                 @Override
                 public void onMenuItemClick(BaseCard card, MenuItem item) {
-                    Toast.makeText(getContext(), "Click on card="+card.getId()+" item=" +  item.getTitle(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Click on card=" + card.getId() + " item=" + item.getTitle(), Toast.LENGTH_SHORT).show();
                 }
             });
 
             //Add Header to card
             card.addCardHeader(header);
-
 
 
             CardThumbnail thumb = new CardThumbnail(getActivity());
@@ -147,29 +146,29 @@ public class ListCursorCardFragment extends BaseFragment implements LoaderManage
             return card;
         }
 
-        private void setCardFromCursor(MyCursorCard card,Cursor cursor) {
+        private void setCardFromCursor(MyCursorCard card, Cursor cursor) {
 
-            card.mainTitle=cursor.getString(CardCursorContract.CardCursor.IndexColumns.TITLE_COLUMN);
-            card.secondaryTitle=cursor.getString(CardCursorContract.CardCursor.IndexColumns.SUBTITLE_COLUMN);
-            card.mainHeader=cursor.getString(CardCursorContract.CardCursor.IndexColumns.HEADER_COLUMN);
-            card.setId(""+cursor.getInt(CardCursorContract.CardCursor.IndexColumns.ID_COLUMN));
+            card.mainTitle = cursor.getString(CardCursorContract.CardCursor.IndexColumns.TITLE_COLUMN);
+            card.secondaryTitle = cursor.getString(CardCursorContract.CardCursor.IndexColumns.SUBTITLE_COLUMN);
+            card.mainHeader = cursor.getString(CardCursorContract.CardCursor.IndexColumns.HEADER_COLUMN);
+            card.setId("" + cursor.getInt(CardCursorContract.CardCursor.IndexColumns.ID_COLUMN));
 
             int thumb = cursor.getInt(CardCursorContract.CardCursor.IndexColumns.THUMBNAIL_COLUMN);
-            switch (thumb){
+            switch (thumb) {
                 case 0:
-                    card.resourceIdThumb=R.drawable.ic_ic_launcher_web;
+                    card.resourceIdThumb = R.drawable.ic_ic_launcher_web;
                     break;
                 case 1:
-                    card.resourceIdThumb=R.drawable.ic_ic_dh_net;
+                    card.resourceIdThumb = R.drawable.ic_ic_dh_net;
                     break;
                 case 2:
-                    card.resourceIdThumb=R.drawable.ic_tris;
+                    card.resourceIdThumb = R.drawable.ic_tris;
                     break;
                 case 3:
-                    card.resourceIdThumb=R.drawable.ic_info;
+                    card.resourceIdThumb = R.drawable.ic_info;
                     break;
                 case 4:
-                    card.resourceIdThumb=R.drawable.ic_smile;
+                    card.resourceIdThumb = R.drawable.ic_smile;
                     break;
             }
 
@@ -183,7 +182,7 @@ public class ListCursorCardFragment extends BaseFragment implements LoaderManage
         long noDeleted = resolver.delete
                 (CardCursorContract.CardCursor.CONTENT_URI,
                         CardCursorContract.CardCursor.KeyColumns.KEY_ID + " = ? ",
-        new String[]{card.getId()});
+                        new String[]{card.getId()});
 
         //mAdapter.notifyDataSetChanged();
 

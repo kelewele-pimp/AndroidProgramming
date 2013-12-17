@@ -73,11 +73,11 @@ import it.gmariotti.cardslib.library.internal.base.BaseCard;
  *           tx1.setText(getContext().getString(R.string.demo_expand_customtitle1));
  *         }
  *    }
- *}
- *</code>
- *</pre>
- *
- *  See this page for more information https://github.com/gabrielemariotti/cardslib/tree/master/EXPAND.md
+ * }
+ * </code>
+ * </pre>
+ * <p/>
+ * See this page for more information https://github.com/gabrielemariotti/cardslib/tree/master/EXPAND.md
  *
  * @author Gabriele Mariotti (gabri.mariotti@gmail.com)
  */
@@ -91,7 +91,7 @@ public class CardExpand extends BaseCard {
     /**
      * Constructor with a inner base layout defined by R.layout.inner_base_expand
      *
-     * @param context  context
+     * @param context context
      */
     public CardExpand(Context context) {
         this(context, R.layout.inner_base_expand);
@@ -100,12 +100,12 @@ public class CardExpand extends BaseCard {
     /**
      * Constructor with resource ID for inner layout
      *
-     * @param context   context
+     * @param context     context
      * @param innerLayout resource ID for inner layout
      */
     public CardExpand(Context context, int innerLayout) {
         super(context);
-        mInnerLayout= innerLayout;
+        mInnerLayout = innerLayout;
     }
 
     // -------------------------------------------------------------
@@ -118,24 +118,24 @@ public class CardExpand extends BaseCard {
      * to setup all values.
      *
      * @param context context
-     * @param parent Inner Frame
+     * @param parent  Inner Frame
      * @return
      */
     @Override
     public View getInnerView(Context context, ViewGroup parent) {
 
         //Inflate the inner layout
-        View view= super.getInnerView(context, parent);
+        View view = super.getInnerView(context, parent);
 
         //This provides a simple implementation with a single title
-        if (view!=null){
+        if (view != null) {
 
             //Add inner view to parent
             parent.addView(view);
 
             //Setup values
-            if (mInnerLayout>-1 ){
-                setupInnerViewElements(parent,view);
+            if (mInnerLayout > -1) {
+                setupInnerViewElements(parent, view);
             }
         }
         return view;
@@ -143,19 +143,19 @@ public class CardExpand extends BaseCard {
 
     /**
      * This method sets values to expand elements and customizes view.
-     *
+     * <p/>
      * Override this method to customize your Expand View
      *
-     * @param parent  Expand external Layout
-     * @param view  inner-expand view
+     * @param parent Expand external Layout
+     * @param view   inner-expand view
      */
     @Override
     public void setupInnerViewElements(ViewGroup parent, View view) {
 
         //Add simple title to expand area
-        if (view!=null){
-            TextView mTitleView=(TextView) view.findViewById(R.id.card_expand_inner_simple_title);
-            if (mTitleView!=null)
+        if (view != null) {
+            TextView mTitleView = (TextView) view.findViewById(R.id.card_expand_inner_simple_title);
+            if (mTitleView != null)
                 mTitleView.setText(mTitle);
         }
     }

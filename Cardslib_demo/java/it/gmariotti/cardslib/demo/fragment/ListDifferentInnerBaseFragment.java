@@ -70,19 +70,19 @@ public class ListDifferentInnerBaseFragment extends BaseFragment {
     private void initCards() {
 
         ArrayList<Card> cards = new ArrayList<Card>();
-        for (int i=0;i<50;i++){
+        for (int i = 0; i < 50; i++) {
 
-            CardExample card = new CardExample(getActivity(),"My title "+i,"Inner text "+i);
+            CardExample card = new CardExample(getActivity(), "My title " + i, "Inner text " + i);
             cards.add(card);
 
             CardExample2 cardx = new CardExample2(this.getActivity());
-            cardx.title="Application example "+i;
-            cardx.secondaryTitle="A company inc..."+i;
-            cardx.rating=(float)(Math.random()*(5.0));
-            cardx.count=i;
+            cardx.title = "Application example " + i;
+            cardx.secondaryTitle = "A company inc..." + i;
+            cardx.rating = (float) (Math.random() * (5.0));
+            cardx.count = i;
             cards.add(cardx);
 
-            MayKnowCard card2= new MayKnowCard(getActivity());
+            MayKnowCard card2 = new MayKnowCard(getActivity());
             card2.setType(2); //Very important with different inner layout
             card2.setSwipeable(true);
             cards.add(card2);
@@ -92,7 +92,7 @@ public class ListDifferentInnerBaseFragment extends BaseFragment {
         // Provide a custom adapter.
         // It is important to set the viewTypeCount
         // You have to provide in your card the type value with {@link Card#setType(int)} method.
-        CardArrayAdapter mCardArrayAdapter = new CardArrayAdapter(getActivity(),cards);
+        CardArrayAdapter mCardArrayAdapter = new CardArrayAdapter(getActivity(), cards);
         mCardArrayAdapter.setInnerViewTypeCount(3);
 
         // An alternative is to write a own CardArrayAdapter
@@ -100,22 +100,21 @@ public class ListDifferentInnerBaseFragment extends BaseFragment {
 
 
         CardListView listView = (CardListView) getActivity().findViewById(R.id.carddemo_list_base1);
-        if (listView!=null){
+        if (listView != null) {
             listView.setAdapter(mCardArrayAdapter);
         }
     }
 
     /**
-     *  With multiple inner layouts you have to set the viewTypeCount with {@link CardArrayAdapter#setInnerViewTypeCount(int)}.
-     *  </p>
-     *  An alternative is to provide your CardArrayAdapter  where you have to override this method:
-     *  </p>
-     *  public int getViewTypeCount() {}
-     *  </p>
-     *  You have to provide in your card the type value with {@link Card#setType(int)} method.
-     *
+     * With multiple inner layouts you have to set the viewTypeCount with {@link CardArrayAdapter#setInnerViewTypeCount(int)}.
+     * </p>
+     * An alternative is to provide your CardArrayAdapter  where you have to override this method:
+     * </p>
+     * public int getViewTypeCount() {}
+     * </p>
+     * You have to provide in your card the type value with {@link Card#setType(int)} method.
      */
-    public class MyCardArrayAdapter extends CardArrayAdapter{
+    public class MyCardArrayAdapter extends CardArrayAdapter {
 
         /**
          * Constructor
@@ -137,19 +136,19 @@ public class ListDifferentInnerBaseFragment extends BaseFragment {
     // Cards
     //--------------------------------------------------------------------------
 
-    public class CardExample extends Card{
+    public class CardExample extends Card {
 
         protected String mTitleHeader;
         protected String mTitleMain;
 
-        public CardExample(Context context,String titleHeader,String titleMain) {
+        public CardExample(Context context, String titleHeader, String titleMain) {
             super(context, R.layout.carddemo_example_inner_content);
-            this.mTitleHeader=titleHeader;
-            this.mTitleMain=titleMain;
+            this.mTitleHeader = titleHeader;
+            this.mTitleMain = titleMain;
             init();
         }
 
-        private void init(){
+        private void init() {
 
             //Create a CardHeader
             CardHeader header = new CardHeader(getActivity());
@@ -161,7 +160,7 @@ public class ListDifferentInnerBaseFragment extends BaseFragment {
             header.setPopupMenu(R.menu.popupmain, new CardHeader.OnClickCardHeaderPopupMenuListener() {
                 @Override
                 public void onMenuItemClick(BaseCard card, MenuItem item) {
-                    Toast.makeText(getActivity(), "Click on card menu" + mTitleHeader +" item=" +  item.getTitle(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Click on card menu" + mTitleHeader + " item=" + item.getTitle(), Toast.LENGTH_SHORT).show();
                 }
             });
             addCardHeader(header);
@@ -188,7 +187,7 @@ public class ListDifferentInnerBaseFragment extends BaseFragment {
         }
     }
 
-    public class CardExample2 extends Card{
+    public class CardExample2 extends Card {
 
         protected TextView mTitle;
         protected TextView mSecondaryTitle;
@@ -206,7 +205,7 @@ public class ListDifferentInnerBaseFragment extends BaseFragment {
             init();
         }
 
-        private void init(){
+        private void init() {
 
             //Create a CardHeader
             CardHeader header = new CardHeader(getActivity());
@@ -252,7 +251,6 @@ public class ListDifferentInnerBaseFragment extends BaseFragment {
             return 1;
         }
     }
-
 
 
 }

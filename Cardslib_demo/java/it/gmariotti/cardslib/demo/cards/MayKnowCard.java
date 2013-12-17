@@ -66,7 +66,7 @@ public class MayKnowCard extends Card {
             }
         };
 
-        addPartialOnClickListener(Card.CLICK_LISTENER_CONTENT_VIEW,clickListener);
+        addPartialOnClickListener(Card.CLICK_LISTENER_CONTENT_VIEW, clickListener);
     }
 
     @Override

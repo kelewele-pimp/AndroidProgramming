@@ -82,7 +82,7 @@
     </style>
 
     <!-- Button Overflow in Header -->
-    <style name="card.header_button_base.overflow" >
+    <style name="card.header_button_base.overflow">
         <item name="android:background">@drawable/card_menu_button_overflow</item>
     </style>
 
